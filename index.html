@@ -1,0 +1,879 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- SEO Meta Tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HFC Exchange | Premium Peer-to-Peer Cryptocurrency Trading Platform</title>
+    <meta name="description" content="HFC Exchange is Pakistan's premier decentralized escrow cryptocurrency marketplace offering premium multi-sig secure vaults, fast peer-to-peer trading nodes, and seamless PKR gateway conversions." />
+    <meta name="keywords" content="crypto, exchange, p2p, pakistan, bitcoin, ethereum, tether, hfc, buy bitcoin pakistan" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ais-pre-pwqovnt25jilpvjd67cgzb-472947549047.asia-southeast1.run.app/" />
+    <meta property="og:title" content="HFC Exchange | Professional Peer-to-Peer Cryptocurrency Trading" />
+    <meta property="og:description" content="Pakistan's premier decentralized escrow cryptocurrency marketplace. Multi-sig cold vaults, p2p nodes, secure PKR transactions." />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1621761191319-c6fb62004040?auto=format&fit=crop&w=1200&h=630&q=80" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="HFC Exchange | Professional Peer-to-Peer Cryptocurrency Trading" />
+    <meta property="twitter:description" content="Pakistan's premier decentralized escrow cryptocurrency marketplace. Multi-sig cold vaults, p2p nodes, secure PKR transactions." />
+    <meta property="twitter:image" content="https://images.unsplash.com/photo-1621761191319-c6fb62004040?auto=format&fit=crop&w=1200&h=630&q=80" />
+
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Bootstrap Icons CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+    
+    <!-- Core Design System Stylesheet -->
+    <link rel="stylesheet" href="/css/style.css" />
+    <!-- Home/Landing Page Custom Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/home.css" />
+  </head>
+  <body>
+
+    <!-- ==========================================================================
+         1. LANDING PAGE NAVIGATION (GLASSMORPHIC HEADER)
+         ========================================================================== -->
+    <nav class="home-navbar d-flex align-items-center" id="homeNavbar">
+      <div class="container d-flex align-items-center justify-content-between">
+        
+        <!-- Brand Signature -->
+        <a href="#" class="d-flex align-items-center gap-2 text-decoration-none">
+          <i class="bi bi-currency-exchange text-glow-primary fs-3 text-primary animate-pulse"></i>
+          <span class="text-display fw-bold text-white fs-4 tracking-wide">HFC EXCHANGE</span>
+        </a>
+
+        <!-- Desktop Mid Navigation Menu -->
+        <div class="d-none d-lg-flex align-items-center gap-4" id="desktopNav">
+          <a href="#" class="nav-link-hfc active">Home</a>
+          <a href="#markets" class="nav-link-hfc">Markets</a>
+          <a href="#why-choose-us" class="nav-link-hfc">Features</a>
+          <a href="#how-it-works" class="nav-link-hfc">How It Works</a>
+          <a href="#marketplace" class="nav-link-hfc">Offers</a>
+          <a href="#faq" class="nav-link-hfc">FAQ</a>
+        </div>
+
+        <!-- Action Gateway Links -->
+        <div class="d-flex align-items-center gap-2">
+          <a href="login.html" class="btn-hfc btn-hfc-secondary py-2 px-3 text-sm d-none d-sm-inline-flex" id="navLoginBtn">
+            <i class="bi bi-box-arrow-in-right"></i>
+            <span>Log In</span>
+          </a>
+          <a href="register.html" class="btn-hfc btn-hfc-primary py-2 px-3 text-sm" id="navRegisterBtn">
+            <i class="bi bi-shield-lock"></i>
+            <span>Register Node</span>
+          </a>
+          <!-- Mobile Menu Trigger -->
+          <button class="btn-hfc btn-hfc-icon d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileOffcanvasNav" aria-controls="mobileOffcanvasNav" aria-label="Toggle navigation menu">
+            <i class="bi bi-list fs-4"></i>
+          </button>
+        </div>
+
+      </div>
+    </nav>
+
+    <!-- Mobile Offcanvas Navigation Menu -->
+    <div class="offcanvas offcanvas-end dropdown-menu-glass border-start border-secondary border-opacity-10" tabindex="-1" id="mobileOffcanvasNav" aria-labelledby="mobileOffcanvasLabel">
+      <div class="offcanvas-header border-bottom border-secondary border-opacity-10">
+        <h5 class="offcanvas-title text-white fw-bold text-display" id="mobileOffcanvasLabel">HFC Gateway</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body d-flex flex-column justify-content-between">
+        <div class="d-flex flex-column gap-3">
+          <a href="#" class="nav-link-hfc fs-5 py-2 border-bottom border-secondary border-opacity-10" data-bs-dismiss="offcanvas">Home</a>
+          <a href="#markets" class="nav-link-hfc fs-5 py-2 border-bottom border-secondary border-opacity-10" data-bs-dismiss="offcanvas">Live Markets</a>
+          <a href="#why-choose-us" class="nav-link-hfc fs-5 py-2 border-bottom border-secondary border-opacity-10" data-bs-dismiss="offcanvas">Key Features</a>
+          <a href="#how-it-works" class="nav-link-hfc fs-5 py-2 border-bottom border-secondary border-opacity-10" data-bs-dismiss="offcanvas">How It Works</a>
+          <a href="#marketplace" class="nav-link-hfc fs-5 py-2 border-bottom border-secondary border-opacity-10" data-bs-dismiss="offcanvas">Market Offers</a>
+          <a href="#faq" class="nav-link-hfc fs-5 py-2 border-bottom border-secondary border-opacity-10" data-bs-dismiss="offcanvas">FAQ Helpdesk</a>
+        </div>
+        <div class="d-flex flex-column gap-2 mt-4">
+          <a href="login.html" class="btn-hfc btn-hfc-secondary w-100 py-2" id="mobileLoginBtn">
+            <i class="bi bi-box-arrow-in-right"></i>
+            <span>Log In Gateway</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ==========================================================================
+         2. HERO SECTION
+         ========================================================================== -->
+    <header class="hero-wrapper" id="hero">
+      <div class="hero-orb-primary"></div>
+      <div class="hero-orb-secondary"></div>
+      
+      <div class="container position-relative" style="z-index: 10;">
+        <div class="row align-items-center g-5">
+          
+          <!-- Column 1: Typography Headlines -->
+          <div class="col-lg-7 text-center text-lg-start">
+            <div class="d-inline-flex align-items-center gap-2 px-3 py-1 bg-white bg-opacity-5 border border-secondary border-opacity-15 rounded-pill mb-4" id="heroBadge">
+              <span class="status-pulse-success rounded-circle bg-success" style="width: 8px; height: 8px;"></span>
+              <span class="text-mono text-glow-primary uppercase tracking-wide text-white" style="font-size: 0.7rem;">HFC Exchange Node V2.4 Connected</span>
+            </div>
+            
+            <h1 class="hero-title display-4 mb-3" id="heroTitle">
+              The Peer-to-Peer <br />
+              <span class="text-glow-primary text-primary">Cryptocurrency Node</span> <br />
+              of Pakistan
+            </h1>
+            
+            <p class="hero-subtitle text-secondary mb-4 mx-auto mx-lg-0" id="heroSubtitle">
+              Access the region's first premium multi-signature escrows, professional-grade liquidity tools, and peer-to-peer asset negotiations with zero-latency PKR conversion nodes.
+            </p>
+            
+            <!-- CTAs -->
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start gap-3" id="heroActions">
+              <a href="register.html" class="btn-hfc btn-hfc-primary py-3 px-4 hover-lift" id="heroRegisterBtn">
+                <span>Deploy Node & Trading</span>
+                <i class="bi bi-shield-lock-fill"></i>
+              </a>
+              <a href="login.html" class="btn-hfc btn-hfc-secondary py-3 px-4 hover-lift" id="heroLoginBtn">
+                <span>Gateway Login</span>
+                <i class="bi bi-box-arrow-in-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Column 2: Interactive Glassmorphic Illustration -->
+          <div class="col-lg-5">
+            <div class="hero-illustration-wrapper" id="heroIllustration">
+              <div class="hero-illustration-glass">
+                
+                <!-- Orbit structures -->
+                <div class="orbit-ring ring-inner"></div>
+                <div class="orbit-ring ring-outer"></div>
+
+                <!-- Center Neon Pulse Node -->
+                <div class="visual-nodes-net">
+                  <div class="visual-node-center">
+                    <i class="bi bi-currency-exchange text-glow-primary"></i>
+                  </div>
+                </div>
+
+                <!-- Floating tokens around it -->
+                <div class="floating-token token-hfc">
+                  <i class="bi bi-hexagon-fill text-primary"></i>
+                  <span class="text-white text-mono fw-bold">HFC Node</span>
+                </div>
+
+                <div class="floating-token token-btc">
+                  <i class="bi bi-currency-bitcoin text-warning"></i>
+                  <span class="text-white text-mono fw-bold">BTC Ledger</span>
+                </div>
+
+                <div class="floating-token token-pkr">
+                  <i class="bi bi-cash-coin text-success"></i>
+                  <span class="text-white text-mono fw-bold">PKR Wallet</span>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </header>
+
+
+    <!-- ==========================================================================
+         3. LIVE MARKET OVERVIEW (FEATURED COINS)
+         ========================================================================== -->
+    <section class="py-5" id="markets" style="background: rgba(13, 17, 23, 0.5);">
+      <div class="container">
+        
+        <!-- Section Header -->
+        <div class="text-center mb-5">
+          <span class="text-mono text-glow-primary text-primary text-xs uppercase tracking-widest d-block mb-2">P2P Ticker Ledger</span>
+          <h2 class="text-display fw-bold text-white fs-2 mb-3">Live Liquidity Markets</h2>
+          <p class="text-secondary text-sm mx-auto" style="max-width: 580px;">
+            Real-time tracking of HFC and other major crypto assets settled on our secure peer-to-peer ledger nodes.
+          </p>
+        </div>
+
+        <!-- Coins Cards Grid -->
+        <div class="row g-4" id="liveMarketGrid">
+          
+          <!-- Card 1: HFC (Main Exchange Token) -->
+          <div class="col-md-6 col-lg-3">
+            <div class="market-card" id="cardCoinHFC">
+              <div class="d-flex align-items-center justify-content-between mb-3">
+                <div class="d-flex align-items-center gap-3">
+                  <div class="coin-icon-wrapper coin-icon-hfc">
+                    <i class="bi bi-currency-exchange"></i>
+                  </div>
+                  <div>
+                    <h3 class="text-white fs-6 fw-bold m-0">HFC Coin</h3>
+                    <span class="text-mono text-muted text-xs">HFC</span>
+                  </div>
+                </div>
+                <span class="badge-hfc badge-hfc-primary">Master</span>
+              </div>
+              <div class="mb-3">
+                <div class="text-display fw-bold text-white fs-4" id="priceHFC">PKR 145.20</div>
+                <span class="text-xs text-mono text-success d-flex align-items-center gap-1 mt-1">
+                  <i class="bi bi-arrow-up-right"></i>
+                  <span>+12.45% (24h)</span>
+                </span>
+              </div>
+              <div class="border-top border-secondary border-opacity-10 pt-3 text-xs d-flex justify-content-between text-muted">
+                <span>Node Volume:</span>
+                <span class="text-white text-mono">1.2M HFC</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: BTC (Bitcoin) -->
+          <div class="col-md-6 col-lg-3">
+            <div class="market-card" id="cardCoinBTC">
+              <div class="d-flex align-items-center justify-content-between mb-3">
+                <div class="d-flex align-items-center gap-3">
+                  <div class="coin-icon-wrapper coin-icon-btc">
+                    <i class="bi bi-currency-bitcoin"></i>
+                  </div>
+                  <div>
+                    <h3 class="text-white fs-6 fw-bold m-0">Bitcoin</h3>
+                    <span class="text-mono text-muted text-xs">BTC</span>
+                  </div>
+                </div>
+                <span class="badge-hfc badge-hfc-muted">Liquid</span>
+              </div>
+              <div class="mb-3">
+                <div class="text-display fw-bold text-white fs-4" id="priceBTC">PKR 26,782,500</div>
+                <span class="text-xs text-mono text-success d-flex align-items-center gap-1 mt-1">
+                  <i class="bi bi-arrow-up-right"></i>
+                  <span>+2.15% (24h)</span>
+                </span>
+              </div>
+              <div class="border-top border-secondary border-opacity-10 pt-3 text-xs d-flex justify-content-between text-muted">
+                <span>Node Volume:</span>
+                <span class="text-white text-mono">42.8 BTC</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: ETH (Ethereum) -->
+          <div class="col-md-6 col-lg-3">
+            <div class="market-card" id="cardCoinETH">
+              <div class="d-flex align-items-center justify-content-between mb-3">
+                <div class="d-flex align-items-center gap-3">
+                  <div class="coin-icon-wrapper coin-icon-eth">
+                    <i class="bi bi-database"></i>
+                  </div>
+                  <div>
+                    <h3 class="text-white fs-6 fw-bold m-0">Ethereum</h3>
+                    <span class="text-mono text-muted text-xs">ETH</span>
+                  </div>
+                </div>
+                <span class="badge-hfc badge-hfc-muted">Liquid</span>
+              </div>
+              <div class="mb-3">
+                <div class="text-display fw-bold text-white fs-4" id="priceETH">PKR 982,450</div>
+                <span class="text-xs text-mono text-danger d-flex align-items-center gap-1 mt-1">
+                  <i class="bi bi-arrow-down-left"></i>
+                  <span>-1.84% (24h)</span>
+                </span>
+              </div>
+              <div class="border-top border-secondary border-opacity-10 pt-3 text-xs d-flex justify-content-between text-muted">
+                <span>Node Volume:</span>
+                <span class="text-white text-mono">510.6 ETH</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: USDT (Tether) -->
+          <div class="col-md-6 col-lg-3">
+            <div class="market-card" id="cardCoinUSDT">
+              <div class="d-flex align-items-center justify-content-between mb-3">
+                <div class="d-flex align-items-center gap-3">
+                  <div class="coin-icon-wrapper coin-icon-usdt">
+                    <i class="bi bi-shield-fill-check"></i>
+                  </div>
+                  <div>
+                    <h3 class="text-white fs-6 fw-bold m-0">Tether</h3>
+                    <span class="text-mono text-muted text-xs">USDT</span>
+                  </div>
+                </div>
+                <span class="badge-hfc badge-hfc-success">Stable</span>
+              </div>
+              <div class="mb-3">
+                <div class="text-display fw-bold text-white fs-4" id="priceUSDT">PKR 278.45</div>
+                <span class="text-xs text-mono text-muted d-flex align-items-center gap-1 mt-1">
+                  <i class="bi bi-dash-circle"></i>
+                  <span>0.00% (24h)</span>
+                </span>
+              </div>
+              <div class="border-top border-secondary border-opacity-10 pt-3 text-xs d-flex justify-content-between text-muted">
+                <span>Node Volume:</span>
+                <span class="text-white text-mono">2.4M USDT</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         4. WHY CHOOSE HFC EXCHANGE (FEATURE CARDS)
+         ========================================================================== -->
+    <section class="py-5" id="why-choose-us">
+      <div class="container">
+        
+        <!-- Section Header -->
+        <div class="text-center mb-5">
+          <span class="text-mono text-glow-primary text-primary text-xs uppercase tracking-widest d-block mb-2">Engine Integrity</span>
+          <h2 class="text-display fw-bold text-white fs-2 mb-3">Why Choose HFC Exchange</h2>
+          <p class="text-secondary text-sm mx-auto" style="max-width: 580px;">
+            The platform is built on advanced peer-to-peer security paradigms, custom-tailored for regional liquidity and compliance integrity.
+          </p>
+        </div>
+
+        <!-- Features Grid -->
+        <div class="row g-4" id="featuresGrid">
+          
+          <!-- Feature 1: Secure Trading -->
+          <div class="col-md-6 col-lg-4">
+            <div class="feature-card" id="featSecure">
+              <div class="feature-icon-wrapper">
+                <i class="bi bi-shield-lock-fill"></i>
+              </div>
+              <h3 class="text-white fs-5 fw-bold mb-2">Secure P2P Trading</h3>
+              <p class="text-secondary text-sm mb-0">
+                Advanced multi-signature cold storage escrows ensure assets are secure and only released when both trade criteria are met.
+              </p>
+            </div>
+          </div>
+
+          <!-- Feature 2: Fast Marketplace -->
+          <div class="col-md-6 col-lg-4">
+            <div class="feature-card" id="featFast">
+              <div class="feature-icon-wrapper">
+                <i class="bi bi-lightning-charge-fill"></i>
+              </div>
+              <h3 class="text-white fs-5 fw-bold mb-2">Fast Marketplace</h3>
+              <p class="text-secondary text-sm mb-0">
+                Instantly matches localized PKR buyers and sellers with optimized connection matching that guarantees optimal liquidity.
+              </p>
+            </div>
+          </div>
+
+          <!-- Feature 3: Negotiation System -->
+          <div class="col-md-6 col-lg-4">
+            <div class="feature-card" id="featNegotiate">
+              <div class="feature-icon-wrapper">
+                <i class="bi bi-chat-left-dots-fill"></i>
+              </div>
+              <h3 class="text-white fs-5 fw-bold mb-2">Dynamic Negotiation</h3>
+              <p class="text-secondary text-sm mb-0">
+                Unique real-time chat and custom offer adjustment layers allow peer nodes to coordinate trading parameters directly.
+              </p>
+            </div>
+          </div>
+
+          <!-- Feature 4: Low Fees -->
+          <div class="col-md-6 col-lg-4">
+            <div class="feature-card" id="featFees">
+              <div class="feature-icon-wrapper">
+                <i class="bi bi-percent"></i>
+              </div>
+              <h3 class="text-white fs-5 fw-bold mb-2">Flat 0.1% Trading Fees</h3>
+              <p class="text-secondary text-sm mb-0">
+                No complex hidden costs. HFC maintains flat and fully transparent escrow fee indexes that sustain ledger operations.
+              </p>
+            </div>
+          </div>
+
+          <!-- Feature 5: Firebase Powered -->
+          <div class="col-md-6 col-lg-4">
+            <div class="feature-card" id="featFirebase">
+              <div class="feature-icon-wrapper">
+                <i class="bi bi-database-fill-check"></i>
+              </div>
+              <h3 class="text-white fs-5 fw-bold mb-2">Firebase Integrated</h3>
+              <p class="text-secondary text-sm mb-0">
+                Built on secure Firebase Authentication structures and realtime database modules that guarantee active user safety.
+              </p>
+            </div>
+          </div>
+
+          <!-- Feature 6: Responsive Design -->
+          <div class="col-md-6 col-lg-4">
+            <div class="feature-card" id="featResponsive">
+              <div class="feature-icon-wrapper">
+                <i class="bi bi-phone-fill"></i>
+              </div>
+              <h3 class="text-white fs-5 fw-bold mb-2">Mobile-First UI</h3>
+              <p class="text-secondary text-sm mb-0">
+                Fully responsive design system. Access, monitor, negotiate and trade comfortably across tablets, phones, and computers.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         5. HOW IT WORKS (STEPS)
+         ========================================================================== -->
+    <section class="py-5" id="how-it-works" style="background: rgba(13, 17, 23, 0.5);">
+      <div class="container">
+        
+        <!-- Section Header -->
+        <div class="text-center mb-5">
+          <span class="text-mono text-glow-primary text-primary text-xs uppercase tracking-widest d-block mb-2">Trading Protocol</span>
+          <h2 class="text-display fw-bold text-white fs-2 mb-3">Six Simple Steps</h2>
+          <p class="text-secondary text-sm mx-auto" style="max-width: 580px;">
+            HFC Exchange simplifies complex multi-sig trade workflows into a highly secure, easy-to-follow trading protocol.
+          </p>
+        </div>
+
+        <!-- Steps Grid -->
+        <div class="row g-4" id="stepsGrid">
+          
+          <!-- Step 1 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="step-card" id="step1">
+              <div class="step-number-badge">1</div>
+              <h3 class="text-white fs-5 fw-semibold mb-2 mt-2">Create Account</h3>
+              <p class="text-secondary text-sm mb-0">
+                Register your private trading node. Input email verification parameters to activate your standard user profile.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="step-card" id="step2">
+              <div class="step-number-badge">2</div>
+              <h3 class="text-white fs-5 fw-semibold mb-2 mt-2">Deposit PKR</h3>
+              <p class="text-secondary text-sm mb-0">
+                Deposit PKR funds instantly into your secure local wallet module. PKR serves as the trading bridge for crypto buys.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="step-card" id="step3">
+              <div class="step-number-badge">3</div>
+              <h3 class="text-white fs-5 fw-semibold mb-2 mt-2">Create Offer</h3>
+              <p class="text-secondary text-sm mb-0">
+                Publish buy or sell order criteria on the open market table, specifying coin, price margins, and limits.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="step-card" id="step4">
+              <div class="step-number-badge">4</div>
+              <h3 class="text-white fs-5 fw-semibold mb-2 mt-2">Negotiate Price</h3>
+              <p class="text-secondary text-sm mb-0">
+                Buyers and sellers connect inside dedicated negotiation lobbies to fine-tune payment rules and rate values.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 5 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="step-card" id="step5">
+              <div class="step-number-badge">5</div>
+              <h3 class="text-white fs-5 fw-semibold mb-2 mt-2">Lock Deal</h3>
+              <p class="text-secondary text-sm mb-0">
+                Once agreed, assets move to the secure HFC escrow contract. No party can pull assets unilaterally.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 6 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="step-card" id="step6">
+              <div class="step-number-badge">6</div>
+              <h3 class="text-white fs-5 fw-semibold mb-2 mt-2">Complete Trade</h3>
+              <p class="text-secondary text-sm mb-0">
+                Confirm localized PKR bank settlements. HFC releases the escrowed cryptocurrency assets directly to your wallet address.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         6. MARKETPLACE PREVIEW
+         ========================================================================== -->
+    <section class="py-5" id="marketplace">
+      <div class="container">
+        
+        <!-- Section Header -->
+        <div class="text-center mb-5">
+          <span class="text-mono text-glow-primary text-primary text-xs uppercase tracking-widest d-block mb-2">Liquidity Portal</span>
+          <h2 class="text-display fw-bold text-white fs-2 mb-3">P2P Marketplace Offers</h2>
+          <p class="text-secondary text-sm mx-auto" style="max-width: 580px;">
+            A live mock preview of peer-to-peer offers currently registered on the active decentralized trading book.
+          </p>
+        </div>
+
+        <!-- Glassmorphic Responsive Table Wrapper -->
+        <div class="table-responsive-glass shadow-lg" id="tableWrapper">
+          <table class="table-glass table-glass-hover" id="previewTable">
+            <thead>
+              <tr>
+                <th scope="col" class="sticky-ticker">Coin</th>
+                <th scope="col">Type</th>
+                <th scope="col">Price / Coin (PKR)</th>
+                <th scope="col">Offer Quantity</th>
+                <th scope="col">User Status</th>
+                <th scope="col" class="text-end">Action Gateway</th>
+              </tr>
+            </thead>
+            <tbody id="previewTableBody">
+              <!-- Row 1: HFC Buy -->
+              <tr>
+                <td class="sticky-ticker">
+                  <div class="d-flex align-items-center gap-2">
+                    <i class="bi bi-currency-exchange text-glow-primary text-primary"></i>
+                    <span class="text-white fw-bold">HFC</span>
+                  </div>
+                </td>
+                <td><span class="badge-hfc badge-hfc-success">BUY</span></td>
+                <td><span class="text-white text-mono">PKR 145.20</span></td>
+                <td><span class="text-white text-mono">2,500 HFC</span></td>
+                <td>
+                  <span class="d-flex align-items-center gap-2">
+                    <span class="status-pulse-success rounded-circle bg-success" style="width: 6px; height: 6px;"></span>
+                    <span>AdminNode (Verified)</span>
+                  </span>
+                </td>
+                <td class="text-end">
+                  <a href="login.html" class="btn-hfc btn-hfc-primary py-1.5 px-3 text-xs hover-lift">Trade Now</a>
+                </td>
+              </tr>
+              <!-- Row 2: BTC Sell -->
+              <tr>
+                <td class="sticky-ticker">
+                  <div class="d-flex align-items-center gap-2">
+                    <i class="bi bi-currency-bitcoin text-warning"></i>
+                    <span class="text-white fw-bold">BTC</span>
+                  </div>
+                </td>
+                <td><span class="badge-hfc badge-hfc-danger">SELL</span></td>
+                <td><span class="text-white text-mono">PKR 26,750,000</span></td>
+                <td><span class="text-white text-mono">0.45 BTC</span></td>
+                <td>
+                  <span class="d-flex align-items-center gap-2">
+                    <span class="status-pulse-success rounded-circle bg-success" style="width: 6px; height: 6px;"></span>
+                    <span>lahore_node_88</span>
+                  </span>
+                </td>
+                <td class="text-end">
+                  <a href="login.html" class="btn-hfc btn-hfc-primary py-1.5 px-3 text-xs hover-lift">Trade Now</a>
+                </td>
+              </tr>
+              <!-- Row 3: USDT Buy -->
+              <tr>
+                <td class="sticky-ticker">
+                  <div class="d-flex align-items-center gap-2">
+                    <i class="bi bi-shield-fill-check text-success"></i>
+                    <span class="text-white fw-bold">USDT</span>
+                  </div>
+                </td>
+                <td><span class="badge-hfc badge-hfc-success">BUY</span></td>
+                <td><span class="text-white text-mono">PKR 278.40</span></td>
+                <td><span class="text-white text-mono">5,000 USDT</span></td>
+                <td>
+                  <span class="d-flex align-items-center gap-2">
+                    <span class="status-pulse-warning rounded-circle bg-warning" style="width: 6px; height: 6px;"></span>
+                    <span>karachi_p2p_lord</span>
+                  </span>
+                </td>
+                <td class="text-end">
+                  <a href="login.html" class="btn-hfc btn-hfc-primary py-1.5 px-3 text-xs hover-lift">Trade Now</a>
+                </td>
+              </tr>
+              <!-- Row 4: ETH Sell -->
+              <tr>
+                <td class="sticky-ticker">
+                  <div class="d-flex align-items-center gap-2">
+                    <i class="bi bi-database text-info"></i>
+                    <span class="text-white fw-bold">ETH</span>
+                  </div>
+                </td>
+                <td><span class="badge-hfc badge-hfc-danger">SELL</span></td>
+                <td><span class="text-white text-mono">PKR 980,000</span></td>
+                <td><span class="text-white text-mono">1.25 ETH</span></td>
+                <td>
+                  <span class="d-flex align-items-center gap-2">
+                    <span class="status-pulse-success rounded-circle bg-success" style="width: 6px; height: 6px;"></span>
+                    <span>isb_crypto_pioneer</span>
+                  </span>
+                </td>
+                <td class="text-end">
+                  <a href="login.html" class="btn-hfc btn-hfc-primary py-1.5 px-3 text-xs hover-lift">Trade Now</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         7. STATISTICS SECTION
+         ========================================================================== -->
+    <section class="py-5" id="stats" style="background: rgba(13, 17, 23, 0.5);">
+      <div class="container">
+        
+        <div class="row g-4 text-center" id="statsRow">
+          
+          <!-- Stat 1 -->
+          <div class="col-6 col-lg-3">
+            <div class="card-glass hover-glow py-4" id="statCardUsers">
+              <div class="stat-label">Verified HFC Nodes</div>
+              <div class="stat-value text-glow-primary text-primary" id="statUsersVal" data-target="15420">15,420</div>
+              <p class="text-secondary text-xs mt-1 mb-0">Active Operators</p>
+            </div>
+          </div>
+
+          <!-- Stat 2 -->
+          <div class="col-6 col-lg-3">
+            <div class="card-glass hover-glow py-4" id="statCardCoins">
+              <div class="stat-label">Listed Asset Indices</div>
+              <div class="stat-value text-white" id="statCoinsVal" data-target="12">12</div>
+              <p class="text-secondary text-xs mt-1 mb-0">Major Cryptos</p>
+            </div>
+          </div>
+
+          <!-- Stat 3 -->
+          <div class="col-6 col-lg-3">
+            <div class="card-glass hover-glow py-4" id="statCardTrades">
+              <div class="stat-label">Escrows Settled</div>
+              <div class="stat-value text-glow-primary text-primary" id="statTradesVal" data-target="148500">148,500</div>
+              <p class="text-secondary text-xs mt-1 mb-0">PKR Volume Secured</p>
+            </div>
+          </div>
+
+          <!-- Stat 4 -->
+          <div class="col-6 col-lg-3">
+            <div class="card-glass hover-glow py-4" id="statCardOffers">
+              <div class="stat-label">Active Market Offers</div>
+              <div class="stat-value text-white" id="statOffersVal" data-target="840">840</div>
+              <p class="text-secondary text-xs mt-1 mb-0">Order Book Depth</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         8. TESTIMONIALS SECTION
+         ========================================================================== -->
+    <section class="py-5" id="testimonials">
+      <div class="container">
+        
+        <!-- Section Header -->
+        <div class="text-center mb-5">
+          <span class="text-mono text-glow-primary text-primary text-xs uppercase tracking-widest d-block mb-2">Platform Reviews</span>
+          <h2 class="text-display fw-bold text-white fs-2 mb-3">Operator Endorsements</h2>
+          <p class="text-secondary text-sm mx-auto" style="max-width: 580px;">
+            Read verified feedback from peer-to-peer traders executing escrow locked transactions within our node environment.
+          </p>
+        </div>
+
+        <!-- Testimonials Row -->
+        <div class="row g-4" id="testimonialsGrid">
+          
+          <!-- Testimonial 1 -->
+          <div class="col-md-4">
+            <div class="testimonial-card" id="testi1">
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <div class="avatar-placeholder">AH</div>
+                <div>
+                  <h4 class="text-white fs-6 fw-bold m-0">Asim Hamid</h4>
+                  <span class="text-muted text-xs">P2P Escrow Arbitrageur</span>
+                </div>
+              </div>
+              <p class="text-secondary text-sm italic mb-0">
+                "The escrow and negotiation panels on HFC are incredibly well built. My PKR bank releases get locked in minutes, and the chat system prevents confusion during large volume deals."
+              </p>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="col-md-4">
+            <div class="testimonial-card" id="testi2">
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <div class="avatar-placeholder">ZN</div>
+                <div>
+                  <h4 class="text-white fs-6 fw-bold m-0">Zainab Naqvi</h4>
+                  <span class="text-muted text-xs">Crypto liquidity provider</span>
+                </div>
+              </div>
+              <p class="text-secondary text-sm italic mb-0">
+                "Finding a safe, verified exchange platform that maps PKR bank protocols effortlessly was tough until HFC Exchange. The glass UI is highly responsive on both mobile and laptop."
+              </p>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="col-md-4">
+            <div class="testimonial-card" id="testi3">
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <div class="avatar-placeholder">FK</div>
+                <div>
+                  <h4 class="text-white fs-6 fw-bold m-0">Fahad Khan</h4>
+                  <span class="text-muted text-xs">Enterprise Node Operator</span>
+                </div>
+              </div>
+              <p class="text-secondary text-sm italic mb-0">
+                "The Firebase-backed backend keeps operations incredibly fast. Security logs show real-time authorization states, and the multi-sig cold escrows give us total transaction safety."
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         9. FAQ SECTION (ACCORDION)
+         ========================================================================== -->
+    <section class="py-5" id="faq" style="background: rgba(13, 17, 23, 0.3);">
+      <div class="container">
+        
+        <!-- Section Header -->
+        <div class="text-center mb-5">
+          <span class="text-mono text-glow-primary text-primary text-xs uppercase tracking-widest d-block mb-2">Helpdesk Node</span>
+          <h2 class="text-display fw-bold text-white fs-2 mb-3">Frequently Asked Questions</h2>
+          <p class="text-secondary text-sm mx-auto" style="max-width: 580px;">
+            Find immediate answers regarding HFC multi-sig secure frameworks, trading rates, and PKR node settlements.
+          </p>
+        </div>
+
+        <div class="row justify-content-center" id="faqAccordionRow">
+          <div class="col-lg-8">
+            <div class="accordion accordion-glass" id="faqAccordion">
+              
+              <!-- Question 1 -->
+              <div class="accordion-item" id="faqItem1">
+                <h3 class="accordion-header">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    What is HFC Exchange and how does the P2P Escrow work?
+                  </button>
+                </h3>
+                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    HFC Exchange is a decentralized peer-to-peer marketplace that allows users in Pakistan to trade cryptocurrencies securely using PKR. When a trade begins, the seller's assets are locked in our high-security multi-sig escrow system. Once the buyer completes the PKR transfer and the seller verifies receipt, the funds are safely released to the buyer's wallet automatically.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Question 2 -->
+              <div class="accordion-item" id="faqItem2">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Is there an account setup fee or hidden cost?
+                  </button>
+                </h3>
+                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    No, registering your HFC Exchange node is entirely free. We charge a flat, transparent 0.1% transaction escrow fee upon successful trade completion to sustain blockchain node synchronization and maintain backend safety.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Question 3 -->
+              <div class="accordion-item" id="faqItem3">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    How do I deposit and withdraw PKR?
+                  </button>
+                </h3>
+                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    You can deposit PKR directly from any localized Pakistani bank account or supported digital mobile wallets. Once verified by our active validator nodes, the PKR balance is reflected instantly in your secure wallet panel, ready for trading bridge interactions.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Question 4 -->
+              <div class="accordion-item" id="faqItem4">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    Is my personal and financial information secure?
+                  </button>
+                </h3>
+                <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Yes, absolutely. HFC Exchange employs advanced standard end-to-end security architectures, Firebase private user tokens, and TLS 1.3 protocol parameters on all database queries. Your credentials never sit on third-party servers.
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         10. CALL TO ACTION (CTA BANNER)
+         ========================================================================== -->
+    <section class="py-5" id="cta">
+      <div class="container text-center">
+        <div class="cta-glass-banner" id="ctaBanner">
+          <span class="text-mono text-glow-primary text-primary text-xs uppercase tracking-widest d-block mb-3">Authorize Access</span>
+          <h2 class="text-display display-5 fw-bold text-white mb-3" id="ctaTitle">Join HFC Exchange Today</h2>
+          <p class="text-secondary text-sm mx-auto mb-4" style="max-width: 580px;" id="ctaDesc">
+            Deploy your secure localized node today. Start trading PKR, negotiating with active operators, and keeping your cryptocurrency assets safe within multi-sig escrow systems.
+          </p>
+          <div class="d-flex flex-wrap align-items-center justify-content-center gap-3" id="ctaButtons">
+            <a href="register.html" class="btn-hfc btn-hfc-primary py-3 px-4 hover-lift" id="ctaRegisterBtn">
+              <i class="bi bi-shield-lock-fill"></i>
+              <span>Deploy Trading Node</span>
+            </a>
+            <a href="login.html" class="btn-hfc btn-hfc-secondary py-3 px-4 hover-lift" id="ctaLoginBtn">
+              <i class="bi bi-box-arrow-in-right"></i>
+              <span>Access Node Console</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         11. DYNAMIC FOOTER CONTAINER (INJECTED BY HOME.JS)
+         ========================================================================== -->
+    <div class="container mb-5" id="footerContainer"></div>
+
+
+    <!-- Bootstrap 5 JS Bundle CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Landing Controller script -->
+    <script type="module" src="/assets/js/home.js"></script>
+  </body>
+</html>

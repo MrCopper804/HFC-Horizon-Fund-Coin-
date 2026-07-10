@@ -1,0 +1,101 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ * 
+ * HFC Exchange Design System - utilities.css
+ * Layout utility extensions, custom background blur options, text glows, and spacing enhancements.
+ */
+
+/* ==========================================================================
+   TEXT GLOWS & TYPOGRAPHY UTILITIES
+   ========================================================================== */
+.text-glow-primary {
+  text-shadow: 0 0 10px rgba(0, 242, 254, 0.45);
+}
+
+.text-glow-success {
+  text-shadow: 0 0 8px rgba(14, 203, 129, 0.4);
+}
+
+.text-glow-danger {
+  text-shadow: 0 0 8px rgba(246, 70, 93, 0.4);
+}
+
+.text-mono {
+  font-family: var(--hfc-font-mono) !important;
+}
+
+.text-display {
+  font-family: var(--hfc-font-display) !important;
+}
+
+.text-xs { font-size: var(--hfc-fs-xs) !important; }
+.text-sm { font-size: var(--hfc-fs-sm) !important; }
+.text-base { font-size: var(--hfc-fs-base) !important; }
+.text-lg { font-size: var(--hfc-fs-lg) !important; }
+.text-xl { font-size: var(--hfc-fs-xl) !important; }
+.text-2xl { font-size: var(--hfc-fs-2xl) !important; }
+.text-3xl { font-size: var(--hfc-fs-3xl) !important; }
+.text-4xl { font-size: var(--hfc-fs-4xl) !important; }
+
+/* Custom Font Weights */
+.fw-light { font-weight: var(--hfc-fw-light) !important; }
+.fw-regular { font-weight: var(--hfc-fw-regular) !important; }
+.fw-medium { font-weight: var(--hfc-fw-medium) !important; }
+.fw-semibold { font-weight: var(--hfc-fw-semibold) !important; }
+.fw-bold { font-weight: var(--hfc-fw-bold) !important; }
+
+/* ==========================================================================
+   GLASSMORPHIC BACKDROPS & OVERLAYS
+   ========================================================================= */
+.blur-none { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+.blur-sm { backdrop-filter: blur(var(--hfc-glass-blur-sm)) !important; -webkit-backdrop-filter: blur(var(--hfc-glass-blur-sm)) !important; }
+.blur-lg { backdrop-filter: blur(var(--hfc-glass-blur)) !important; -webkit-backdrop-filter: blur(var(--hfc-glass-blur)) !important; }
+
+.bg-glass-solid {
+  background-color: var(--hfc-surface-solid) !important;
+}
+
+/* Diagonal glints for dashboard banners or luxury widgets */
+.bg-neon-gradient {
+  background: linear-gradient(135deg, rgba(0, 242, 254, 0.08) 0%, rgba(121, 40, 202, 0.08) 100%);
+}
+
+/* ==========================================================================
+   ADVANCED SHADOWS & HIGHLIGHTS
+   ========================================================================== */
+.shadow-hfc-sm { box-shadow: var(--hfc-shadow-sm) !important; }
+.shadow-hfc-md { box-shadow: var(--hfc-shadow-md) !important; }
+.shadow-hfc-lg { box-shadow: var(--hfc-shadow-lg) !important; }
+.shadow-glow-primary { box-shadow: var(--hfc-shadow-glow) !important; }
+
+/* ==========================================================================
+   BORDER RADIUS UTILITIES
+   ========================================================================== */
+.rounded-xs { border-radius: var(--hfc-radius-xs) !important; }
+.rounded-sm { border-radius: var(--hfc-radius-sm) !important; }
+.rounded-md { border-radius: var(--hfc-radius-md) !important; }
+.rounded-lg { border-radius: var(--hfc-radius-lg) !important; }
+.rounded-xl { border-radius: var(--hfc-radius-xl) !important; }
+
+/* ==========================================================================
+   GAP & SPACING ADDITIONS
+   ========================================================================== */
+.gap-xs { gap: var(--hfc-space-xs) !important; }
+.gap-sm { gap: var(--hfc-space-sm) !important; }
+.gap-md { gap: var(--hfc-space-md) !important; }
+.gap-lg { gap: var(--hfc-space-lg) !important; }
+.gap-xl { gap: var(--hfc-space-xl) !important; }
+.gap-2xl { gap: var(--hfc-space-2xl) !important; }
+
+/* Sticky Header Offset helper */
+.sticky-top-navbar {
+  position: sticky !important;
+  top: var(--hfc-navbar-height) !important;
+  z-index: 90 !important;
+}
+
+/* Scroll lock for modals */
+.no-scroll {
+  overflow: hidden !important;
+}

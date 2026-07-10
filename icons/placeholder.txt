@@ -1,0 +1,1 @@
+This directory is reserved for custom SVG icons, site favicons, coin/network status badge graphics, and localized vectors.

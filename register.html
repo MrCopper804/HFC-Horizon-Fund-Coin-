@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Account | HFC Exchange - Professional Cryptocurrency Marketplace</title>
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Bootstrap Icons CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <!-- Design System Global Stylesheet -->
+    <link rel="stylesheet" href="/css/style.css" />
+    <!-- Register Specific Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/register.css" />
+  </head>
+  <body>
+
+    <!-- Main Flex Centered Layout -->
+    <main class="register-page-wrapper">
+      
+      <!-- Card Container for alignment & focus wrapper -->
+      <div class="register-card-container my-4">
+        <div class="register-card">
+          
+          <!-- Header: Brand Logo & Title -->
+          <div class="text-center mb-4" id="registerHeader">
+            <div class="brand-logo-container" aria-hidden="true" id="logoContainer">
+              <i class="bi bi-currency-exchange brand-logo-glow"></i>
+            </div>
+            <h1 class="text-display fw-bold text-white fs-3 tracking-wide mb-1" id="brandTitle">HFC EXCHANGE</h1>
+            <h2 class="text-display fw-semibold text-glow-primary fs-5 mb-2" id="welcomeSubtitle">Create Your Account</h2>
+            <p class="text-secondary text-sm px-2 mb-0" id="welcomeDesc">
+              Join the HFC decentralized marketplace. Set up your multi-sig asset wallets and exchange node.
+            </p>
+          </div>
+
+          <!-- Register Form with standard validation feedback -->
+          <form id="registerForm" novalidate>
+            
+            <!-- Full Name Input Group -->
+            <div class="form-group-glass mb-3" id="fullNameGroup">
+              <label for="fullNameInput">Full Name</label>
+              <input 
+                type="text" 
+                class="form-control form-control-glass" 
+                id="fullNameInput" 
+                placeholder="Enter your full name"
+                autocomplete="name"
+                required
+                aria-required="true"
+                aria-invalid="false"
+                aria-describedby="fullNameFeedback"
+              />
+              <div class="invalid-feedback" id="fullNameFeedback" role="alert">
+                Full Name must be at least 3 characters.
+              </div>
+            </div>
+
+            <!-- Username Input Group -->
+            <div class="form-group-glass mb-3" id="usernameGroup">
+              <label for="usernameInput">Username</label>
+              <input 
+                type="text" 
+                class="form-control form-control-glass" 
+                id="usernameInput" 
+                placeholder="Choose a unique username"
+                autocomplete="username"
+                required
+                aria-required="true"
+                aria-invalid="false"
+                aria-describedby="usernameFeedback"
+              />
+              <div class="invalid-feedback" id="usernameFeedback" role="alert">
+                Username must be 3-20 characters (letters, numbers and underscore only).
+              </div>
+            </div>
+
+            <!-- Email Address Input Group -->
+            <div class="form-group-glass mb-3" id="emailGroup">
+              <label for="emailInput">Email Address</label>
+              <input 
+                type="email" 
+                class="form-control form-control-glass" 
+                id="emailInput" 
+                placeholder="name@example.com"
+                autocomplete="email"
+                required
+                aria-required="true"
+                aria-invalid="false"
+                aria-describedby="emailFeedback"
+              />
+              <div class="invalid-feedback" id="emailFeedback" role="alert">
+                Please enter a valid email address.
+              </div>
+            </div>
+
+            <!-- Phone Number Input Group (Pakistan format) -->
+            <div class="form-group-glass mb-3" id="phoneGroup">
+              <label for="phoneInput">Phone Number (Pakistan Format)</label>
+              <input 
+                type="tel" 
+                class="form-control form-control-glass" 
+                id="phoneInput" 
+                placeholder="e.g. +923001234567 or 03001234567"
+                autocomplete="tel"
+                required
+                aria-required="true"
+                aria-invalid="false"
+                aria-describedby="phoneFeedback"
+              />
+              <div class="invalid-feedback" id="phoneFeedback" role="alert">
+                Please enter a valid Pakistan phone number (+92 or 03 followed by 9 digits).
+              </div>
+            </div>
+
+            <!-- Password Input Group -->
+            <div class="form-group-glass mb-3" id="passwordGroup">
+              <label for="passwordInput">Password</label>
+              <div class="password-field-wrapper">
+                <input 
+                  type="password" 
+                  class="form-control form-control-glass" 
+                  id="passwordInput" 
+                  placeholder="Create secure password"
+                  autocomplete="new-password"
+                  required
+                  aria-required="true"
+                  aria-invalid="false"
+                  aria-describedby="passwordFeedback"
+                />
+                <button 
+                  type="button" 
+                  class="password-toggle-trigger" 
+                  id="passwordToggleBtn"
+                  aria-label="Show password"
+                  title="Toggle password visibility"
+                >
+                  <i class="bi bi-eye" id="passwordToggleIcon"></i>
+                </button>
+              </div>
+              <div class="invalid-feedback" id="passwordFeedback" role="alert">
+                Password must be at least 8 characters and include 1 uppercase, 1 lowercase, 1 number, and 1 special character.
+              </div>
+            </div>
+
+            <!-- Confirm Password Input Group -->
+            <div class="form-group-glass mb-3" id="confirmPasswordGroup">
+              <label for="confirmPasswordInput">Confirm Password</label>
+              <div class="password-field-wrapper">
+                <input 
+                  type="password" 
+                  class="form-control form-control-glass" 
+                  id="confirmPasswordInput" 
+                  placeholder="Repeat secure password"
+                  autocomplete="new-password"
+                  required
+                  aria-required="true"
+                  aria-invalid="false"
+                  aria-describedby="confirmPasswordFeedback"
+                />
+                <button 
+                  type="button" 
+                  class="password-toggle-trigger" 
+                  id="confirmPasswordToggleBtn"
+                  aria-label="Show password"
+                  title="Toggle password visibility"
+                >
+                  <i class="bi bi-eye" id="confirmPasswordToggleIcon"></i>
+                </button>
+              </div>
+              <div class="invalid-feedback" id="confirmPasswordFeedback" role="alert">
+                Passwords must match.
+              </div>
+            </div>
+
+            <!-- Terms & Conditions Section -->
+            <div class="remember-forgot-bar mb-4" id="termsGroup">
+              <div class="form-check d-flex align-items-start gap-2 m-0 p-0">
+                <input 
+                  type="checkbox" 
+                  class="form-check-input-glass mt-1" 
+                  id="termsCheckbox" 
+                  required
+                  aria-required="true"
+                  aria-invalid="false"
+                  aria-describedby="termsFeedback"
+                />
+                <label class="remember-me-label text-start" for="termsCheckbox">
+                  I accept the <a href="#" class="text-primary text-decoration-none hover-glow-text" id="termsLink">Terms of Service</a> & <a href="#" class="text-primary text-decoration-none hover-glow-text" id="privacyLink">Privacy Policy</a>
+                </label>
+              </div>
+              <div class="invalid-feedback d-none" id="termsFeedback" role="alert">
+                You must accept the terms & conditions to register.
+              </div>
+            </div>
+
+            <!-- Register Action Button -->
+            <div class="mt-4" id="submitActionGroup">
+              <button 
+                type="submit" 
+                class="btn-hfc btn-hfc-primary w-100 hover-lift d-flex align-items-center justify-content-center gap-2" 
+                id="registerBtn"
+              >
+                <span>Initialize HFC Node</span>
+                <i class="bi bi-shield-lock" id="registerBtnIcon"></i>
+              </button>
+            </div>
+
+          </form>
+
+          <!-- Glassmorphic Divider Section -->
+          <div class="divider-with-text" id="dividerText">
+            <span>Already Registered?</span>
+          </div>
+
+          <!-- Bottom Login Link -->
+          <div class="text-center" id="loginBackGroup">
+            <span class="text-secondary text-xs">Existing Node operator?</span>
+            <a href="login.html" class="text-primary text-xs fw-semibold hover-glow-text text-decoration-none ms-1" id="loginLink">
+              Sign In here
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Compact Footer -->
+      <div class="register-inline-footer" id="footerSection">
+        <p>&copy; <span id="currentYear">2026</span> HFC Exchange Ltd. All rights reserved.</p>
+        <div class="d-flex align-items-center justify-content-center gap-2 mt-2">
+          <div class="status-pulse-success rounded-circle bg-success" style="width: 6px; height: 6px;"></div>
+          <span class="text-muted text-mono" style="font-size: 0.65rem;">SECURE SEC SESSION NODE (TLS 1.3)</span>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Bootstrap 5 JS Bundle CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Register Controller module loader -->
+    <script type="module" src="/assets/js/register.js"></script>
+  </body>
+</html>

@@ -1,0 +1,1459 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HFC Exchange Design System & Project Foundation</title>
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Design System Stylesheet -->
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+
+    <!-- Main Responsive Grid Layout (Sidebar + Container) -->
+    <div class="hfc-layout">
+
+      <!-- ==========================================================================
+           1. COMPONENT SHOWCASE SIDEBAR
+           ========================================================================== -->
+      <aside class="sidebar-glass" id="hfcSidebar">
+        <!-- Brand Signature -->
+        <div class="d-flex align-items-center gap-3 py-2 px-1 border-bottom border-secondary border-opacity-10">
+          <div class="status-pulse-primary rounded-circle bg-primary" style="width: 10px; height: 10px;"></div>
+          <span class="text-display fw-bold text-glow-primary tracking-wide text-white fs-5 sidebar-text">HFC EXCHANGE</span>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="flex-grow-1 overflow-y-auto mt-3">
+          <ul class="sidebar-menu">
+            <li>
+              <a href="#section-intro" class="sidebar-link active">
+                <i class="bi bi-compass"></i>
+                <span class="sidebar-text">Introduction</span>
+              </a>
+            </li>
+            <li>
+              <a href="#section-tokens" class="sidebar-link">
+                <i class="bi bi-palette"></i>
+                <span class="sidebar-text">Design Tokens</span>
+              </a>
+            </li>
+            <li>
+              <a href="#section-typography" class="sidebar-link">
+                <i class="bi bi-type"></i>
+                <span class="sidebar-text">Typography</span>
+              </a>
+            </li>
+            <li>
+              <a href="#section-icons" class="sidebar-link">
+                <i class="bi bi-lightning-charge"></i>
+                <span class="sidebar-text">Icon Mapping</span>
+              </a>
+            </li>
+            <li>
+              <a href="#section-buttons" class="sidebar-link">
+                <i class="bi bi-menu-button-wide"></i>
+                <span class="sidebar-text">Buttons & Badges</span>
+              </a>
+            </li>
+            <li>
+              <a href="#section-cards" class="sidebar-link">
+                <i class="bi bi-grid-3x3-gap"></i>
+                <span class="sidebar-text">Card Variations</span>
+              </a>
+            </li>
+            <li>
+              <a href="#section-tables" class="sidebar-link">
+                <i class="bi bi-table"></i>
+                <span class="sidebar-text">Responsive Tables</span>
+              </a>
+            </li>
+            <li>
+              <a href="#section-forms" class="sidebar-link">
+                <i class="bi bi-input-cursor-text"></i>
+                <span class="sidebar-text">Exchange Forms</span>
+              </a>
+            </li>
+            <li>
+              <a href="#section-notifications" class="sidebar-link">
+                <i class="bi bi-bell"></i>
+                <span class="sidebar-text">Toasts & Dialogs</span>
+              </a>
+            </li>
+            <li>
+              <a href="#section-states" class="sidebar-link">
+                <i class="bi bi-question-circle"></i>
+                <span class="sidebar-text">Empty / 404 States</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Sidebar Collapse Toggle Action -->
+        <div class="pt-3 border-top border-secondary border-opacity-10 d-none d-lg-block">
+          <button class="btn-hfc btn-hfc-secondary w-full" id="hfcSidebarToggle">
+            <i class="bi bi-chevron-left"></i>
+            <span class="sidebar-text">Collapse Menu</span>
+          </button>
+        </div>
+      </aside>
+
+      <!-- ==========================================================================
+           2. MAIN PAGE WRAPPER & CONTAINER
+           ========================================================================== -->
+      <div class="hfc-main-container">
+        
+        <!-- Top Navbar Layout Component -->
+        <header class="navbar-glass">
+          <div class="d-flex align-items-center gap-3">
+            <!-- Mobile Sidebar Trigger -->
+            <button class="btn-hfc btn-hfc-icon d-lg-none" id="hfcSidebarMobileToggle">
+              <i class="bi bi-list fs-4"></i>
+            </button>
+            <div class="text-secondary d-none d-md-flex align-items-center gap-2">
+              <i class="bi bi-shield-check text-primary"></i>
+              <span class="text-xs text-display uppercase letter-spacing-1 text-muted">Lead Frontend Engine V2.4</span>
+            </div>
+          </div>
+
+          <!-- Actions / Navigation Items -->
+          <div class="d-flex align-items-center gap-3">
+            
+            <!-- Quick Notification Bell Dropdown Mock -->
+            <div class="dropdown">
+              <button class="btn-hfc btn-hfc-icon" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-bell"></i>
+                <span class="position-absolute top-1 start-75 translate-middle p-1 bg-danger border border-light rounded-circle animate-pulse"></span>
+              </button>
+              <div class="dropdown-menu dropdown-menu-end dropdown-menu-glass p-3" style="width: 300px;">
+                <h6 class="text-light fw-bold text-display mb-2">Notifications</h6>
+                <div class="d-flex flex-column gap-2">
+                  <div class="p-2 rounded bg-white bg-opacity-5 d-flex gap-2 text-sm">
+                    <i class="bi bi-check-circle-fill text-success"></i>
+                    <div>Deposit confirmed: <span class="text-glow-primary">1.24 BTC</span></div>
+                  </div>
+                  <div class="p-2 rounded bg-white bg-opacity-5 d-flex gap-2 text-sm">
+                    <i class="bi bi-exclamation-triangle-fill text-warning"></i>
+                    <div>New IP address login detected.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Profile Dropdown Mock -->
+            <div class="dropdown">
+              <button class="btn-hfc btn-hfc-secondary d-flex align-items-center gap-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-person-circle fs-5"></i>
+                <span class="text-xs text-display d-none d-sm-inline">reset12345...</span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-glass">
+                <li><a class="dropdown-item dropdown-item-glass" href="#"><i class="bi bi-wallet2 me-2"></i>My Wallets</a></li>
+                <li><a class="dropdown-item dropdown-item-glass" href="#"><i class="bi bi-gear me-2"></i>Security Settings</a></li>
+                <li><hr class="dropdown-divider border-secondary border-opacity-20"></li>
+                <li><a class="dropdown-item dropdown-item-glass text-danger" href="#"><i class="bi bi-box-arrow-right me-2"></i>Log Out</a></li>
+              </ul>
+            </div>
+
+          </div>
+        </header>
+
+        <!-- Dynamic Main Content Section -->
+        <main class="hfc-page-content animate-fade-in">
+
+          <!-- ==========================================================================
+               HERO BANNER & SYSTEM INTRODUCTION
+               ========================================================================== */ -->
+          <section id="section-intro" class="mb-5">
+            <div class="card-glass bg-neon-gradient p-4 p-md-5 rounded-lg mb-4 text-center text-md-start">
+              <div class="row align-items-center">
+                <div class="col-lg-8">
+                  <span class="badge-hfc badge-hfc-primary mb-3">Project Foundation System</span>
+                  <h1 class="text-display fw-bold text-white text-glow-primary mb-2 display-5">HFC Exchange Design System</h1>
+                  <p class="text-secondary text-base max-w-7xl mb-4">
+                    The complete visual identity, reusable elements, global CSS variables, responsive tables, forms, modals, and layouts. Built exclusively on <strong>Bootstrap 5, Vanilla CSS3 Custom Variables, and ES6 Javascript Modules</strong> for luxury, high-speed cryptocurrency execution.
+                  </p>
+                  <div class="d-flex flex-wrap gap-2 justify-content-center justify-content-md-start">
+                    <a href="#section-tokens" class="btn-hfc btn-hfc-primary">
+                      <i class="bi bi-grid-fill"></i> Explore Tokens
+                    </a>
+                    <button class="btn-hfc btn-hfc-secondary" onclick="document.getElementById('themeResetBtn').click()">
+                      <i class="bi bi-arrow-counterclockwise"></i> Reset Customization
+                    </button>
+                  </div>
+                </div>
+                <div class="col-lg-4 d-none d-lg-block text-center">
+                  <i class="bi bi-terminal-fill text-primary animate-float text-shadow-glow" style="font-size: 7rem; opacity: 0.8;"></i>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ==========================================================================
+               DYNAMIC VARIABLE TWEAKER & LIVE CUSTOMIZER
+               ========================================================================== -->
+          <section class="mb-5">
+            <h3 class="text-display fw-bold text-white mb-3 d-flex align-items-center gap-2">
+              <i class="bi bi-sliders text-primary"></i> Live Theme Variable Customizer
+            </h3>
+            <div class="card-glass rounded-lg">
+              <p class="text-secondary text-sm mb-4">
+                Test the flexibility of our custom variable system in real-time. Use the inputs below to live-modify the global CSS variables and see the styling adapt instantly across all components below.
+              </p>
+              <div class="row g-4">
+                <div class="col-md-4">
+                  <label class="stat-label d-block mb-2">Primary Accent Color (--hfc-primary)</label>
+                  <div class="d-flex align-items-center gap-3 p-2 rounded bg-white bg-opacity-5">
+                    <input type="color" id="themePrimaryColor" value="#00f2fe" class="form-control form-control-color border-0 bg-transparent" style="width: 50px; height: 38px;">
+                    <span class="text-mono text-xs text-primary font-weight-bold">#00f2fe</span>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <label class="stat-label d-block mb-2">Border Radius (--hfc-radius-md)</label>
+                  <div class="d-flex align-items-center gap-3 p-2 rounded bg-white bg-opacity-5">
+                    <input type="range" id="themeBorderRadius" min="0" max="30" value="12" class="form-range flex-grow-1 accent-primary">
+                    <span class="text-mono text-xs text-secondary" style="width: 40px;"><span id="radiusVal">12</span>px</span>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <label class="stat-label d-block mb-2">Glassmorphism Blur (--hfc-glass-blur)</label>
+                  <div class="d-flex align-items-center gap-3 p-2 rounded bg-white bg-opacity-5">
+                    <input type="range" id="themeBlurAmount" min="0" max="40" value="16" class="form-range flex-grow-1 accent-primary">
+                    <span class="text-mono text-xs text-secondary" style="width: 40px;"><span id="blurVal">16</span>px</span>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-4 pt-3 border-top border-secondary border-opacity-10 d-flex justify-content-between align-items-center">
+                <span class="text-xs text-muted text-mono">Variables apply dynamically to the root HTML document scope.</span>
+                <button class="btn-hfc btn-hfc-secondary text-xs py-1 px-3" id="themeResetBtn">
+                  Reset Variables
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-- ==========================================================================
+               DESIGN TOKENS (COLOR PALETTE / SPACING)
+               ========================================================================== -->
+          <section id="section-tokens" class="mb-5">
+            <h3 class="text-display fw-bold text-white mb-3">Design Tokens & Palette</h3>
+            <div class="row g-4">
+              
+              <!-- Color Cards -->
+              <div class="col-lg-7">
+                <div class="card-glass rounded-lg h-100">
+                  <h5 class="text-display fw-bold text-white mb-4">Color Tokens</h5>
+                  <div class="row g-3">
+                    <div class="col-sm-6 col-md-4">
+                      <div class="p-3 rounded border border-light border-opacity-10" style="background-color: var(--hfc-primary); color: #080a0e;">
+                        <div class="fw-bold text-sm">Primary</div>
+                        <div class="text-mono text-xs opacity-75">--hfc-primary</div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                      <div class="p-3 rounded border border-light border-opacity-10" style="background-color: var(--hfc-secondary); color: #fff;">
+                        <div class="fw-bold text-sm">Secondary</div>
+                        <div class="text-mono text-xs opacity-75">--hfc-secondary</div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                      <div class="p-3 rounded border border-light border-opacity-10" style="background-color: var(--hfc-bg); color: #fff;">
+                        <div class="fw-bold text-sm">Background</div>
+                        <div class="text-mono text-xs opacity-75">--hfc-bg</div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                      <div class="p-3 rounded border border-light border-opacity-10" style="background-color: var(--hfc-surface-solid); color: #fff;">
+                        <div class="fw-bold text-sm">Surface</div>
+                        <div class="text-mono text-xs opacity-75">--hfc-surface</div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                      <div class="p-3 rounded border border-light border-opacity-10" style="background-color: var(--hfc-accent); color: #fff;">
+                        <div class="fw-bold text-sm">Accent (Purple)</div>
+                        <div class="text-mono text-xs opacity-75">--hfc-accent</div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                      <div class="p-3 rounded border border-light border-opacity-10" style="background-color: var(--hfc-accent-gold); color: #080a0e;">
+                        <div class="fw-bold text-sm">Gold Accent</div>
+                        <div class="text-mono text-xs opacity-75">--hfc-accent-gold</div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                      <div class="p-3 rounded border border-light border-opacity-10" style="background-color: var(--hfc-success); color: #080a0e;">
+                        <div class="fw-bold text-sm">Success (Bull)</div>
+                        <div class="text-mono text-xs opacity-75">--hfc-success</div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                      <div class="p-3 rounded border border-light border-opacity-10" style="background-color: var(--hfc-warning); color: #080a0e;">
+                        <div class="fw-bold text-sm">Warning</div>
+                        <div class="text-mono text-xs opacity-75">--hfc-warning</div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                      <div class="p-3 rounded border border-light border-opacity-10" style="background-color: var(--hfc-danger); color: #fff;">
+                        <div class="fw-bold text-sm">Danger (Bear)</div>
+                        <div class="text-mono text-xs opacity-75">--hfc-danger</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Spacing & Radii Cards -->
+              <div class="col-lg-5">
+                <div class="card-glass rounded-lg h-100">
+                  <h5 class="text-display fw-bold text-white mb-3">Metrics & Borders</h5>
+                  <div class="d-flex flex-column gap-3">
+                    <div class="p-2 border-bottom border-secondary border-opacity-10 d-flex justify-content-between text-sm">
+                      <span class="text-muted">Small Radius (--hfc-radius-sm)</span>
+                      <span class="text-mono text-light">8px</span>
+                    </div>
+                    <div class="p-2 border-bottom border-secondary border-opacity-10 d-flex justify-content-between text-sm">
+                      <span class="text-muted">Standard Card Radius (--hfc-radius-md)</span>
+                      <span class="text-mono text-light">12px (Customizable)</span>
+                    </div>
+                    <div class="p-2 border-bottom border-secondary border-opacity-10 d-flex justify-content-between text-sm">
+                      <span class="text-muted">Large Border Radius (--hfc-radius-lg)</span>
+                      <span class="text-mono text-light">16px</span>
+                    </div>
+                    <div class="p-2 border-bottom border-secondary border-opacity-10 d-flex justify-content-between text-sm">
+                      <span class="text-muted">Shadow profiles</span>
+                      <span class="text-mono text-light">Frosted glass shadows</span>
+                    </div>
+                    <div class="p-2 d-flex justify-content-between text-sm">
+                      <span class="text-muted">Layout transitions</span>
+                      <span class="text-mono text-light">Cubic Bezier (All variables)</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- ==========================================================================
+               TYPOGRAPHY SCALE
+               ========================================================================== -->
+          <section id="section-typography" class="mb-5">
+            <h3 class="text-display fw-bold text-white mb-3">Typography Scales</h3>
+            <div class="card-glass rounded-lg">
+              <div class="table-responsive">
+                <table class="table-glass">
+                  <thead>
+                    <tr>
+                      <th>Token Name</th>
+                      <th>Output Preview</th>
+                      <th>CSS Declarations</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><span class="text-muted font-weight-bold">Heading (Display)</span></td>
+                      <td><span class="text-display fw-bold text-white fs-3">Space Grotesk Bold</span></td>
+                      <td><code class="text-primary text-xs">font-family: var(--hfc-font-display); font-weight: 700;</code></td>
+                    </tr>
+                    <tr>
+                      <td><span class="text-muted font-weight-bold">Body text</span></td>
+                      <td><span class="text-sans text-secondary">Inter Regular (Clean & legible content)</span></td>
+                      <td><code class="text-primary text-xs">font-family: var(--hfc-font-sans); font-weight: 400;</code></td>
+                    </tr>
+                    <tr>
+                      <td><span class="text-muted font-weight-bold">Interactive Tables</span></td>
+                      <td><span class="text-sans fw-medium text-light text-sm">0.875rem Medium font-weight</span></td>
+                      <td><code class="text-primary text-xs">font-family: var(--hfc-font-sans); font-size: var(--hfc-fs-sm);</code></td>
+                    </tr>
+                    <tr>
+                      <td><span class="text-muted font-weight-bold">Tickers & Numbers</span></td>
+                      <td><span class="text-mono fw-bold text-success text-lg">+14,923.45 USDT</span></td>
+                      <td><code class="text-primary text-xs">font-family: var(--hfc-font-mono); font-weight: 700;</code></td>
+                    </tr>
+                    <tr>
+                      <td><span class="text-muted font-weight-bold">Small Metadata</span></td>
+                      <td><span class="text-xs text-muted text-uppercase tracking-wider">0.75rem Muted UPPERCASE</span></td>
+                      <td><code class="text-primary text-xs">font-size: var(--hfc-fs-xs); color: var(--hfc-text-muted);</code></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <!-- ==========================================================================
+               ICON SYSTEM GRID SHOWCASE
+               ========================================================================== -->
+          <section id="section-icons" class="mb-5">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h3 class="text-display fw-bold text-white mb-0">HFC Icon Mapping System</h3>
+              <span class="text-xs text-muted text-mono">Bootstrap Icons Library Only</span>
+            </div>
+            <div class="card-glass rounded-lg">
+              <p class="text-secondary text-sm mb-4">
+                These specific Bootstrap Icons are mapped for cryptocurrency exchange use-cases. Click on any block to copy its complete HTML syntax.
+              </p>
+              <div class="row row-cols-2 row-cols-md-4 row-cols-lg-6 g-3" id="iconShowcaseContainer">
+                
+                <div class="col">
+                  <div class="p-3 text-center border border-light border-opacity-10 rounded bg-white bg-opacity-5 hover-glow cursor-pointer" onclick="navigator.clipboard.writeText('<i class=\'bi bi-speedometer2\'></i>'); alert('Copied icon code!')">
+                    <i class="bi bi-speedometer2 text-primary fs-3 mb-2 d-block"></i>
+                    <div class="text-light fw-semibold text-xs">Dashboard</div>
+                    <code class="text-muted text-xs d-block mt-1">bi-speedometer2</code>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="p-3 text-center border border-light border-opacity-10 rounded bg-white bg-opacity-5 hover-glow cursor-pointer" onclick="navigator.clipboard.writeText('<i class=\'bi bi-wallet2\'></i>'); alert('Copied icon code!')">
+                    <i class="bi bi-wallet2 text-primary fs-3 mb-2 d-block"></i>
+                    <div class="text-light fw-semibold text-xs">Wallet</div>
+                    <code class="text-muted text-xs d-block mt-1">bi-wallet2</code>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="p-3 text-center border border-light border-opacity-10 rounded bg-white bg-opacity-5 hover-glow cursor-pointer" onclick="navigator.clipboard.writeText('<i class=\'bi bi-graph-up-arrow\'></i>'); alert('Copied icon code!')">
+                    <i class="bi bi-graph-up-arrow text-primary fs-3 mb-2 d-block"></i>
+                    <div class="text-light fw-semibold text-xs">Marketplace</div>
+                    <code class="text-muted text-xs d-block mt-1">bi-graph-up-arrow</code>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="p-3 text-center border border-light border-opacity-10 rounded bg-white bg-opacity-5 hover-glow cursor-pointer" onclick="navigator.clipboard.writeText('<i class=\'bi bi-arrow-down-left-square\'></i>'); alert('Copied icon code!')">
+                    <i class="bi bi-arrow-down-left-square text-primary fs-3 mb-2 d-block"></i>
+                    <div class="text-light fw-semibold text-xs">Deposit</div>
+                    <code class="text-muted text-xs d-block mt-1">bi-arrow-down-left-square</code>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="p-3 text-center border border-light border-opacity-10 rounded bg-white bg-opacity-5 hover-glow cursor-pointer" onclick="navigator.clipboard.writeText('<i class=\'bi bi-arrow-up-right-square\'></i>'); alert('Copied icon code!')">
+                    <i class="bi bi-arrow-up-right-square text-primary fs-3 mb-2 d-block"></i>
+                    <div class="text-light fw-semibold text-xs">Withdraw</div>
+                    <code class="text-muted text-xs d-block mt-1">bi-arrow-up-right-square</code>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="p-3 text-center border border-light border-opacity-10 rounded bg-white bg-opacity-5 hover-glow cursor-pointer" onclick="navigator.clipboard.writeText('<i class=\'bi bi-arrow-left-right\'></i>'); alert('Copied icon code!')">
+                    <i class="bi bi-arrow-left-right text-primary fs-3 mb-2 d-block"></i>
+                    <div class="text-light fw-semibold text-xs">Trades</div>
+                    <code class="text-muted text-xs d-block mt-1">bi-arrow-left-right</code>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="p-3 text-center border border-light border-opacity-10 rounded bg-white bg-opacity-5 hover-glow cursor-pointer" onclick="navigator.clipboard.writeText('<i class=\'bi bi-bell\'></i>'); alert('Copied icon code!')">
+                    <i class="bi bi-bell text-primary fs-3 mb-2 d-block"></i>
+                    <div class="text-light fw-semibold text-xs">Notifications</div>
+                    <code class="text-muted text-xs d-block mt-1">bi-bell</code>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="p-3 text-center border border-light border-opacity-10 rounded bg-white bg-opacity-5 hover-glow cursor-pointer" onclick="navigator.clipboard.writeText('<i class=\'bi bi-people\'></i>'); alert('Copied icon code!')">
+                    <i class="bi bi-people text-primary fs-3 mb-2 d-block"></i>
+                    <div class="text-light fw-semibold text-xs">Users</div>
+                    <code class="text-muted text-xs d-block mt-1">bi-people</code>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="p-3 text-center border border-light border-opacity-10 rounded bg-white bg-opacity-5 hover-glow cursor-pointer" onclick="navigator.clipboard.writeText('<i class=\'bi bi-coin\'></i>'); alert('Copied icon code!')">
+                    <i class="bi bi-coin text-primary fs-3 mb-2 d-block"></i>
+                    <div class="text-light fw-semibold text-xs">Coins</div>
+                    <code class="text-muted text-xs d-block mt-1">bi-coin</code>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="p-3 text-center border border-light border-opacity-10 rounded bg-white bg-opacity-5 hover-glow cursor-pointer" onclick="navigator.clipboard.writeText('<i class=\'bi bi-gear\'></i>'); alert('Copied icon code!')">
+                    <i class="bi bi-gear text-primary fs-3 mb-2 d-block"></i>
+                    <div class="text-light fw-semibold text-xs">Settings</div>
+                    <code class="text-muted text-xs d-block mt-1">bi-gear</code>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="p-3 text-center border border-light border-opacity-10 rounded bg-white bg-opacity-5 hover-glow cursor-pointer" onclick="navigator.clipboard.writeText('<i class=\'bi bi-box-arrow-right\'></i>'); alert('Copied icon code!')">
+                    <i class="bi bi-box-arrow-right text-primary fs-3 mb-2 d-block"></i>
+                    <div class="text-light fw-semibold text-xs">Logout</div>
+                    <code class="text-muted text-xs d-block mt-1">bi-box-arrow-right</code>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="p-3 text-center border border-light border-opacity-10 rounded bg-white bg-opacity-5 hover-glow cursor-pointer" onclick="navigator.clipboard.writeText('<i class=\'bi bi-safe\'></i>'); alert('Copied icon code!')">
+                    <i class="bi bi-safe text-primary fs-3 mb-2 d-block"></i>
+                    <div class="text-light fw-semibold text-xs">Safe Vault</div>
+                    <code class="text-muted text-xs d-block mt-1">bi-safe</code>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </section>
+
+          <!-- ==========================================================================
+               WORKSPACE LAYOUT, SEARCH & NAVIGATION COMPONENT SYSTEMS
+               ========================================================================== -->
+          <section id="section-workspace-layout" class="mb-5">
+            <h3 class="text-display fw-bold text-white mb-3">Workspace Layout Components</h3>
+            <div class="row g-4">
+              
+              <!-- Page Header & Breadcrumbs Container -->
+              <div class="col-lg-12">
+                <div class="card-glass rounded-lg">
+                  <h5 class="text-display fw-bold text-white mb-3">1. Reusable Page Header & Breadcrumbs</h5>
+                  <div id="dynamicPageHeaderMount"></div>
+                  <div class="mt-2 p-3 rounded bg-white bg-opacity-5">
+                    <span class="text-xs text-muted d-block mb-1">Instantiation Code:</span>
+                    <code class="text-primary text-xs d-block">new HFCComponents.PageHeader('#dynamicPageHeaderMount', { title: 'Wallet Ledger', breadcrumbs: [{ label: 'Wallet', href: '#' }, { label: 'Ledger', active: true }] });</code>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Search Bar & Auto-filtering -->
+              <div class="col-md-6">
+                <div class="card-glass rounded-lg h-100">
+                  <h5 class="text-display fw-bold text-white mb-3">2. Accessible Search Bar & Debounce</h5>
+                  <div id="dynamicSearchBarMount" class="mb-3"></div>
+                  <div class="p-3 rounded bg-white bg-opacity-5 mb-3">
+                    <div class="text-xs text-muted">Live search input query:</div>
+                    <div class="text-primary text-mono fw-bold text-sm mt-1" id="liveSearchQueryText">No input query typed...</div>
+                  </div>
+                  <div class="text-xs text-muted">Keyboard commands active: <code>Enter</code> to commit query, <code>Escape</code> to clear search string.</div>
+                </div>
+              </div>
+
+              <!-- State fallbacks & Dialogs trigger -->
+              <div class="col-md-6">
+                <div class="card-glass rounded-lg h-100">
+                  <h5 class="text-display fw-bold text-white mb-3">3. Interactive Dialogs & State Canvases</h5>
+                  <div class="d-flex flex-wrap gap-2 mb-3">
+                    <button class="btn-hfc btn-hfc-primary hover-lift text-xs" onclick="triggerConfirmationDemo()">
+                      <i class="bi bi-patch-check-fill"></i> Confirm Dialog
+                    </button>
+                    <button class="btn-hfc btn-hfc-secondary hover-lift text-xs" id="demoBtnLoaderBtn" onclick="triggerButtonLoaderDemo()">
+                      <i class="bi bi-hourglass-split"></i> Button Loader
+                    </button>
+                    <button class="btn-hfc btn-hfc-secondary hover-lift text-xs" onclick="triggerTableLoaderDemo()">
+                      <i class="bi bi-grid-3x3"></i> Table Skeletons
+                    </button>
+                    <button class="btn-hfc btn-hfc-secondary hover-lift text-xs" onclick="triggerCardLoaderDemo()">
+                      <i class="bi bi-card-text"></i> Card Skeletons
+                    </button>
+                  </div>
+                  
+                  <div class="d-flex flex-wrap gap-2">
+                    <button class="btn-hfc btn-hfc-danger hover-lift text-xs" onclick="triggerErrorStateDemo()">
+                      <i class="bi bi-bug-fill"></i> Render Error Page
+                    </button>
+                    <button class="btn-hfc btn-hfc-warning hover-lift text-xs" onclick="triggerOfflineStateDemo()">
+                      <i class="bi bi-wifi-off"></i> Render Offline Page
+                    </button>
+                    <button class="btn-hfc btn-hfc-secondary hover-lift text-xs" onclick="resetStateCanvases()">
+                      <i class="bi bi-arrow-counterclockwise"></i> Reset States
+                    </button>
+                  </div>
+
+                  <!-- Container where Error, Offline, Table, and Card skeletons are dynamically previewed -->
+                  <div id="stateShowcasePlayground" class="mt-4 border border-light border-opacity-10 rounded p-3 bg-white bg-opacity-5 min-h-150">
+                    <div class="text-center text-muted py-4">
+                      <i class="bi bi-play-circle fs-3 d-block mb-2"></i>
+                      <span class="text-xs">Click any action above to trigger components live rendering in this playground panel.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- ========================================================================================
+               REUSABLE BUTTONS, LOADERS & BADGES SHOWCASE
+               ========================================================================== -->
+          <section id="section-buttons" class="mb-5">
+            <h3 class="text-display fw-bold text-white mb-3">Core Element Components</h3>
+            <div class="row g-4">
+              
+              <!-- Buttons -->
+              <div class="col-md-6">
+                <div class="card-glass rounded-lg h-100">
+                  <h5 class="text-display fw-bold text-white mb-4">Button States & Hovers</h5>
+                  <div class="d-flex flex-wrap gap-3">
+                    <button class="btn-hfc btn-hfc-primary hover-lift">Primary Btn</button>
+                    <button class="btn-hfc btn-hfc-secondary hover-lift">Secondary Btn</button>
+                    <button class="btn-hfc btn-hfc-danger hover-lift">Danger Btn</button>
+                    <button class="btn-hfc btn-hfc-icon" title="Settings icon button"><i class="bi bi-gear"></i></button>
+                    <button class="btn-hfc btn-hfc-primary" disabled>Disabled State</button>
+                  </div>
+                  <div class="mt-4 p-3 rounded bg-white bg-opacity-5">
+                    <span class="text-xs text-muted d-block mb-1">HTML Implementation Example:</span>
+                    <code class="text-primary text-xs d-block">&lt;button class="btn-hfc btn-hfc-primary hover-lift"&gt;Action&lt;/button&gt;</code>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Badges & Loaders -->
+              <div class="col-md-6">
+                <div class="card-glass rounded-lg h-100">
+                  <h5 class="text-display fw-bold text-white mb-3">Badges, Pills & Status Indicators</h5>
+                  <div class="d-flex flex-wrap gap-2 mb-4">
+                    <span class="badge-hfc badge-hfc-primary">Primary</span>
+                    <span class="badge-hfc badge-hfc-success"><i class="bi bi-arrow-up"></i> Success / Bull</span>
+                    <span class="badge-hfc badge-hfc-danger"><i class="bi bi-arrow-down"></i> Danger / Bear</span>
+                    <span class="badge-hfc badge-hfc-warning">Pending</span>
+                    <span class="badge-hfc badge-hfc-muted">Offline</span>
+                  </div>
+
+                  <h5 class="text-display fw-bold text-white mb-3">Loaders & Pulse Skeletons</h5>
+                  <div class="d-flex align-items-center gap-4">
+                    <div class="loader-hfc"></div>
+                    <div class="flex-grow-1">
+                      <div class="skeleton-loader w-75 mb-2" style="height: 12px;"></div>
+                      <div class="skeleton-loader w-50" style="height: 8px;"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- ==========================================================================
+               CARD VARIATIONS (WALLET / TRADE / OFFER / ADMIN / STATS)
+               ========================================================================== -->
+          <section id="section-cards" class="mb-5">
+            <h3 class="text-display fw-bold text-white mb-3">Card Designs</h3>
+            <div class="row g-4">
+              
+              <!-- Wallet Card -->
+              <div class="col-md-6 col-lg-4">
+                <div class="card-glass card-wallet hover-glow rounded-lg">
+                  <div class="d-flex justify-content-between align-items-start mb-3">
+                    <div>
+                      <span class="stat-label">Total Balance</span>
+                      <h4 class="stat-value text-glow-primary mt-1">45,920.12 USDT</h4>
+                    </div>
+                    <span class="badge-hfc badge-hfc-primary"><i class="bi bi-wallet2"></i> Wallet</span>
+                  </div>
+                  <div class="text-xs text-muted text-mono d-flex justify-content-between">
+                    <span>Deposit address: BC1q7...89</span>
+                    <i class="bi bi-copy cursor-pointer text-primary" onclick="alert('Copied Address!')"></i>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Market Card -->
+              <div class="col-md-6 col-lg-4">
+                <div class="card-glass card-market hover-glow rounded-lg">
+                  <div class="d-flex justify-content-between align-items-start mb-3">
+                    <div>
+                      <span class="stat-label">Ethereum Ticker</span>
+                      <h4 class="stat-value mt-1">3,429.50 USDT</h4>
+                    </div>
+                    <span class="badge-hfc badge-hfc-success">+5.24%</span>
+                  </div>
+                  <div class="text-xs text-muted d-flex align-items-center gap-2">
+                    <div class="status-pulse-success rounded-circle bg-success" style="width: 8px; height: 8px;"></div>
+                    <span>Active Market Feeds</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Trade Card -->
+              <div class="col-md-6 col-lg-4">
+                <div class="card-glass card-trade hover-glow rounded-lg">
+                  <div class="d-flex justify-content-between align-items-start mb-3">
+                    <div>
+                      <span class="stat-label">Open Trades</span>
+                      <h4 class="stat-value text-success mt-1">12 Buys Active</h4>
+                    </div>
+                    <span class="badge-hfc badge-hfc-success">Bull Mode</span>
+                  </div>
+                  <div class="text-xs text-muted d-flex justify-content-between">
+                    <span>Unrealized PNL:</span>
+                    <span class="text-success text-mono font-weight-bold">+$124.50 (USDT)</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Offer Card -->
+              <div class="col-md-6 col-lg-4">
+                <div class="card-glass card-offer hover-glow rounded-lg">
+                  <div class="d-flex justify-content-between align-items-start mb-3">
+                    <div>
+                      <span class="stat-label">Best Bids Received</span>
+                      <h4 class="stat-value mt-1">0.024 BTC/USD</h4>
+                    </div>
+                    <span class="badge-hfc badge-hfc-warning">9 Offers</span>
+                  </div>
+                  <div class="text-xs text-muted">Best Rate expires in 23s.</div>
+                </div>
+              </div>
+
+              <!-- Admin Card -->
+              <div class="col-md-6 col-lg-4">
+                <div class="card-glass card-admin hover-glow rounded-lg">
+                  <div class="d-flex justify-content-between align-items-start mb-3">
+                    <div>
+                      <span class="stat-label">Exchange Liquidity</span>
+                      <h4 class="stat-value mt-1">890M USDT</h4>
+                    </div>
+                    <span class="badge-hfc badge-hfc-danger">Safety Alert</span>
+                  </div>
+                  <div class="text-xs text-danger d-flex align-items-center gap-1">
+                    <i class="bi bi-exclamation-triangle-fill"></i>
+                    <span>Exceeded 90% target reserve</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Standard Statistics Card -->
+              <div class="col-md-6 col-lg-4">
+                <div class="card-glass hover-glow rounded-lg">
+                  <span class="stat-label">Daily Trading Volume</span>
+                  <div class="d-flex align-items-baseline gap-2 mt-2">
+                    <h4 class="stat-value mb-0">$2,410,920</h4>
+                    <span class="text-success text-xs font-weight-bold text-mono">+12.4%</span>
+                  </div>
+                  <div class="text-xs text-muted mt-2">Aggregated across 24 crypto trading pairs.</div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- ==========================================================================
+               RESPONSIVE TABLES (CRYPTO EXCHANGE STYLE)
+               ========================================================================== -->
+          <section id="section-tables" class="mb-5">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h3 class="text-display fw-bold text-white mb-0">Professional Exchange Tables</h3>
+              <span class="badge-hfc badge-hfc-muted text-mono">Sticky Header & Sticky columns active</span>
+            </div>
+            <div class="card-glass rounded-lg p-0">
+              <div class="table-responsive-glass">
+                <table class="table-glass table-glass-hover">
+                  <thead>
+                    <tr>
+                      <th class="sticky-ticker">Trading Asset</th>
+                      <th class="text-end">Last Traded Price</th>
+                      <th class="text-end">24h Price Change</th>
+                      <th class="text-end">24h Vol (USDT)</th>
+                      <th class="text-center">Market Activity</th>
+                      <th class="text-end">Execution</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="sticky-ticker">
+                        <div class="d-flex align-items-center gap-2">
+                          <i class="bi bi-coin text-warning fs-5"></i>
+                          <div>
+                            <span class="text-light fw-bold">BTC</span>
+                            <span class="text-muted text-xs ms-1">Bitcoin</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td class="text-end text-mono text-light font-weight-bold">96,432.50</td>
+                      <td class="text-end text-mono text-success fw-bold">+4.35%</td>
+                      <td class="text-end text-mono text-secondary">420.12M</td>
+                      <td class="text-center">
+                        <div class="status-pulse-success rounded-circle bg-success mx-auto" style="width: 8px; height: 8px;" title="Bullish flow active"></div>
+                      </td>
+                      <td class="text-end">
+                        <button class="btn-hfc btn-hfc-primary py-1 px-3 text-xs">Buy</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="sticky-ticker">
+                        <div class="d-flex align-items-center gap-2">
+                          <i class="bi bi-coin text-info fs-5"></i>
+                          <div>
+                            <span class="text-light fw-bold">ETH</span>
+                            <span class="text-muted text-xs ms-1">Ethereum</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td class="text-end text-mono text-light font-weight-bold">3,420.25</td>
+                      <td class="text-end text-mono text-danger fw-bold">-1.24%</td>
+                      <td class="text-end text-mono text-secondary">240.50M</td>
+                      <td class="text-center">
+                        <div class="status-pulse-danger rounded-circle bg-danger mx-auto" style="width: 8px; height: 8px;" title="Bearish flow active"></div>
+                      </td>
+                      <td class="text-end">
+                        <button class="btn-hfc btn-hfc-primary py-1 px-3 text-xs">Buy</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="sticky-ticker">
+                        <div class="d-flex align-items-center gap-2">
+                          <i class="bi bi-coin text-primary fs-5"></i>
+                          <div>
+                            <span class="text-light fw-bold">SOL</span>
+                            <span class="text-muted text-xs ms-1">Solana</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td class="text-end text-mono text-light font-weight-bold">185.70</td>
+                      <td class="text-end text-mono text-success fw-bold">+12.92%</td>
+                      <td class="text-end text-mono text-secondary">192.80M</td>
+                      <td class="text-center">
+                        <div class="status-pulse-success rounded-circle bg-success mx-auto" style="width: 8px; height: 8px;"></div>
+                      </td>
+                      <td class="text-end">
+                        <button class="btn-hfc btn-hfc-primary py-1 px-3 text-xs">Buy</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <!-- ==========================================================================
+               EXCHANGE FORMS & FIELD VALIDATIONS
+               ========================================================================== -->
+          <section id="section-forms" class="mb-5">
+            <h3 class="text-display fw-bold text-white mb-3">Form Component Styles</h3>
+            <div class="row g-4">
+              
+              <!-- Core Form elements -->
+              <div class="col-lg-7">
+                <div class="card-glass rounded-lg h-100">
+                  <h5 class="text-display fw-bold text-white mb-4">Input Controls & Floating Labels</h5>
+                  <form id="showcaseForm" onsubmit="event.preventDefault()">
+                    <div class="row g-3">
+                      
+                      <!-- Floating Label Input -->
+                      <div class="col-md-6">
+                        <div class="form-floating-glass">
+                          <input type="text" class="form-control-glass w-100" id="floatInputName" placeholder=" " required>
+                          <label for="floatInputName">Recipient Account Name</label>
+                        </div>
+                      </div>
+
+                      <!-- Floating Label Amount -->
+                      <div class="col-md-6">
+                        <div class="form-floating-glass">
+                          <input type="number" class="form-control-glass w-100 text-mono" id="floatInputAmount" placeholder=" " required>
+                          <label for="floatInputAmount">Transfer Amount (USDT)</label>
+                        </div>
+                      </div>
+
+                      <!-- Dropdown Select Grid -->
+                      <div class="col-md-6">
+                        <div class="form-floating-glass">
+                          <select class="form-select-glass w-100" id="floatInputAsset" required>
+                            <option value="" disabled selected>Choose Crypto</option>
+                            <option value="BTC">BTC (Bitcoin)</option>
+                            <option value="ETH">ETH (Ethereum)</option>
+                            <option value="USDT">USDT (Tether)</option>
+                          </select>
+                          <label for="floatInputAsset">Settlement Wallet Asset</label>
+                        </div>
+                      </div>
+
+                      <!-- Custom validation controls showcase -->
+                      <div class="col-md-6">
+                        <div class="form-floating-glass">
+                          <input type="text" class="form-control-glass is-valid w-100" id="validatedInputVal" value="Correct Wallet Address" placeholder=" " required>
+                          <label for="validatedInputVal" class="text-success">Valid Address Glow</label>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <!-- Custom checkbox systems -->
+                    <div class="mt-4 d-flex flex-column gap-2">
+                      <div class="form-check d-flex align-items-center gap-2">
+                        <input class="form-check-input form-check-input-glass" type="checkbox" id="checkTerms" required>
+                        <label class="form-check-label text-secondary text-sm cursor-pointer" for="checkTerms">
+                          I agree to HFC Liquidity Settlement terms and conditions.
+                        </label>
+                      </div>
+                      <div class="form-check d-flex align-items-center gap-2">
+                        <input class="form-check-input form-check-input-glass" type="radio" name="escrowPref" id="radioEscrowOn" checked>
+                        <label class="form-check-label text-secondary text-sm cursor-pointer" for="radioEscrowOn">
+                          Secure Trade settlement through escrow protocol
+                        </label>
+                      </div>
+                    </div>
+
+                    <div class="mt-4 pt-3 border-top border-secondary border-opacity-10 d-flex justify-content-end">
+                      <button type="submit" class="btn-hfc btn-hfc-primary hover-lift" onclick="if (document.getElementById('checkTerms').checked) { window.HFCComponents.showToast('Transaction initiated!', 'primary') } else { window.HFCComponents.showToast('Please accept the terms.', 'warning') }">
+                        Confirm Transaction
+                      </button>
+                    </div>
+
+                  </form>
+                </div>
+              </div>
+
+              <!-- Search Box & Filter Controls -->
+              <div class="col-lg-5">
+                <div class="card-glass rounded-lg h-100 d-flex flex-column justify-content-between">
+                  <div>
+                    <h5 class="text-display fw-bold text-white mb-3">Live Search & Filter Elements</h5>
+                    <p class="text-secondary text-sm mb-4">
+                      Standardized search controls with dual icons and focus-responsive glow states.
+                    </p>
+                    
+                    <!-- Customized Search Box -->
+                    <div class="position-relative mb-4">
+                      <span class="position-absolute top-50 start-0 translate-middle-y ps-3 text-muted">
+                        <i class="bi bi-search"></i>
+                      </span>
+                      <input type="text" class="form-control-glass w-100 ps-5" placeholder="Search currencies, networks, trades...">
+                    </div>
+
+                    <!-- Tabs design -->
+                    <div class="tabs-glass" id="exampleTabs">
+                      <button class="tab-link active" data-tab-target="panel-orders">My Orders</button>
+                      <button class="tab-link" data-tab-target="panel-history">Trade Logs</button>
+                    </div>
+                    <div class="tab-content mt-3 text-secondary text-sm">
+                      <div class="tab-pane fade show active" id="panel-orders">
+                        <div class="p-3 bg-white bg-opacity-5 rounded text-center text-xs text-muted">
+                          No active trades currently in escrow.
+                        </div>
+                      </div>
+                      <div class="tab-pane fade" id="panel-history">
+                        <div class="p-3 bg-white bg-opacity-5 rounded text-center text-xs text-muted">
+                          Logged actions appear here.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mt-4 pt-3 border-top border-secondary border-opacity-10">
+                    <span class="text-xs text-muted">Integrate tabs simply by adding data-tab-target attributes.</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- ==========================================================================
+               TOASTS, DIALOGS, MODALS & CONFIRMATION OVERLAYS
+               ========================================================================== -->
+          <section id="section-notifications" class="mb-5">
+            <h3 class="text-display fw-bold text-white mb-3">Alerts, Toasts & Modal Dialogs</h3>
+            <div class="row g-4">
+              
+              <!-- Alerts & Toast triggers -->
+              <div class="col-md-6">
+                <div class="card-glass rounded-lg h-100">
+                  <h5 class="text-display fw-bold text-white mb-4">Alert Banners & Toasts</h5>
+                  
+                  <div class="alert-glass alert-glass-success text-sm mb-3">
+                    <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                    <div>
+                      <div class="fw-bold text-light">Success Banner</div>
+                      <div class="text-secondary mt-1">Settlement completed successfully for 4,923 USDT.</div>
+                    </div>
+                  </div>
+
+                  <div class="alert-glass alert-glass-danger text-sm mb-4">
+                    <i class="bi bi-exclamation-triangle-fill text-danger fs-5"></i>
+                    <div>
+                      <div class="fw-bold text-light">Danger Banner</div>
+                      <div class="text-secondary mt-1">Transaction failed. Insufficient gas balance in Web3 wallet.</div>
+                    </div>
+                  </div>
+
+                  <h6 class="text-display text-muted text-xs mb-3">Dynamic Glass Toast triggers</h6>
+                  <div class="d-flex flex-wrap gap-2 mb-3">
+                    <button class="btn-hfc btn-hfc-secondary text-xs" onclick="window.HFCComponents.showToast('Wallet credited with 0.14 BTC', 'success')">
+                      Success Toast
+                    </button>
+                    <button class="btn-hfc btn-hfc-secondary text-xs" onclick="window.HFCComponents.showToast('Network congestion warning', 'warning')">
+                      Warning Toast
+                    </button>
+                    <button class="btn-hfc btn-hfc-secondary text-xs" onclick="window.HFCComponents.showToast('Withdrawal failed: Denied by Admin', 'danger')">
+                      Danger Toast
+                    </button>
+                  </div>
+
+                  <h6 class="text-display text-muted text-xs mb-3">Modular Component Features</h6>
+                  <div class="d-flex flex-wrap gap-2">
+                    <button class="btn-hfc btn-hfc-primary text-xs" onclick="window.triggerActionToast()">
+                      <i class="bi bi-arrow-counterclockwise"></i> Toast with Action (Undo)
+                    </button>
+                    <button class="btn-hfc btn-hfc-secondary text-xs" onclick="window.triggerFullScreenLoader()">
+                      <i class="bi bi-hourglass-split"></i> Full Loader Overlay
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Modals triggers -->
+              <div class="col-md-6">
+                <div class="card-glass rounded-lg h-100 d-flex flex-column justify-content-between">
+                  <div>
+                    <h5 class="text-display fw-bold text-white mb-3">Overlay Modals & Confirmations</h5>
+                    <p class="text-secondary text-sm mb-4">
+                      Sleek dialogue cards centered dynamically with blurred page backdrops and slide up entries.
+                    </p>
+                    <div class="d-flex flex-wrap gap-3">
+                      <button class="btn-hfc btn-hfc-primary" data-hfc-toggle="modal" data-hfc-target="tradeConfirmModal">
+                        <i class="bi bi-shield-lock-fill"></i> Trigger Escrow Dialog
+                      </button>
+                      <button class="btn-hfc btn-hfc-secondary" data-hfc-toggle="modal" data-hfc-target="infoDetailModal">
+                        System Stats Overlay
+                      </button>
+                      <button class="btn-hfc btn-hfc-primary" onclick="window.triggerProgrammaticModal()">
+                        <i class="bi bi-cpu"></i> Programmatic Modal
+                      </button>
+                    </div>
+                  </div>
+                  <div class="mt-4 pt-3 border-top border-secondary border-opacity-10">
+                    <span class="text-xs text-muted">Modals utilize CSS3 transforms and backdrop filters.</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- ==========================================================================
+               EMPTY & 404 CANVASES Showcase
+               ========================================================================== -->
+          <section id="section-states" class="mb-5">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h3 class="text-display fw-bold text-white mb-0">Fallback States Canvases</h3>
+              <div class="d-flex gap-2">
+                <button class="btn-hfc btn-hfc-secondary py-1 px-2 text-xs" onclick="window.triggerEmptyStateDemo('wallet')">
+                  Wallet Empty
+                </button>
+                <button class="btn-hfc btn-hfc-secondary py-1 px-2 text-xs" onclick="window.triggerEmptyStateDemo('timeout')">
+                  Timeout (504)
+                </button>
+                <button class="btn-hfc btn-hfc-secondary py-1 px-2 text-xs" onclick="window.triggerEmptyStateDemo('reset')">
+                  Reset Views
+                </button>
+              </div>
+            </div>
+            
+            <div class="row g-4" id="emptyStateShowcaseRow">
+              
+              <!-- Empty State -->
+              <div class="col-md-6" id="emptyStateCol1">
+                <div class="card-glass rounded-lg p-0">
+                  <div class="state-container">
+                    <i class="bi bi-database-dash state-icon text-glow-primary"></i>
+                    <h4 class="state-title">No Wallet Ledger Found</h4>
+                    <p class="state-desc">
+                      You do not have any deposit records assigned. Credit your wallet from the settings navbar to begin trading immediately.
+                    </p>
+                    <button class="btn-hfc btn-hfc-primary hover-lift">
+                      <i class="bi bi-plus-circle"></i> Create First Wallet
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 404 Error State -->
+              <div class="col-md-6" id="emptyStateCol2">
+                <div class="card-glass rounded-lg p-0">
+                  <div class="state-container">
+                    <i class="bi bi-shield-slash state-icon text-danger"></i>
+                    <h4 class="state-title">Escrow Record Missing (404)</h4>
+                    <p class="state-desc">
+                      The requested transaction index ID could not be retrieved from the Firestore decentralized ledger node.
+                    </p>
+                    <a href="#section-intro" class="btn-hfc btn-hfc-secondary hover-lift">
+                      <i class="bi bi-house-door"></i> Back to Foundation
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+        </main>
+      </div>
+
+    </div>
+
+    <!-- ==========================================================================
+         REUSABLE MODAL INJECTS
+         ========================================================================== -->
+
+    <!-- Modal 1: Confirmation Trade Dialog -->
+    <div class="modal fade" id="tradeConfirmModal" tabindex="-1" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1060; width: 450px; max-width: 95%;">
+      <div class="modal-dialog m-0 w-100">
+        <div class="modal-content modal-content-glass">
+          <div class="modal-header border-bottom border-secondary border-opacity-10 p-3">
+            <h5 class="modal-title text-display fw-bold text-white d-flex align-items-center gap-2">
+              <i class="bi bi-shield-fill-check text-primary"></i> Escrow Confirmation
+            </h5>
+            <button type="button" class="btn-close btn-close-white text-xs" data-hfc-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body p-4 text-secondary text-sm">
+            <p>You are about to lock <strong class="text-white text-mono">14,500.00 USDT</strong> into the HFC Exchange Escrow contract node. This funds a settlement bid for Bitcoin.</p>
+            <div class="p-3 rounded bg-white bg-opacity-5 mb-3 d-flex flex-column gap-2 text-xs">
+              <div class="d-flex justify-content-between">
+                <span>Contract ID:</span>
+                <span class="text-mono text-light">hfc_node_8492023910</span>
+              </div>
+              <div class="d-flex justify-content-between">
+                <span>Network gas estimation:</span>
+                <span class="text-mono text-light text-glow-primary">0.12 USDT</span>
+              </div>
+            </div>
+            <p class="text-xs text-muted mb-0">Note: Locked funds can only be released upon mutual completion or dispute verification.</p>
+          </div>
+          <div class="modal-footer border-top border-secondary border-opacity-10 p-3 d-flex gap-2 justify-content-end">
+            <button type="button" class="btn-hfc btn-hfc-secondary text-xs" data-hfc-dismiss="modal">Cancel</button>
+            <button type="button" class="btn-hfc btn-hfc-primary text-xs" onclick="window.HFCComponents.closeModal('tradeConfirmModal'); window.HFCComponents.showToast('Escrow lock successful!', 'success');">Lock Escrow</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 2: System Stats Info Detail -->
+    <div class="modal fade" id="infoDetailModal" tabindex="-1" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1060; width: 500px; max-width: 95%;">
+      <div class="modal-dialog m-0 w-100">
+        <div class="modal-content modal-content-glass">
+          <div class="modal-header border-bottom border-secondary border-opacity-10 p-3">
+            <h5 class="modal-title text-display fw-bold text-white d-flex align-items-center gap-2">
+              <i class="bi bi-info-circle text-primary"></i> System Status Overview
+            </h5>
+            <button type="button" class="btn-close btn-close-white text-xs" data-hfc-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body p-4 text-secondary text-sm">
+            <p class="mb-4">Live telemetry connectivity status logs mapping decentralized database configurations.</p>
+            
+            <div class="d-flex flex-column gap-3">
+              <div class="d-flex justify-content-between align-items-center p-2 rounded bg-white bg-opacity-5">
+                <span class="text-xs">Authentication Server</span>
+                <span class="badge-hfc badge-hfc-success">Connected</span>
+              </div>
+              <div class="d-flex justify-content-between align-items-center p-2 rounded bg-white bg-opacity-5">
+                <span class="text-xs">Firestore Cluster Instance</span>
+                <span class="badge-hfc badge-hfc-success">Active</span>
+              </div>
+              <div class="d-flex justify-content-between align-items-center p-2 rounded bg-white bg-opacity-5">
+                <span class="text-xs">Firebase Storage Vault</span>
+                <span class="badge-hfc badge-hfc-warning">Maintenance 1h</span>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer border-top border-secondary border-opacity-10 p-3 d-flex gap-2 justify-content-end">
+            <button type="button" class="btn-hfc btn-hfc-secondary text-xs" data-hfc-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap 5 JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Component Logic Injection script -->
+    <script type="module">
+      import { HFCComponents } from '/js/components.js';
+      
+      // Initialize HFC Design system components
+      HFCComponents.init();
+
+      // Bind HFCComponents globally so HTML button inline triggers work flawlessly
+      window.HFCComponents = HFCComponents;
+
+      // Instantiate Page Header on boot
+      const headerEl = document.getElementById('dynamicPageHeaderMount');
+      if (headerEl) {
+        new HFCComponents.PageHeader(headerEl, {
+          title: 'Decentralized Wallet Settlement',
+          description: 'Auditing secure multisig cold-wallet vaults and dynamic peer settlement ledger rows.',
+          breadcrumbs: [
+            { label: 'Vault Systems', href: '#section-cards' },
+            { label: 'Settlement Node', active: true }
+          ],
+          action: {
+            label: 'Withdraw Asset Balance',
+            icon: 'bi-arrow-up-right-circle',
+            onClick: () => {
+              HFCComponents.Toast.show('Withdrawal transaction request queued!', { type: 'success' });
+            }
+          }
+        });
+      }
+
+      // Instantiate Search Bar on boot
+      const searchEl = document.getElementById('dynamicSearchBarMount');
+      const queryTextEl = document.getElementById('liveSearchQueryText');
+      if (searchEl) {
+        new HFCComponents.SearchBar(searchEl, {
+          placeholder: 'Search vault IDs, addresses, or tickers...',
+          debounceMs: 250,
+          onSearch: (query) => {
+            if (queryTextEl) {
+              queryTextEl.textContent = query ? `"${query}"` : 'No input query typed...';
+            }
+          },
+          onEnter: (query) => {
+            HFCComponents.Toast.show(`Committed search for query: ${query}`, { type: 'info' });
+          },
+          onEscape: () => {
+            if (queryTextEl) {
+              queryTextEl.textContent = 'No input query typed...';
+            }
+          }
+        });
+      }
+
+      // Live playground triggers
+      window.triggerConfirmationDemo = () => {
+        HFCComponents.Modal.confirm({
+          title: 'Revoke Authorized Peer Link?',
+          body: '<p class="text-secondary text-sm">Are you absolutely sure you want to revoke authorization for node <code class="text-danger">hfc-node-8492</code>? All active telemetry syncing will freeze instantly.</p>',
+          confirmText: 'Revoke Node',
+          confirmClass: 'btn-hfc-danger',
+          cancelText: 'Keep Authorized',
+          onConfirm: () => {
+            HFCComponents.Toast.show('Peer node authorization revoked successfully.', { type: 'danger' });
+          }
+        });
+      };
+
+      window.triggerButtonLoaderDemo = () => {
+        const btn = document.getElementById('demoBtnLoaderBtn');
+        HFCComponents.Loader.buttonLoader(btn, true, 'Processing Revocation...');
+        setTimeout(() => {
+          HFCComponents.Loader.buttonLoader(btn, false);
+          HFCComponents.Toast.show('Restored button trigger state.', { type: 'success' });
+        }, 2000);
+      };
+
+      window.triggerTableLoaderDemo = () => {
+        const pg = document.getElementById('stateShowcasePlayground');
+        if (!pg) return;
+        pg.innerHTML = `
+          <div class="table-responsive-glass">
+            <table class="table-glass">
+              <thead>
+                <tr>
+                  <th>Vault Asset</th>
+                  <th>Hash Integrity</th>
+                  <th>Peer Node Status</th>
+                </tr>
+              </thead>
+              <tbody id="demoTbodySkeletons"></tbody>
+            </table>
+          </div>
+        `;
+        const tbody = document.getElementById('demoTbodySkeletons');
+        HFCComponents.Loader.tableLoader(tbody, 3, 3);
+        HFCComponents.Toast.show('Loading mock tabular dataset...', { type: 'info' });
+      };
+
+      window.triggerCardLoaderDemo = () => {
+        const pg = document.getElementById('stateShowcasePlayground');
+        if (!pg) return;
+        pg.innerHTML = '';
+        HFCComponents.Loader.cardLoader(pg, 3);
+        HFCComponents.Toast.show('Rendered 3 card shimmer blocks.', { type: 'info' });
+      };
+
+      window.triggerErrorStateDemo = () => {
+        const pg = document.getElementById('stateShowcasePlayground');
+        if (!pg) return;
+        HFCComponents.EmptyState.renderError(pg, {
+          title: 'Secure Settlement Sync Overload',
+          message: 'The central ledger router is experiencing high transaction latency. Your wallet rows cannot compile.',
+          onRetry: () => {
+            HFCComponents.Toast.show('Re-initiating ledger settlement...', { type: 'info' });
+            window.triggerTableLoaderDemo();
+          }
+        });
+      };
+
+      window.triggerOfflineStateDemo = () => {
+        const pg = document.getElementById('stateShowcasePlayground');
+        if (!pg) return;
+        HFCComponents.EmptyState.renderOffline(pg, {
+          title: 'Decentralized Vault Offline',
+          message: 'Your system is currently isolated. Telemetry feeds from cloud node clusters are unreachable.',
+          onReconnect: () => {
+            HFCComponents.Toast.show('Reconnecting to nearest edge clusters...', { type: 'info' });
+            window.triggerCardLoaderDemo();
+          }
+        });
+      };
+
+      window.resetStateCanvases = () => {
+        const pg = document.getElementById('stateShowcasePlayground');
+        if (!pg) return;
+        pg.innerHTML = `
+          <div class="text-center text-muted py-4">
+            <i class="bi bi-play-circle fs-3 d-block mb-2"></i>
+            <span class="text-xs">Click any action above to trigger components live rendering in this playground panel.</span>
+          </div>
+        `;
+        HFCComponents.Toast.show('Reset playground state canvas.', { type: 'success' });
+      };
+
+      // 1. Toast with Action demonstration trigger
+      window.triggerActionToast = () => {
+        HFCComponents.Toast.show('Decentralized trade escrow initiated!', {
+          type: 'primary',
+          duration: 6000,
+          action: {
+            label: 'Undo Action',
+            onClick: () => {
+              HFCComponents.Toast.show('Transaction reverted successfully!', { type: 'warning' });
+            }
+          }
+        });
+      };
+
+      // 2. Full-Screen Backdrop Loader demonstration trigger
+      window.triggerFullScreenLoader = () => {
+        const loader = new HFCComponents.Loader({
+          text: 'Acquiring escrow consensus...',
+          blurBackdrop: true
+        });
+        loader.show();
+        setTimeout(() => {
+          loader.updateText('Consensus secured! Finalizing ledger write...');
+          setTimeout(() => {
+            loader.hide();
+            HFCComponents.Toast.show('Ledger synchronization complete!', { type: 'success' });
+          }, 1500);
+        }, 2000);
+      };
+
+      // 3. Programmatic Modal dialog trigger
+      window.triggerProgrammaticModal = () => {
+        const modal = new HFCComponents.Modal({
+          title: 'Decentralized Smart Node Link',
+          body: `
+            <div class="p-3 rounded bg-white bg-opacity-5 mb-3">
+              <span class="text-xs text-muted d-block uppercase font-weight-bold">Active Engine Connection</span>
+              <p class="text-sm text-light mb-2 mt-1">This modal was created programmatically using the dynamic <strong>HFCComponents.Modal</strong> engine!</p>
+              <div class="d-flex align-items-center gap-2 text-xs mt-2">
+                <span class="status-pulse-primary rounded-circle bg-primary" style="width: 8px; height: 8px;"></span>
+                <span class="text-mono text-muted">Node Status: Operational</span>
+              </div>
+            </div>
+            <p class="text-xs text-muted mb-0">No static HTML markup exists on disk for this element. It compiles dynamically upon click call.</p>
+          `,
+          size: 'md',
+          buttons: [
+            {
+              label: 'Discard Node Connection',
+              class: 'btn-hfc-secondary',
+              onClick: (m) => {
+                HFCComponents.Toast.show('Connection discarded safely.', 'danger');
+                m.close();
+              }
+            },
+            {
+              label: 'Authorize Peer Node',
+              class: 'btn-hfc-primary',
+              onClick: (m) => {
+                HFCComponents.Toast.show('Dynamic Peer authorized!', 'success');
+                m.close();
+              }
+            }
+          ]
+        });
+        modal.open();
+      };
+
+      // 4. Dynamic EmptyState component hot-swapping demo
+      window.triggerEmptyStateDemo = (type) => {
+        const col1 = document.getElementById('emptyStateCol1');
+        if (!col1) return;
+        
+        if (type === 'wallet') {
+          new HFCComponents.EmptyState(col1, {
+            icon: 'bi-database-fill-x',
+            title: 'Dynamic Wallet Unassigned',
+            description: 'No valid crypto address was bound to this session. Click the button to link a mock Metamask/TrustWallet.',
+            action: {
+              label: 'Connect Wallet Address',
+              icon: 'bi-plug-fill',
+              onClick: () => {
+                HFCComponents.Toast.show('Mock Wallet linked successfully!', 'success');
+                window.triggerEmptyStateDemo('reset');
+              }
+            }
+          });
+          HFCComponents.Toast.show('Rendered Dynamic Empty State!', 'info');
+        } else if (type === 'timeout') {
+          new HFCComponents.EmptyState(col1, {
+            icon: 'bi-cloud-slash-fill',
+            title: 'Cloud Node Sync Timeout (504)',
+            description: 'The secure RPC API server did not respond within the allocated timeframe.',
+            glowIcon: false,
+            action: {
+              label: 'Retry Synchronizer Connection',
+              icon: 'bi-arrow-clockwise',
+              onClick: () => {
+                const loader = new HFCComponents.Loader({ target: col1, text: 'Reconnecting to RPC node...' });
+                loader.show();
+                setTimeout(() => {
+                  loader.hide();
+                  HFCComponents.Toast.show('Connection restablished!', 'success');
+                  window.triggerEmptyStateDemo('reset');
+                }, 2000);
+              }
+            }
+          });
+          HFCComponents.Toast.show('Rendered Dynamic Error Fallback state!', 'info');
+        } else {
+          // Restore original
+          col1.innerHTML = `
+            <div class="card-glass rounded-lg p-0">
+              <div class="state-container">
+                <i class="bi bi-database-dash state-icon text-glow-primary"></i>
+                <h4 class="state-title">No Wallet Ledger Found</h4>
+                <p class="state-desc">
+                  You do not have any deposit records assigned. Credit your wallet from the settings navbar to begin trading immediately.
+                </p>
+                <button class="btn-hfc btn-hfc-primary hover-lift">
+                  <i class="bi bi-plus-circle"></i> Create First Wallet
+                </button>
+              </div>
+            </div>
+          `;
+          HFCComponents.Toast.show('Restored original showcase elements.', 'success');
+        }
+      };
+
+      // Update Customizer indicators text
+      const borderSlider = document.getElementById('themeBorderRadius');
+      const radiusValText = document.getElementById('radiusVal');
+      if (borderSlider && radiusValText) {
+        borderSlider.addEventListener('input', (e) => {
+          radiusValText.textContent = e.target.value;
+        });
+      }
+
+      const blurSlider = document.getElementById('themeBlurAmount');
+      const blurValText = document.getElementById('blurVal');
+      if (blurSlider && blurValText) {
+        blurSlider.addEventListener('input', (e) => {
+          blurValText.textContent = e.target.value;
+        });
+      }
+
+      // Smooth scrolling for sidebar links
+      document.querySelectorAll('.sidebar-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+          document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+        });
+      });
+    </script>
+  </body>
+</html>

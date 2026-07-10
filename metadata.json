@@ -1,0 +1,6 @@
+{
+  "name": "HFC Exchange Design System",
+  "description": "Premium Dark Glassmorphic Design System and Project Foundation for HFC Exchange",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

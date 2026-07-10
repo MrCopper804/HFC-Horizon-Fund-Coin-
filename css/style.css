@@ -1,0 +1,107 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ * 
+ * HFC Exchange Design System - style.css
+ * Master Entry Point. Imports theme tokens, animations, components, and utilities.
+ */
+
+@import "./theme.css";
+@import "./animations.css";
+@import "./components.css";
+@import "./utilities.css";
+
+/* ==========================================================================
+   PROJECT GLOBAL LAYOUT
+   ========================================================================== */
+
+/* Main Layout Wrapper */
+.hfc-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Page Content container (shifts over to make room for Sidebar on desktop) */
+.hfc-main-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin-left: var(--hfc-sidebar-width);
+  transition: margin-left var(--hfc-transition-normal);
+}
+
+.hfc-page-content {
+  flex: 1;
+  padding: var(--hfc-space-xl);
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Adjustments for Collapsed Sidebar */
+.hfc-layout.sidebar-collapsed .hfc-main-container {
+  margin-left: var(--hfc-sidebar-collapsed-width);
+}
+
+/* ==========================================================================
+   RESPONSIVE LAYOUT MEDIA QUERIES
+   ========================================================================== */
+
+/* Tablet & Smaller (Landscape & Portrait) */
+@media (max-width: 991.98px) {
+  .sidebar-glass {
+    transform: translateX(-100%);
+    transition: transform var(--hfc-transition-normal);
+    width: var(--hfc-sidebar-width) !important;
+  }
+  
+  .sidebar-glass.show {
+    transform: translateX(0);
+  }
+  
+  .hfc-main-container {
+    margin-left: 0 !important;
+  }
+  
+  .hfc-page-content {
+    padding: var(--hfc-space-lg);
+  }
+}
+
+/* Mobile Portrait */
+@media (max-width: 575.98px) {
+  :root {
+    --hfc-navbar-height: 60px;
+  }
+  
+  .hfc-page-content {
+    padding: var(--hfc-space-md);
+  }
+  
+  .card-glass {
+    padding: var(--hfc-space-lg);
+  }
+  
+  .stat-value {
+    font-size: var(--hfc-fs-xl);
+  }
+}
+
+/* ==========================================================================
+   ADDITIONAL ENHANCEMENTS & GLOBAL CORRECTIONS
+   ========================================================================== */
+
+/* Interactive Hover/Active glow for custom lists */
+.list-group-item-glass {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--hfc-border-color);
+  color: var(--hfc-text-secondary);
+  transition: all var(--hfc-transition-fast);
+}
+
+.list-group-item-glass:hover {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--hfc-primary);
+  border-color: rgba(0, 242, 254, 0.2);
+}

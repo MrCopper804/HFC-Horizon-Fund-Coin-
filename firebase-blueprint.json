@@ -1,0 +1,167 @@
+{
+  "entities": {
+    "user": {
+      "title": "User Profile",
+      "description": "Secure record of a registered user's metadata.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_\\-]+$",
+          "description": "The unique Firebase authenticated UID."
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Registered and verified email address."
+        },
+        "displayName": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "The display name of the user."
+        },
+        "photoURL": {
+          "type": "string",
+          "maxLength": 500,
+          "description": "URL link to preferred profile image."
+        },
+        "isAdmin": {
+          "type": "boolean",
+          "description": "Security flag designating elevated administrative privileges."
+        },
+        "preferredCurrency": {
+          "type": "string",
+          "enum": ["USD", "EUR", "GBP", "JPY", "BTC", "ETH", "PKR"],
+          "description": "Local currency settings."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The server-generated creation timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The last server-generated update timestamp."
+        }
+      },
+      "required": ["uid", "email"]
+    },
+    "admin": {
+      "title": "Administrator Privileges",
+      "description": "System-level permissions lookup mapping direct auth UIDs.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "assignedBy": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["uid"]
+    },
+    "wallet": {
+      "title": "Crypto Wallet Asset",
+      "description": "Token and asset holdings for standard trading balance sheets.",
+      "type": "object",
+      "properties": {
+        "walletId": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "ownerId": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "currency": {
+          "type": "string",
+          "enum": ["BTC", "ETH", "USDT", "SOL", "USD", "PKR"]
+        },
+        "balance": {
+          "type": "number",
+          "description": "Standard arithmetic token balance."
+        },
+        "address": {
+          "type": "string",
+          "maxLength": 128,
+          "description": "Web3 decentralized chain address link."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["walletId", "ownerId", "currency", "balance"]
+    },
+    "transaction": {
+      "title": "Escrow Ledger Record",
+      "description": "Immutable ledger tracking token swaps, deposits, or withdrawals.",
+      "type": "object",
+      "properties": {
+        "txId": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "userId": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["deposit", "withdrawal", "buy", "sell", "swap"]
+        },
+        "amount": {
+          "type": "number"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["pending", "completed", "failed", "cancelled"]
+        },
+        "txHash": {
+          "type": "string",
+          "maxLength": 128
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["txId", "userId", "type", "amount", "currency", "status"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "user",
+      "description": "Stores user profiles with their preferred currency configuration."
+    },
+    "/admins/{adminId}": {
+      "schema": "admin",
+      "description": "Enables zero-trust role-based access checks for administrative panels."
+    },
+    "/wallets/{walletId}": {
+      "schema": "wallet",
+      "description": "Stores current blockchain asset holdings."
+    },
+    "/transactions/{transactionId}": {
+      "schema": "transaction",
+      "description": "Secure transaction history ledger."
+    }
+  }
+}

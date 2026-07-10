@@ -1,0 +1,282 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ * 
+ * HFC Exchange - Login Page Custom Stylesheet
+ * Responsive glassmorphic layout optimizations, form controls, and interaction glows.
+ */
+
+.login-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: var(--hfc-space-lg);
+  background-color: var(--hfc-bg);
+  background-image: var(--hfc-glass-noise);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ambient glow spots for futuristic tech depth */
+.login-page-wrapper::before {
+  content: '';
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(0, 242, 254, 0.12) 0%, transparent 70%);
+  top: -50px;
+  left: -50px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.login-page-wrapper::after {
+  content: '';
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(121, 40, 202, 0.08) 0%, transparent 70%);
+  bottom: -100px;
+  right: -100px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.login-card-container {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  z-index: 10;
+}
+
+.login-card {
+  background: var(--hfc-card-bg);
+  backdrop-filter: blur(var(--hfc-glass-blur));
+  -webkit-backdrop-filter: blur(var(--hfc-glass-blur));
+  border: 1px solid var(--hfc-border-color);
+  border-radius: var(--hfc-radius-lg);
+  padding: var(--hfc-space-2xl);
+  box-shadow: var(--hfc-shadow-lg);
+  transition: border-color var(--hfc-transition-normal), box-shadow var(--hfc-transition-normal);
+  animation: hfcFadeInUp var(--hfc-transition-slow) forwards;
+}
+
+.login-card:hover {
+  border-color: var(--hfc-border-hover);
+  box-shadow: 0 12px 40px rgba(0, 242, 254, 0.08), var(--hfc-shadow-glow);
+}
+
+@keyframes hfcFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.brand-logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--hfc-space-sm);
+}
+
+.brand-logo-glow {
+  font-size: 3.2rem;
+  color: var(--hfc-primary);
+  filter: drop-shadow(0 0 10px rgba(0, 242, 254, 0.45));
+  animation: hfcLogoPulse 3.5s infinite ease-in-out;
+}
+
+@keyframes hfcLogoPulse {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    filter: drop-shadow(0 0 10px rgba(0, 242, 254, 0.45));
+  }
+  50% {
+    transform: scale(1.06) rotate(3deg);
+    filter: drop-shadow(0 0 18px rgba(0, 242, 254, 0.75));
+  }
+}
+
+/* Custom Password Toggle Layout */
+.password-field-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-field-wrapper .form-control-glass {
+  width: 100%;
+  padding-right: 3rem !important;
+}
+
+.password-toggle-trigger {
+  position: absolute;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: var(--hfc-text-muted);
+  cursor: pointer;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  transition: color var(--hfc-transition-fast);
+  z-index: 5;
+}
+
+.password-toggle-trigger:hover {
+  color: var(--hfc-primary);
+}
+
+.password-toggle-trigger:focus-visible {
+  outline: 2px solid var(--hfc-primary);
+  border-radius: var(--hfc-radius-xs);
+}
+
+/* Custom Divider styling */
+.divider-with-text {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: var(--hfc-text-muted);
+  font-family: var(--hfc-font-display);
+  font-size: var(--hfc-fs-xs);
+  font-weight: var(--hfc-fw-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: var(--hfc-space-xl) 0;
+}
+
+.divider-with-text::before,
+.divider-with-text::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--hfc-border-color);
+}
+
+.divider-with-text::before {
+  margin-right: var(--hfc-space-lg);
+}
+
+.divider-with-text::after {
+  margin-left: var(--hfc-space-lg);
+}
+
+/* Input Fields Accent Borders & Transitions */
+.form-group-glass label {
+  font-family: var(--hfc-font-display);
+  font-size: var(--hfc-fs-xs);
+  font-weight: var(--hfc-fw-semibold);
+  color: var(--hfc-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--hfc-space-sm);
+  display: block;
+}
+
+/* Input Focus Glows and Transitions */
+.form-control-glass {
+  transition: border-color var(--hfc-transition-normal), box-shadow var(--hfc-transition-normal), background-color var(--hfc-transition-normal) !important;
+}
+
+/* Keep focus ring highly visible for keyboard accessibility */
+.form-control-glass:focus-visible {
+  outline: none;
+  border-color: var(--hfc-border-focus) !important;
+  box-shadow: 0 0 10px rgba(0, 242, 254, 0.35) !important;
+}
+
+/* Floating validation assistance texts */
+.invalid-feedback {
+  font-size: var(--hfc-fs-xs);
+  color: var(--hfc-danger);
+  margin-top: var(--hfc-space-xs);
+  display: none;
+  animation: hfcFeedbackSlide var(--hfc-transition-fast) forwards;
+}
+
+.form-control-glass.is-invalid ~ .invalid-feedback {
+  display: block;
+}
+
+@keyframes hfcFeedbackSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom Interactive Remember Me Section */
+.remember-forgot-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--hfc-space-xl);
+  font-size: var(--hfc-fs-sm);
+}
+
+.remember-me-label {
+  color: var(--hfc-text-secondary);
+  cursor: pointer;
+  user-select: none;
+  transition: color var(--hfc-transition-fast);
+}
+
+.remember-me-label:hover {
+  color: var(--hfc-text-primary);
+}
+
+.forgot-password-link {
+  color: var(--hfc-text-muted);
+  text-decoration: none;
+  transition: color var(--hfc-transition-fast), text-shadow var(--hfc-transition-fast);
+}
+
+.forgot-password-link:hover {
+  color: var(--hfc-primary);
+  text-shadow: 0 0 8px rgba(0, 242, 254, 0.25);
+}
+
+.forgot-password-link:focus-visible {
+  outline: 2px solid var(--hfc-primary);
+  border-radius: var(--hfc-radius-xs);
+}
+
+/* Loader Spin helper */
+.animate-spin-loader {
+  animation: hfcSpin 1s linear infinite;
+}
+
+@keyframes hfcSpin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Inline footer matching exchange standards */
+.login-inline-footer {
+  width: 100%;
+  max-width: 460px;
+  text-align: center;
+  margin-top: var(--hfc-space-xl);
+  opacity: 0.8;
+  animation: hfcFadeInUp var(--hfc-transition-slow) forwards;
+  animation-delay: 0.2s;
+}
+
+.login-inline-footer p {
+  margin: 0;
+  font-size: var(--hfc-fs-xs);
+  color: var(--hfc-text-muted);
+}

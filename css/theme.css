@@ -1,0 +1,193 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ * 
+ * HFC Exchange Design System - theme.css
+ * Core design system token declarations, styling configurations, and global custom variables.
+ */
+
+/* Google Fonts Imports */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root {
+  /* ==========================================================================
+     COLOR PALETTE - PREMIUM CRYPTO DARK GLASSMORPHISM
+     ========================================================================== */
+  
+  /* Background & Base Surfaces */
+  --hfc-bg: #080a0e;                  /* Ultra-dark canvas background (Obsidian) */
+  --hfc-bg-rgb: 8, 10, 14;
+  --hfc-surface-solid: #11151d;       /* Solid deep surface for dark fallbacks */
+  --hfc-surface-solid-rgb: 17, 21, 29;
+  --hfc-surface: rgba(17, 21, 29, 0.65); /* Glassmorphic surface */
+  --hfc-surface-rgb: 17, 21, 29;
+  
+  /* Cards & Elevators */
+  --hfc-card-bg: rgba(22, 28, 38, 0.45);   /* Floating card transparent background */
+  --hfc-card-bg-rgb: 22, 28, 38;
+  --hfc-card-hover-bg: rgba(26, 33, 45, 0.65); /* Highlighted hover card background */
+  
+  /* Borders & Dividers */
+  --hfc-border-color: rgba(255, 255, 255, 0.08); /* Minimal soft divider border */
+  --hfc-border-hover: rgba(0, 242, 254, 0.3);    /* Interactive glowing border */
+  --hfc-border-focus: rgba(0, 242, 254, 0.6);    /* High contrast focus border */
+  
+  /* Typography Colors */
+  --hfc-text-primary: #f5f7fa;        /* Clean high-contrast white text */
+  --hfc-text-secondary: #b7bdc6;      /* Medium contrast slate-silver */
+  --hfc-text-muted: #6f7682;          /* Low contrast gray for secondary metadata */
+  --hfc-text-accent: #00f2fe;         /* Brand cyan highlighted text */
+
+  /* Branding & Accents */
+  --hfc-primary: #00f2fe;             /* Electric Neon Cyan (Main brand color) */
+  --hfc-primary-rgb: 0, 242, 254;
+  --hfc-primary-hover: #00b8d4;       /* Slightly deeper cyber-cyan on hover */
+  --hfc-secondary: #4f5b66;           /* Soft steel-gray secondary accent */
+  --hfc-secondary-rgb: 79, 91, 102;
+  --hfc-secondary-hover: #616e7a;
+  --hfc-accent: #7928ca;              /* Royal Violet accent for tech depth */
+  --hfc-accent-rgb: 121, 40, 202;
+  --hfc-accent-gold: #f0b90b;         /* Gold accent (for currency/premium icons) */
+  --hfc-accent-gold-rgb: 240, 185, 11;
+  
+  /* Semantics & Status (Exchange Standards) */
+  --hfc-success: #0ecb81;             /* Bullish Emerald Green */
+  --hfc-success-rgb: 14, 203, 129;
+  --hfc-success-hover: #0bb371;
+  --hfc-warning: #f3ba2f;             /* Pending Amber */
+  --hfc-warning-rgb: 243, 186, 47;
+  --hfc-danger: #f6465d;              /* Bearish Red / Fire Alert */
+  --hfc-danger-rgb: 246, 70, 93;
+  --hfc-danger-hover: #e03b51;
+  --hfc-info: #02a1fc;                /* Announcement Blue */
+  --hfc-info-rgb: 2, 161, 252;
+  
+  /* Disabled State Colors */
+  --hfc-disabled-bg: rgba(255, 255, 255, 0.04);
+  --hfc-disabled-text: #4a505a;
+  --hfc-disabled-border: rgba(255, 255, 255, 0.03);
+
+  /* Glassmorphism Settings */
+  --hfc-glass-blur: 16px;
+  --hfc-glass-blur-sm: 8px;
+  --hfc-glass-noise: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.02) 0%, transparent 100%);
+  
+  /* Glow Shadows */
+  --hfc-glow-primary: rgba(0, 242, 254, 0.2);
+  --hfc-glow-success: rgba(14, 203, 129, 0.15);
+  --hfc-glow-danger: rgba(246, 70, 93, 0.15);
+  --hfc-glow-accent: rgba(121, 40, 202, 0.15);
+
+  /* ==========================================================================
+     TYPOGRAPHY TOKENS
+     ========================================================================== */
+  --hfc-font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --hfc-font-display: 'Space Grotesk', system-ui, sans-serif;
+  --hfc-font-mono: 'JetBrains Mono', monospace;
+
+  /* Font Sizes */
+  --hfc-fs-xs: 0.75rem;     /* 12px */
+  --hfc-fs-sm: 0.875rem;    /* 14px */
+  --hfc-fs-base: 1rem;      /* 16px */
+  --hfc-fs-lg: 1.125rem;    /* 18px */
+  --hfc-fs-xl: 1.25rem;     /* 20px */
+  --hfc-fs-2xl: 1.5rem;     /* 24px */
+  --hfc-fs-3xl: 1.875rem;    /* 30px */
+  --hfc-fs-4xl: 2.25rem;     /* 36px */
+  --hfc-fs-5xl: 3rem;        /* 48px */
+  
+  /* Font Weights */
+  --hfc-fw-light: 300;
+  --hfc-fw-regular: 400;
+  --hfc-fw-medium: 500;
+  --hfc-fw-semibold: 600;
+  --hfc-fw-bold: 700;
+
+  /* Line Heights */
+  --hfc-lh-tight: 1.2;
+  --hfc-lh-snug: 1.35;
+  --hfc-lh-normal: 1.5;
+  --hfc-lh-relaxed: 1.625;
+
+  /* ==========================================================================
+     SPACING, BORDERS & SHADOW TOKENS
+     ========================================================================== */
+  /* Border Radii */
+  --hfc-radius-xs: 4px;
+  --hfc-radius-sm: 8px;
+  --hfc-radius-md: 12px;
+  --hfc-radius-lg: 16px;
+  --hfc-radius-xl: 24px;
+  --hfc-radius-pill: 9999px;
+
+  /* Spacing Scale (Rem-based) */
+  --hfc-space-xs: 0.25rem;   /* 4px */
+  --hfc-space-sm: 0.5rem;    /* 8px */
+  --hfc-space-md: 0.75rem;   /* 12px */
+  --hfc-space-lg: 1rem;      /* 16px */
+  --hfc-space-xl: 1.5rem;     /* 24px */
+  --hfc-space-2xl: 2rem;     /* 32px */
+  --hfc-space-3xl: 3rem;     /* 48px */
+  --hfc-space-4xl: 4rem;     /* 64px */
+
+  /* Advanced Shadow Profiles */
+  --hfc-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --hfc-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.55), 0 0 1px rgba(255, 255, 255, 0.05);
+  --hfc-shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.7), 0 0 1px rgba(255, 255, 255, 0.08);
+  --hfc-shadow-glow: 0 0 15px var(--hfc-glow-primary);
+  --hfc-shadow-glow-success: 0 0 15px var(--hfc-glow-success);
+  --hfc-shadow-glow-danger: 0 0 15px var(--hfc-glow-danger);
+
+  /* Transitions */
+  --hfc-transition-fast: 0.15s ease;
+  --hfc-transition-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --hfc-transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Layout Sizing Defaults */
+  --hfc-navbar-height: 70px;
+  --hfc-sidebar-width: 260px;
+  --hfc-sidebar-collapsed-width: 80px;
+}
+
+/* ==========================================================================
+   GLOBAL BASE STYLING
+   ========================================================================== */
+body {
+  font-family: var(--hfc-font-sans);
+  font-size: var(--hfc-fs-base);
+  font-weight: var(--hfc-fw-regular);
+  line-height: var(--hfc-lh-normal);
+  color: var(--hfc-text-primary);
+  background-color: var(--hfc-bg);
+  background-image: var(--hfc-glass-noise);
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Selection Style */
+::selection {
+  background-color: rgba(0, 242, 254, 0.25);
+  color: var(--hfc-primary);
+}
+
+/* Slim Premium Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--hfc-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: var(--hfc-radius-pill);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--hfc-primary);
+}

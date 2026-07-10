@@ -1,0 +1,1 @@
+This directory is reserved for general design files, backup templates, Figma exports, or localized layout assets.

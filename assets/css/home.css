@@ -1,0 +1,542 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ * 
+ * HFC Exchange - Landing (Home) Page Stylesheet
+ * Integrates glassmorphism, glowing accents, premium dark-theme typography,
+ * and micro-interactions optimized for responsive screens.
+ */
+
+/* ==========================================================================
+   LANDING PAGE HERO SECTION
+   ========================================================================== */
+.home-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 72px;
+  background: rgba(13, 17, 23, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--hfc-border-color);
+  z-index: 1000;
+  transition: background-color var(--hfc-transition-normal), border-color var(--hfc-transition-normal);
+}
+
+.home-navbar.scrolled {
+  background: rgba(13, 17, 23, 0.9);
+  border-color: rgba(0, 242, 254, 0.15);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+}
+
+.nav-link-hfc {
+  font-family: var(--hfc-font-display);
+  font-size: var(--hfc-fs-sm);
+  font-weight: var(--hfc-fw-medium);
+  color: var(--hfc-text-secondary);
+  transition: color var(--hfc-transition-fast), text-shadow var(--hfc-transition-fast);
+  text-decoration: none;
+}
+
+.nav-link-hfc:hover,
+.nav-link-hfc.active {
+  color: var(--hfc-primary);
+  text-shadow: 0 0 8px rgba(0, 242, 254, 0.4);
+}
+
+/* Hero Section Base */
+.hero-wrapper {
+  position: relative;
+  min-height: 100vh;
+  padding-top: 120px;
+  padding-bottom: 80px;
+  background-color: var(--hfc-bg);
+  background-image: var(--hfc-glass-noise);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Futuristic Ambient Orbs */
+.hero-orb-primary {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(0, 242, 254, 0.1) 0%, transparent 70%);
+  top: -100px;
+  right: -50px;
+  pointer-events: none;
+  z-index: 1;
+  animation: hfcOrbFloat 12s infinite ease-in-out;
+}
+
+.hero-orb-secondary {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(121, 40, 202, 0.08) 0%, transparent 70%);
+  bottom: -150px;
+  left: -100px;
+  pointer-events: none;
+  z-index: 1;
+  animation: hfcOrbFloat 16s infinite ease-in-out alternate;
+}
+
+@keyframes hfcOrbFloat {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(30px, -20px) scale(1.08);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+/* Headline and text styling */
+.hero-title {
+  font-family: var(--hfc-font-display);
+  font-weight: var(--hfc-fw-bold);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--hfc-text-primary);
+}
+
+.hero-subtitle {
+  font-size: var(--hfc-fs-md);
+  color: var(--hfc-text-secondary);
+  line-height: var(--hfc-lh-relaxed);
+  max-width: 540px;
+}
+
+/* Professional Crypto Illustration area */
+.hero-illustration-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.hero-illustration-glass {
+  width: 100%;
+  max-width: 460px;
+  aspect-ratio: 1;
+  background: radial-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.01) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 40px;
+  box-shadow: var(--hfc-shadow-lg), 0 0 30px rgba(0, 242, 254, 0.03);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  animation: hfcIllustrationEnter 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes hfcIllustrationEnter {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Floating crypto tokens */
+.floating-token {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--hfc-radius-md);
+  padding: var(--hfc-space-md);
+  box-shadow: var(--hfc-shadow-md);
+  display: flex;
+  align-items: center;
+  gap: var(--hfc-space-sm);
+  z-index: 5;
+  transition: transform var(--hfc-transition-normal), border-color var(--hfc-transition-normal);
+}
+
+.floating-token:hover {
+  transform: translateY(-5px) scale(1.03);
+  border-color: var(--hfc-primary);
+  box-shadow: 0 5px 15px rgba(0, 242, 254, 0.15);
+}
+
+.token-hfc {
+  top: 15%;
+  left: -20px;
+  animation: hfcFloatY 6s infinite ease-in-out;
+}
+
+.token-btc {
+  bottom: 25%;
+  right: -30px;
+  animation: hfcFloatY 8s infinite ease-in-out alternate;
+}
+
+.token-pkr {
+  bottom: 12%;
+  left: 10%;
+  animation: hfcFloatY 7s infinite ease-in-out 1s;
+}
+
+@keyframes hfcFloatY {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+/* Vector style crypto visualization */
+.visual-nodes-net {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.visual-node-center {
+  width: 90px;
+  height: 90px;
+  background: radial-gradient(circle, var(--hfc-primary) 0%, rgba(0, 242, 254, 0.3) 100%);
+  border-radius: var(--hfc-radius-pill);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #080a0e;
+  font-size: 2.2rem;
+  box-shadow: 0 0 35px rgba(0, 242, 254, 0.6);
+  z-index: 10;
+  animation: hfcPulseGlow 3s infinite ease-in-out;
+}
+
+@keyframes hfcPulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 25px rgba(0, 242, 254, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 45px rgba(0, 242, 254, 0.8), 0 0 20px rgba(121, 40, 202, 0.4);
+    transform: scale(1.05);
+  }
+}
+
+/* Connectors Orbit animation */
+.orbit-ring {
+  position: absolute;
+  border: 1px dashed rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.ring-inner {
+  width: 170px;
+  height: 170px;
+  animation: hfcRotate 20s linear infinite;
+}
+
+.ring-outer {
+  width: 260px;
+  height: 260px;
+  animation: hfcRotate 35s linear infinite reverse;
+}
+
+@keyframes hfcRotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==========================================================================
+   LIVE MARKET CARDS
+   ========================================================================== */
+.market-card {
+  background: var(--hfc-card-bg);
+  backdrop-filter: blur(var(--hfc-glass-blur));
+  -webkit-backdrop-filter: blur(var(--hfc-glass-blur));
+  border: 1px solid var(--hfc-border-color);
+  border-radius: var(--hfc-radius-md);
+  padding: var(--hfc-space-lg);
+  transition: all var(--hfc-transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.market-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--hfc-border-hover), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.market-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--hfc-border-hover);
+  box-shadow: 0 10px 25px rgba(0, 242, 254, 0.06), var(--hfc-shadow-glow);
+}
+
+.market-card:hover::before {
+  transform: translateX(100%);
+}
+
+.coin-icon-wrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--hfc-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.coin-icon-hfc {
+  color: var(--hfc-primary);
+  text-shadow: 0 0 10px rgba(0, 242, 254, 0.4);
+}
+
+.coin-icon-btc {
+  color: #f3ba2f;
+  text-shadow: 0 0 10px rgba(243, 186, 47, 0.4);
+}
+
+.coin-icon-eth {
+  color: #627eea;
+  text-shadow: 0 0 10px rgba(98, 126, 234, 0.4);
+}
+
+.coin-icon-usdt {
+  color: #26a17b;
+  text-shadow: 0 0 10px rgba(38, 161, 123, 0.4);
+}
+
+/* ==========================================================================
+   WHY CHOOSE HFC (FEATURE CARDS)
+   ========================================================================== */
+.feature-card {
+  background: rgba(255, 255, 255, 0.01);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--hfc-border-color);
+  border-radius: var(--hfc-radius-md);
+  padding: var(--hfc-space-xl);
+  transition: all var(--hfc-transition-normal);
+  height: 100%;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.02);
+  border-color: var(--hfc-primary-hover);
+  box-shadow: 0 8px 30px rgba(0, 242, 254, 0.04);
+}
+
+.feature-icon-wrapper {
+  width: 56px;
+  height: 56px;
+  background: radial-gradient(circle, rgba(0, 242, 254, 0.08) 0%, rgba(0, 242, 254, 0.01) 100%);
+  border: 1px solid rgba(0, 242, 254, 0.15);
+  border-radius: var(--hfc-radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--hfc-primary);
+  font-size: 1.6rem;
+  margin-bottom: var(--hfc-space-lg);
+  transition: transform var(--hfc-transition-normal);
+}
+
+.feature-card:hover .feature-icon-wrapper {
+  transform: scale(1.1) rotate(5deg);
+  background: radial-gradient(circle, rgba(0, 242, 254, 0.15) 0%, rgba(0, 242, 254, 0.03) 100%);
+  border-color: var(--hfc-primary);
+  box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
+}
+
+/* ==========================================================================
+   HOW IT WORKS (STEPS)
+   ========================================================================== */
+.step-card {
+  position: relative;
+  background: var(--hfc-card-bg);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--hfc-border-color);
+  border-radius: var(--hfc-radius-md);
+  padding: var(--hfc-space-xl) var(--hfc-space-lg);
+  height: 100%;
+  transition: all var(--hfc-transition-normal);
+}
+
+.step-card:hover {
+  border-color: rgba(121, 40, 202, 0.4);
+  background: rgba(255, 255, 255, 0.02);
+  transform: translateY(-3px);
+}
+
+.step-number-badge {
+  position: absolute;
+  top: -15px;
+  left: 25px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--hfc-accent);
+  color: #fff;
+  font-family: var(--hfc-font-display);
+  font-size: var(--hfc-fs-sm);
+  font-weight: var(--hfc-fw-bold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(121, 40, 202, 0.5);
+}
+
+/* ==========================================================================
+   TESTIMONIAL CARDS
+   ========================================================================== */
+.testimonial-card {
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid var(--hfc-border-color);
+  border-radius: var(--hfc-radius-md);
+  padding: var(--hfc-space-xl);
+  height: 100%;
+  transition: border-color var(--hfc-transition-normal);
+}
+
+.testimonial-card:hover {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.avatar-placeholder {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--hfc-primary) 0%, var(--hfc-accent) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #080a0e;
+  font-weight: var(--hfc-fw-bold);
+  font-size: var(--hfc-fs-sm);
+}
+
+/* ==========================================================================
+   FAQ ACCORDION GLASS OVERRIDE
+   ========================================================================== */
+.accordion-glass .accordion-item {
+  background: rgba(255, 255, 255, 0.01) !important;
+  border: 1px solid var(--hfc-border-color) !important;
+  border-radius: var(--hfc-radius-md) !important;
+  margin-bottom: var(--hfc-space-md);
+  overflow: hidden;
+  transition: all var(--hfc-transition-normal);
+}
+
+.accordion-glass .accordion-item:hover {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.accordion-glass .accordion-button {
+  background: transparent !important;
+  color: var(--hfc-text-primary) !important;
+  font-family: var(--hfc-font-display);
+  font-weight: var(--hfc-fw-semibold);
+  font-size: var(--hfc-fs-base);
+  padding: var(--hfc-space-lg);
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.accordion-glass .accordion-button:not(.collapsed) {
+  color: var(--hfc-primary) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+}
+
+.accordion-glass .accordion-button::after {
+  filter: invert(1) grayscale(1) brightness(2);
+}
+
+.accordion-glass .accordion-body {
+  color: var(--hfc-text-secondary);
+  font-size: var(--hfc-fs-sm);
+  line-height: var(--hfc-lh-relaxed);
+  padding: var(--hfc-space-lg);
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================================================================
+   CALL TO ACTION (CTA) AREA
+   ========================================================================== */
+.cta-glass-banner {
+  background: linear-gradient(135deg, rgba(13, 17, 23, 0.8) 0%, rgba(121, 40, 202, 0.08) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--hfc-radius-lg);
+  padding: var(--hfc-space-3xl) var(--hfc-space-xl);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--hfc-shadow-lg);
+}
+
+.cta-glass-banner::after {
+  content: '';
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(0, 242, 254, 0.08) 0%, transparent 75%);
+  bottom: -50px;
+  right: -50px;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   RESPONSIVE LAYOUT ADJUSTMENTS
+   ========================================================================== */
+@media (max-width: 991.98px) {
+  .hero-title {
+    font-size: 2.8rem;
+  }
+  .hero-illustration-glass {
+    max-width: 360px;
+    margin-top: var(--hfc-space-2xl);
+  }
+  .floating-token {
+    padding: var(--hfc-space-sm);
+  }
+}
+
+@media (max-width: 575.98px) {
+  .hero-title {
+    font-size: 2.2rem;
+  }
+  .hero-subtitle {
+    font-size: var(--hfc-fs-sm);
+  }
+  .cta-glass-banner {
+    padding: var(--hfc-space-2xl) var(--hfc-space-lg);
+  }
+  .floating-token span {
+    display: none;
+  }
+}

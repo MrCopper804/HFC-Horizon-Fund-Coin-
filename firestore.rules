@@ -1,0 +1,154 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // 1. Global Safety Net (Pillar 1)
+    match /{document=**} {
+      allow read, write: if false;
+    }
+    
+    // =========================================================================
+    // Core Helper Functions (Pillar 3)
+    // =========================================================================
+    
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    
+    function isEmailVerified() {
+      return isSignedIn() && request.auth.token.email_verified == true;
+    }
+    
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+    
+    function isAdmin() {
+      return isSignedIn() && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+    
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+    
+    function incoming() {
+      return request.resource.data;
+    }
+    
+    function existing() {
+      return resource.data;
+    }
+
+    // =========================================================================
+    // Schema Validations (Pillar 2)
+    // =========================================================================
+    
+    function isValidUser(data) {
+      return data.uid == request.auth.uid 
+        && data.email is string
+        && data.displayName is string && data.displayName.size() <= 100
+        && data.photoURL is string && data.photoURL.size() <= 500
+        && data.isAdmin is bool
+        && (data.preferredCurrency == 'USD' || data.preferredCurrency == 'EUR' || data.preferredCurrency == 'GBP' || data.preferredCurrency == 'JPY' || data.preferredCurrency == 'BTC' || data.preferredCurrency == 'ETH' || data.preferredCurrency == 'PKR')
+        && data.createdAt == request.time
+        && data.updatedAt == request.time
+        && data.fullName is string && data.fullName.size() <= 100
+        && data.username is string && data.username.size() <= 30
+        && data.phone is string && data.phone.size() <= 30
+        && (data.role == 'user' || data.role == 'admin' || data.role == 'moderator')
+        && data.status == 'active'
+        && (data.lastLogin == null || data.lastLogin is timestamp)
+        && data.profileImage is string && data.profileImage.size() <= 500
+        && data.notificationEnabled is bool
+        && data.theme == 'dark'
+        && data.language == 'English'
+        && data.currency == 'PKR';
+    }
+    
+    function isValidWallet(data) {
+      return data.walletId is string && data.walletId.size() <= 128
+        && data.ownerId == request.auth.uid
+        && (data.currency == 'BTC' || data.currency == 'ETH' || data.currency == 'USDT' || data.currency == 'SOL' || data.currency == 'USD' || data.currency == 'PKR')
+        && data.balance is number
+        && data.address is string && data.address.size() <= 128
+        && data.createdAt == request.time
+        && data.updatedAt == request.time;
+    }
+    
+    function isValidTransaction(data) {
+      return data.txId is string && data.txId.size() <= 128
+        && data.userId == request.auth.uid
+        && (data.type == 'deposit' || data.type == 'withdrawal' || data.type == 'buy' || data.type == 'sell' || data.type == 'swap')
+        && data.amount is number
+        && data.currency is string
+        && (data.status == 'pending' || data.status == 'completed' || data.status == 'failed' || data.status == 'cancelled')
+        && data.txHash is string && data.txHash.size() <= 128
+        && data.createdAt == request.time
+        && data.updatedAt == request.time;
+    }
+
+    // =========================================================================
+    // Collection Path Rules (Pillar 4-8)
+    // =========================================================================
+    
+    // User Collection Rules
+    match /users/{userId} {
+      allow get: if isOwner(userId) || isAdmin();
+      allow list: if isSignedIn() && (resource.data.uid == request.auth.uid || resource.data.username is string);
+      allow create: if isOwner(userId) && isValidUser(incoming());
+      allow update: if isOwner(userId) 
+        && incoming().uid == existing().uid
+        && incoming().email == existing().email
+        && incoming().createdAt == existing().createdAt
+        && incoming().updatedAt == request.time
+        && (
+          incoming().diff(existing()).affectedKeys().hasOnly(['displayName', 'photoURL', 'preferredCurrency', 'updatedAt'])
+        );
+      allow delete: if isAdmin();
+    }
+    
+    // Admin Directory Roles (Read-Only to Authenticated Clients)
+    match /admins/{adminId} {
+      allow read: if isSignedIn();
+      allow write: if false; // Block client writes completely. Managed only via GCP server sdk or console.
+    }
+    
+    // Wallet Balance Rules
+    match /wallets/{walletId} {
+      allow get: if isSignedIn() && (resource.data.ownerId == request.auth.uid || isAdmin());
+      allow list: if isSignedIn() && resource.data.ownerId == request.auth.uid;
+      allow create: if isSignedIn() && isValidWallet(incoming());
+      allow update: if isSignedIn() 
+        && existing().ownerId == request.auth.uid
+        && incoming().ownerId == existing().ownerId
+        && incoming().walletId == existing().walletId
+        && incoming().currency == existing().currency
+        && incoming().createdAt == existing().createdAt
+        && incoming().updatedAt == request.time
+        && (
+          incoming().diff(existing()).affectedKeys().hasOnly(['balance', 'address', 'updatedAt'])
+        );
+      allow delete: if isAdmin();
+    }
+    
+    // Transaction History Rules
+    match /transactions/{transactionId} {
+      allow get: if isSignedIn() && (resource.data.userId == request.auth.uid || isAdmin());
+      allow list: if isSignedIn() && resource.data.userId == request.auth.uid;
+      allow create: if isSignedIn() && isValidTransaction(incoming());
+      allow update: if isSignedIn() 
+        && existing().userId == request.auth.uid
+        && incoming().userId == existing().userId
+        && incoming().txId == existing().txId
+        && incoming().createdAt == existing().createdAt
+        && incoming().updatedAt == request.time
+        && (
+          // Action: Cancel (only allowed if status is currently pending)
+          existing().status == 'pending'
+          && incoming().diff(existing()).affectedKeys().hasOnly(['status', 'updatedAt'])
+          && incoming().status == 'cancelled'
+        );
+      allow delete: if isAdmin();
+    }
+  }
+}

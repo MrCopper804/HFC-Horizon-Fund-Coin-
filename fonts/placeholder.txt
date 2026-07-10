@@ -1,0 +1,1 @@
+This directory is reserved for local backup copies of web font files (e.g., .woff, .woff2, .ttf) like Inter or Space Grotesk to guarantee offline compatibility or faster local load speeds.

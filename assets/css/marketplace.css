@@ -1,0 +1,313 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ * 
+ * HFC Exchange - Marketplace Page Custom Stylesheet
+ * Custom UI modules, glassmorphic filters, responsive listings, status badges, and action matrices.
+ */
+
+/* Grid and Card Layouts */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--hfc-space-xl);
+  margin-bottom: var(--hfc-space-2xl);
+}
+
+@media (max-width: 1200px) {
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Metric Card Elements */
+.metric-card {
+  transition: transform var(--hfc-transition-normal), border-color var(--hfc-transition-normal), box-shadow var(--hfc-transition-normal);
+  cursor: default;
+}
+
+.metric-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--hfc-border-hover);
+  box-shadow: var(--hfc-shadow-lg), var(--hfc-shadow-glow);
+}
+
+/* Glass Filter Panel */
+.filter-panel {
+  background: var(--hfc-card-bg);
+  backdrop-filter: blur(var(--hfc-glass-blur));
+  -webkit-backdrop-filter: blur(var(--hfc-glass-blur));
+  border: 1px solid var(--hfc-border-color);
+  border-radius: var(--hfc-radius-md);
+  padding: var(--hfc-space-lg);
+  margin-bottom: var(--hfc-space-xl);
+}
+
+/* Custom HFC Controls */
+.hfc-select, .hfc-input {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--hfc-border-color);
+  color: var(--hfc-text-primary) !important;
+  border-radius: var(--hfc-radius-sm);
+  padding: 0.5rem 0.75rem;
+  font-size: var(--hfc-fs-sm);
+  transition: border-color var(--hfc-transition-fast), box-shadow var(--hfc-transition-fast);
+}
+
+.hfc-select:focus, .hfc-input:focus {
+  border-color: var(--hfc-border-focus);
+  box-shadow: 0 0 0 2px rgba(0, 242, 254, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  outline: none;
+}
+
+.hfc-select option {
+  background-color: var(--hfc-surface-solid);
+  color: var(--hfc-text-primary);
+}
+
+/* Dynamic Tab Group */
+.hfc-tabs {
+  display: flex;
+  gap: var(--hfc-space-md);
+  border-bottom: 1px solid var(--hfc-border-color);
+  padding-bottom: 2px;
+  margin-bottom: var(--hfc-space-lg);
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.hfc-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.hfc-tab-btn {
+  font-family: var(--hfc-font-display);
+  font-size: var(--hfc-fs-sm);
+  font-weight: var(--hfc-fw-medium);
+  color: var(--hfc-text-secondary);
+  background: none;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-bottom: 2px solid transparent;
+  transition: color var(--hfc-transition-fast), border-color var(--hfc-transition-fast);
+  cursor: pointer;
+}
+
+.hfc-tab-btn:hover {
+  color: var(--hfc-text-primary);
+}
+
+.hfc-tab-btn.active {
+  color: var(--hfc-primary);
+  border-bottom-color: var(--hfc-primary);
+  text-shadow: 0 0 8px rgba(0, 242, 254, 0.3);
+}
+
+/* Status Badges */
+.status-badge {
+  font-family: var(--hfc-font-display);
+  font-size: 0.7rem;
+  font-weight: var(--hfc-fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--hfc-radius-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.status-active {
+  background-color: rgba(14, 203, 129, 0.12);
+  color: var(--hfc-success);
+  border: 1px solid rgba(14, 203, 129, 0.2);
+}
+
+.status-negotiating {
+  background-color: rgba(2, 161, 252, 0.12);
+  color: var(--hfc-info);
+  border: 1px solid rgba(2, 161, 252, 0.2);
+}
+
+.status-locked {
+  background-color: rgba(243, 186, 47, 0.12);
+  color: var(--hfc-warning);
+  border: 1px solid rgba(243, 186, 47, 0.2);
+}
+
+.status-completed {
+  background-color: rgba(121, 40, 202, 0.12);
+  color: var(--hfc-accent);
+  border: 1px solid rgba(121, 40, 202, 0.2);
+}
+
+.status-cancelled {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--hfc-text-muted);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Coin Logo Badge */
+.coin-logo-badge {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.75rem;
+  color: var(--hfc-text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* User Profile Badge */
+.creator-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--hfc-font-mono);
+  font-size: var(--hfc-fs-xs);
+  color: var(--hfc-text-secondary);
+}
+
+.creator-avatar {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(0, 242, 254, 0.15);
+  color: var(--hfc-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  font-weight: bold;
+}
+
+/* Actions Matrix styling */
+.action-icon-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--hfc-radius-sm);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--hfc-border-color);
+  color: var(--hfc-text-secondary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--hfc-transition-fast);
+  cursor: pointer;
+}
+
+.action-icon-btn:hover {
+  background: rgba(0, 242, 254, 0.1);
+  border-color: var(--hfc-primary);
+  color: var(--hfc-primary);
+  transform: translateY(-1px);
+}
+
+.action-icon-btn.btn-danger-hover:hover {
+  background: rgba(246, 70, 93, 0.1);
+  border-color: var(--hfc-danger);
+  color: var(--hfc-danger);
+}
+
+/* Custom Table Glass */
+.table-glass {
+  border-collapse: separate;
+  border-spacing: 0 var(--hfc-space-md);
+}
+
+.table-glass tbody tr {
+  background: rgba(22, 28, 38, 0.25);
+  backdrop-filter: blur(var(--hfc-glass-blur-sm));
+  -webkit-backdrop-filter: blur(var(--hfc-glass-blur-sm));
+  border: 1px solid var(--hfc-border-color);
+  transition: all var(--hfc-transition-fast);
+}
+
+.table-glass tbody tr:hover {
+  background: rgba(26, 33, 45, 0.5);
+  border-color: rgba(0, 242, 254, 0.2);
+  transform: translateX(2px);
+}
+
+.table-glass th {
+  font-family: var(--hfc-font-display);
+  font-size: var(--hfc-fs-xs);
+  font-weight: var(--hfc-fw-bold);
+  color: var(--hfc-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.75rem 1rem;
+  border: none;
+}
+
+.table-glass td {
+  padding: 1rem;
+  border-top: 1px solid var(--hfc-border-color);
+  border-bottom: 1px solid var(--hfc-border-color);
+  color: var(--hfc-text-primary);
+  vertical-align: middle;
+}
+
+.table-glass td:first-child {
+  border-left: 1px solid var(--hfc-border-color);
+  border-top-left-radius: var(--hfc-radius-sm);
+  border-bottom-left-radius: var(--hfc-radius-sm);
+}
+
+.table-glass td:last-child {
+  border-right: 1px solid var(--hfc-border-color);
+  border-top-right-radius: var(--hfc-radius-sm);
+  border-bottom-right-radius: var(--hfc-radius-sm);
+}
+
+/* Custom Badge Pill for Sell/Buy Type */
+.type-badge {
+  font-family: var(--hfc-font-display);
+  font-size: 0.75rem;
+  font-weight: var(--hfc-fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.type-buy {
+  color: var(--hfc-success);
+  background: rgba(14, 203, 129, 0.1);
+  border: 1px solid rgba(14, 203, 129, 0.15);
+}
+
+.type-sell {
+  color: var(--hfc-danger);
+  background: rgba(246, 70, 93, 0.1);
+  border: 1px solid rgba(246, 70, 93, 0.15);
+}
+
+/* Modal form designs */
+.modal-form-label {
+  font-family: var(--hfc-font-display);
+  font-size: var(--hfc-fs-xs);
+  font-weight: var(--hfc-fw-bold);
+  color: var(--hfc-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.35rem;
+}
+
+/* Sparklines on marketplace */
+.mini-chart {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}

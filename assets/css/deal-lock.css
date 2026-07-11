@@ -1,0 +1,195 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ * 
+ * HFC Exchange - Deal Lock & Trade Execution Stylesheet
+ * Contains visual styling for the final double confirmation board,
+ * ledger balance status, hold system trackers, atomic audits, and glassmorphic receipts.
+ */
+
+.deal-lock-container {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: var(--hfc-space-xl);
+  align-items: start;
+}
+
+@media (max-width: 991px) {
+  .deal-lock-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Glassmorphic Board Styling */
+.deal-board-card {
+  background: var(--hfc-card-bg);
+  backdrop-filter: blur(var(--hfc-glass-blur));
+  -webkit-backdrop-filter: blur(var(--hfc-glass-blur));
+  border: 1px solid var(--hfc-border-color);
+  border-radius: var(--hfc-radius-md);
+  padding: var(--hfc-space-xl);
+  margin-bottom: var(--hfc-space-xl);
+  position: relative;
+  overflow: hidden;
+}
+
+.deal-board-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #00f2fe, #4facfe);
+}
+
+.deal-board-card.danger-edge::before {
+  background: linear-gradient(90deg, #ff416c, #ff4b2b);
+}
+
+.deal-board-card.success-edge::before {
+  background: linear-gradient(90deg, #00b09b, #96c93d);
+}
+
+/* Receipt Grid Elements */
+.receipt-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--hfc-space-md);
+}
+
+@media (max-width: 576px) {
+  .receipt-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.receipt-item {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: var(--hfc-radius-sm);
+  padding: var(--hfc-space-md);
+}
+
+.receipt-item-label {
+  font-size: 10px;
+  color: var(--hfc-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: var(--hfc-font-sans);
+  margin-bottom: 4px;
+}
+
+.receipt-item-value {
+  font-size: var(--hfc-fs-sm);
+  color: var(--hfc-text-primary);
+  font-weight: var(--hfc-fw-semibold);
+  word-break: break-all;
+}
+
+.receipt-item-value.mono {
+  font-family: var(--hfc-font-mono);
+}
+
+/* Wallet Balances Hold Block */
+.hold-balance-card {
+  background: rgba(15, 23, 42, 0.4);
+  border: 1px solid rgba(255, 193, 7, 0.15);
+  border-radius: var(--hfc-radius-md);
+  padding: var(--hfc-space-lg);
+}
+
+.hold-balance-card.locked {
+  border-color: rgba(0, 242, 254, 0.25);
+  background: rgba(0, 242, 254, 0.02);
+}
+
+/* Double signature state graphics */
+.signature-track-wrapper {
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid var(--hfc-border-color);
+  border-radius: var(--hfc-radius-md);
+  padding: var(--hfc-space-lg);
+}
+
+.sig-pill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--hfc-space-md) var(--hfc-space-lg);
+  border-radius: var(--hfc-radius-sm);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  font-family: var(--hfc-font-mono);
+  font-size: var(--hfc-fs-xs);
+}
+
+.sig-pill.signed {
+  border-color: rgba(40, 167, 69, 0.2);
+  background: rgba(40, 167, 69, 0.05);
+  color: #28a745;
+}
+
+.sig-pill.pending {
+  border-color: rgba(255, 193, 7, 0.2);
+  background: rgba(255, 193, 7, 0.05);
+  color: #ffc107;
+}
+
+/* Checklist indicators */
+.checklist-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--hfc-space-sm);
+  font-size: var(--hfc-fs-xs);
+  color: var(--hfc-text-secondary);
+  line-height: 1.4;
+}
+
+.checklist-item i {
+  font-size: var(--hfc-fs-sm);
+  margin-top: 1px;
+}
+
+.checklist-item.checked {
+  color: var(--hfc-text-primary);
+}
+
+.checklist-item.checked i {
+  color: #28a745;
+}
+
+/* Glow effects and animation */
+.text-glow-success {
+  text-shadow: 0 0 10px rgba(40, 167, 69, 0.4);
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--hfc-font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+.status-badge.status-completed {
+  background: rgba(40, 167, 69, 0.1);
+  color: #28a745;
+  border: 1px solid rgba(40, 167, 69, 0.2);
+}
+
+.status-badge.status-open {
+  background: rgba(255, 193, 7, 0.1);
+  color: #ffc107;
+  border: 1px solid rgba(255, 193, 7, 0.2);
+}
+
+.status-badge.status-cancelled {
+  background: rgba(220, 53, 69, 0.1);
+  color: #dc3545;
+  border: 1px solid rgba(220, 53, 69, 0.2);
+}

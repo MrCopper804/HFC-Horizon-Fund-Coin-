@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  HFC Exchange - Production Search Index Sitemap (sitemap.xml)
+  Provides Google, Bing, and DuckDuckGo crawlers with strict index paths.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- 1. Landing Portal (Home) -->
+  <url>
+    <loc>https://hfc-exchange.github.io/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.00</priority>
+  </url>
+  
+  <url>
+    <loc>https://hfc-exchange.github.io/index.html</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.00</priority>
+  </url>
+
+  <!-- 2. Secure P2P Escrow Marketplace -->
+  <url>
+    <loc>https://hfc-exchange.github.io/marketplace.html</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- 3. Client Sign-In Gateway -->
+  <url>
+    <loc>https://hfc-exchange.github.io/login.html</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- 4. Client Registration (Onboarding Node) -->
+  <url>
+    <loc>https://hfc-exchange.github.io/register.html</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- =========================================================================
+       5. FUTURE ROADMAP CHANNELS (Crawler Ready Placeholders)
+       ========================================================================= -->
+  <!-- About Platform Guild -->
+  <!-- 
+  <url>
+    <loc>https://hfc-exchange.github.io/about.html</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.60</priority>
+  </url>
+  -->
+
+  <!-- Operator Support Hub -->
+  <!-- 
+  <url>
+    <loc>https://hfc-exchange.github.io/support.html</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  -->
+
+  <!-- Peer Contact Terminal -->
+  <!-- 
+  <url>
+    <loc>https://hfc-exchange.github.io/contact.html</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+  </url>
+  -->
+</urlset>

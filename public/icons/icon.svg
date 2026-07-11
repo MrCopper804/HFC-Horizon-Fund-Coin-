@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Dark glassmorphic background gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d1117" />
+      <stop offset="100%" stop-color="#070a0e" />
+    </linearGradient>
+    <!-- Premium Neon Cyan/Teal brand gradient -->
+    <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f2fe" />
+      <stop offset="100%" stop-color="#4facfe" />
+    </linearGradient>
+    <!-- Soft glow filter -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="15" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background Base (Perfect for Maskable and Splash Screens) -->
+  <rect width="512" height="512" rx="112" fill="url(#bgGrad)" />
+
+  <!-- Outer Network Ring -->
+  <circle cx="256" cy="256" r="190" fill="none" stroke="url(#brandGrad)" stroke-width="4" stroke-opacity="0.15" stroke-dasharray="10, 15" />
+
+  <!-- Inner Glowing Ring -->
+  <circle cx="256" cy="256" r="140" fill="none" stroke="url(#brandGrad)" stroke-width="3" stroke-opacity="0.3" />
+
+  <!-- Glowing Core Hexagon representing Blockchain integrity -->
+  <path d="M 256 166 L 334 211 L 334 301 L 256 346 L 178 301 L 178 211 Z" fill="none" stroke="url(#brandGrad)" stroke-width="8" filter="url(#glow)" />
+
+  <!-- HFC Core Monogram / Icon Symbol (Double Arrows forming dynamic exchange network) -->
+  <g transform="translate(256, 256) scale(1.3)" filter="url(#glow)">
+    <!-- Right pointing cyan arrow -->
+    <path d="M-25, -12 L10, -12 L0, -22 L15, -12 L0, -2 L10, -12" fill="none" stroke="#00f2fe" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+    <!-- Left pointing light blue arrow -->
+    <path d="M25, 12 L-10, 12 L0, 22 L-15, 12 L0, 2 L-10, 12" fill="none" stroke="#4facfe" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+    <!-- Glowing center blockchain dot -->
+    <circle cx="0" cy="0" r="8" fill="#ffffff" filter="url(#glow)" />
+  </g>
+
+  <!-- Dynamic Network Nodes -->
+  <circle cx="256" cy="76" r="8" fill="#00f2fe" filter="url(#glow)" />
+  <circle cx="100" cy="346" r="6" fill="#4facfe" />
+  <circle cx="412" cy="346" r="6" fill="#00f2fe" />
+</svg>

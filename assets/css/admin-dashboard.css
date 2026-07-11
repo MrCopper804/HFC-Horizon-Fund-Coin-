@@ -1,0 +1,249 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ * 
+ * HFC Exchange - Admin Control Panel Custom Stylesheet
+ * Advanced glassmorphism theme, layout optimizations, and cybernetic admin glows.
+ */
+
+:root {
+  /* Customize admin page colors to lean slightly towards deep obsidian red/crimson for alert/control vibe */
+  --hfc-admin-glow-color: rgba(246, 70, 93, 0.15);
+  --hfc-admin-border-hover: rgba(246, 70, 93, 0.35);
+  --hfc-admin-primary-glow: 0 0 15px rgba(246, 70, 93, 0.2);
+}
+
+/* Page content optimization */
+.admin-page-header {
+  border-bottom: 1px solid var(--hfc-border-color);
+  padding-bottom: var(--hfc-space-md);
+  margin-bottom: var(--hfc-space-lg);
+}
+
+/* System Pulse Indicator for Firestore snapshot */
+.system-pulse-online {
+  width: 8px;
+  height: 8px;
+  background-color: var(--hfc-success);
+  box-shadow: 0 0 8px rgba(14, 203, 129, 0.8);
+  animation: adminStatusPulseSuccess 1.5s infinite ease-in-out;
+}
+
+@keyframes adminStatusPulseSuccess {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+    box-shadow: 0 0 4px rgba(14, 203, 129, 0.8);
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.5;
+    box-shadow: 0 0 12px rgba(14, 203, 129, 1);
+  }
+}
+
+/* Admin Grid Layouts */
+.admin-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--hfc-space-md);
+  margin-bottom: var(--hfc-space-xl);
+}
+
+@media (min-width: 1400px) {
+  .admin-summary-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+/* Admin Quick Action Cards Grid */
+.quick-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: var(--hfc-space-sm);
+}
+
+/* Glassmorphic Metrics Card */
+.admin-metric-card {
+  background: var(--hfc-card-bg);
+  backdrop-filter: blur(var(--hfc-glass-blur));
+  -webkit-backdrop-filter: blur(var(--hfc-glass-blur));
+  border: 1px solid var(--hfc-border-color);
+  border-radius: var(--hfc-radius-md);
+  padding: var(--hfc-space-md) var(--hfc-space-lg);
+  position: relative;
+  overflow: hidden;
+  transition: all var(--hfc-transition-normal);
+}
+
+.admin-metric-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(246, 70, 93, 0.25);
+  background: var(--hfc-card-hover-bg);
+  box-shadow: var(--hfc-admin-primary-glow);
+}
+
+.admin-metric-label {
+  font-family: var(--hfc-font-display);
+  font-size: var(--hfc-fs-xs);
+  font-weight: var(--hfc-fw-semibold);
+  color: var(--hfc-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--hfc-space-xs);
+}
+
+.admin-metric-value {
+  font-family: var(--hfc-font-sans);
+  font-size: var(--hfc-fs-xl);
+  font-weight: var(--hfc-fw-bold);
+  color: var(--hfc-text-primary);
+  letter-spacing: -0.02em;
+}
+
+.admin-metric-footer {
+  font-size: 0.7rem;
+  color: var(--hfc-text-muted);
+  margin-top: var(--hfc-space-xs);
+}
+
+/* Quick Action Buttons */
+.btn-quick-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--hfc-space-xs);
+  padding: var(--hfc-space-md);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--hfc-border-color);
+  border-radius: var(--hfc-radius-md);
+  color: var(--hfc-text-secondary);
+  font-size: var(--hfc-fs-xs);
+  font-family: var(--hfc-font-display);
+  font-weight: var(--hfc-fw-semibold);
+  text-align: center;
+  transition: all var(--hfc-transition-fast);
+  cursor: pointer;
+}
+
+.btn-quick-action i {
+  font-size: 1.35rem;
+  color: var(--hfc-text-muted);
+  transition: color var(--hfc-transition-fast), transform var(--hfc-transition-fast);
+}
+
+.btn-quick-action:hover {
+  background: rgba(246, 70, 93, 0.1);
+  border-color: rgba(246, 70, 93, 0.4);
+  color: var(--hfc-text-primary);
+  box-shadow: 0 4px 12px rgba(246, 70, 93, 0.12);
+}
+
+.btn-quick-action:hover i {
+  color: var(--hfc-danger);
+  transform: scale(1.1) translateY(-2px);
+}
+
+/* System Status List */
+.status-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--hfc-space-xs) 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.status-list-item:last-child {
+  border-bottom: none;
+}
+
+/* Form switch custom override for Admin mode */
+.form-check-input-admin:checked {
+  background-color: var(--hfc-danger) !important;
+  border-color: var(--hfc-danger) !important;
+}
+
+/* Table overrides for admin actions */
+.table-admin-actions .btn-hfc {
+  padding: 0.25rem 0.5rem !important;
+  font-size: 0.7rem !important;
+}
+
+/* Admin side badge definitions */
+.status-badge-pending_kyc {
+  color: var(--hfc-warning);
+  border-color: rgba(243, 186, 47, 0.2) !important;
+  background-color: rgba(243, 186, 47, 0.05) !important;
+}
+
+.status-badge-verified {
+  color: var(--hfc-success);
+  border-color: rgba(14, 203, 129, 0.2) !important;
+  background-color: rgba(14, 203, 129, 0.05) !important;
+}
+
+.status-badge-suspended {
+  color: var(--hfc-danger);
+  border-color: rgba(246, 70, 93, 0.2) !important;
+  background-color: rgba(246, 70, 93, 0.05) !important;
+}
+
+/* Admin notification items */
+.admin-notif-item {
+  position: relative;
+  padding: var(--hfc-space-sm);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--hfc-border-color);
+  border-radius: var(--hfc-radius-sm);
+  font-size: var(--hfc-fs-xs);
+  transition: all var(--hfc-transition-fast);
+}
+
+.admin-notif-item:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(246, 70, 93, 0.2);
+}
+
+/* Chart Canvas container heights to ensure no jumpy reflows */
+.chart-container-fixed {
+  position: relative;
+  height: 200px;
+  width: 100%;
+}
+
+/* Redefined custom borders for admin console */
+.admin-border-danger {
+  border-color: rgba(246, 70, 93, 0.18) !important;
+}
+
+/* Hover lift transitions */
+.hover-lift-subtle:hover {
+  transform: translateY(-2px);
+  transition: transform var(--hfc-transition-normal) ease;
+}
+
+/* Focus controls */
+.form-check-input:focus {
+  border-color: var(--hfc-danger);
+  box-shadow: 0 0 0 0.25rem rgba(246, 70, 93, 0.25);
+}
+
+/* Skeletons */
+.skeleton-box {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: var(--hfc-radius-xs);
+  animation: adminPulseSkeleton 1.6s infinite ease-in-out;
+}
+
+@keyframes adminPulseSkeleton {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.35;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}

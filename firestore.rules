@@ -2,33 +2,49 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     
-    // 1. Global Safety Net (Pillar 1)
+    // =========================================================================
+    // 1. GLOBAL SAFETY NET & ACCESS CONTROL
+    // =========================================================================
     match /{document=**} {
       allow read, write: if false;
     }
     
     // =========================================================================
-    // Core Helper Functions (Pillar 3)
+    // 2. CORE SECURITY & AUTHENTICATION UTILITIES
     // =========================================================================
-    
     function isSignedIn() {
       return request.auth != null;
-    }
-    
-    function isEmailVerified() {
-      return isSignedIn() && request.auth.token.email_verified == true;
     }
     
     function isOwner(userId) {
       return isSignedIn() && request.auth.uid == userId;
     }
     
-    function isAdmin() {
-      return isSignedIn() && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    function getUserData() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
     }
     
-    function isValidId(id) {
-      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    // Safe role-based checks. Evaluations short-circuit safely if document does not exist
+    function hasRole(role) {
+      return isSignedIn() 
+        && exists(/databases/$(database)/documents/users/$(request.auth.uid)) 
+        && getUserData().role == role;
+    }
+    
+    function isAdmin() {
+      return hasRole('admin');
+    }
+    
+    function isFinance() {
+      return hasRole('finance') || isAdmin();
+    }
+    
+    function isSupport() {
+      return hasRole('support') || isAdmin();
+    }
+    
+    function isModerator() {
+      return hasRole('moderator') || isAdmin();
     }
     
     function incoming() {
@@ -40,115 +56,197 @@ service cloud.firestore {
     }
 
     // =========================================================================
-    // Schema Validations (Pillar 2)
+    // 3. SCHEMAS AND DATA VALIDATIONS
     // =========================================================================
-    
     function isValidUser(data) {
       return data.uid == request.auth.uid 
         && data.email is string
-        && data.displayName is string && data.displayName.size() <= 100
-        && data.photoURL is string && data.photoURL.size() <= 500
-        && data.isAdmin is bool
-        && (data.preferredCurrency == 'USD' || data.preferredCurrency == 'EUR' || data.preferredCurrency == 'GBP' || data.preferredCurrency == 'JPY' || data.preferredCurrency == 'BTC' || data.preferredCurrency == 'ETH' || data.preferredCurrency == 'PKR')
         && data.createdAt == request.time
-        && data.updatedAt == request.time
-        && data.fullName is string && data.fullName.size() <= 100
-        && data.username is string && data.username.size() <= 30
-        && data.phone is string && data.phone.size() <= 30
-        && (data.role == 'user' || data.role == 'admin' || data.role == 'moderator')
-        && data.status == 'active'
-        && (data.lastLogin == null || data.lastLogin is timestamp)
-        && data.profileImage is string && data.profileImage.size() <= 500
-        && data.notificationEnabled is bool
-        && data.theme == 'dark'
-        && data.language == 'English'
-        && data.currency == 'PKR';
+        && (data.role == 'user' || data.role == 'admin' || data.role == 'moderator' || data.role == 'finance' || data.role == 'support')
+        && (data.status == 'active' || data.status == 'suspended' || data.status == 'pending');
     }
-    
+
     function isValidWallet(data) {
-      return data.walletId is string && data.walletId.size() <= 128
-        && data.ownerId == request.auth.uid
+      return data.ownerId == request.auth.uid
         && (data.currency == 'BTC' || data.currency == 'ETH' || data.currency == 'USDT' || data.currency == 'SOL' || data.currency == 'USD' || data.currency == 'PKR')
         && data.balance is number
-        && data.address is string && data.address.size() <= 128
-        && data.createdAt == request.time
-        && data.updatedAt == request.time;
+        && data.balance >= 0
+        && data.createdAt == request.time;
     }
-    
+
     function isValidTransaction(data) {
-      return data.txId is string && data.txId.size() <= 128
-        && data.userId == request.auth.uid
-        && (data.type == 'deposit' || data.type == 'withdrawal' || data.type == 'buy' || data.type == 'sell' || data.type == 'swap')
+      return data.userId == request.auth.uid
         && data.amount is number
-        && data.currency is string
+        && data.amount > 0
+        && (data.type == 'deposit' || data.type == 'withdrawal' || data.type == 'buy' || data.type == 'sell' || data.type == 'swap')
         && (data.status == 'pending' || data.status == 'completed' || data.status == 'failed' || data.status == 'cancelled')
-        && data.txHash is string && data.txHash.size() <= 128
-        && data.createdAt == request.time
-        && data.updatedAt == request.time;
+        && data.createdAt == request.time;
     }
 
     // =========================================================================
-    // Collection Path Rules (Pillar 4-8)
+    // 4. COLLECTION SPECIFIC COMPLIANCE RULES
     // =========================================================================
-    
-    // User Collection Rules
+
+    // USERS COLLECTION
     match /users/{userId} {
-      allow get: if isOwner(userId) || isAdmin();
-      allow list: if isSignedIn() && (resource.data.uid == request.auth.uid || resource.data.username is string);
+      allow get: if isSignedIn(); // Allow reading metadata for P2P trading interactions
+      allow list: if isAdmin() || isSupport() || isModerator() || (isSignedIn() && (resource.data.uid == request.auth.uid || resource.data.username is string));
       allow create: if isOwner(userId) && isValidUser(incoming());
       allow update: if isOwner(userId) 
         && incoming().uid == existing().uid
         && incoming().email == existing().email
         && incoming().createdAt == existing().createdAt
-        && incoming().updatedAt == request.time
-        && (
-          incoming().diff(existing()).affectedKeys().hasOnly(['displayName', 'photoURL', 'preferredCurrency', 'updatedAt'])
-        );
+        && incoming().role == existing().role       // Users cannot escalate their own privilege role
+        && incoming().status == existing().status   // Users cannot lift account suspension status
+        && incoming().updatedAt == request.time;
       allow delete: if isAdmin();
     }
     
-    // Admin Directory Roles (Read-Only to Authenticated Clients)
-    match /admins/{adminId} {
-      allow read: if isSignedIn();
-      allow write: if false; // Block client writes completely. Managed only via GCP server sdk or console.
-    }
-    
-    // Wallet Balance Rules
+    // WALLETS COLLECTION
     match /wallets/{walletId} {
-      allow get: if isSignedIn() && (resource.data.ownerId == request.auth.uid || isAdmin());
-      allow list: if isSignedIn() && resource.data.ownerId == request.auth.uid;
+      allow get, list: if isSignedIn() && (resource.data.ownerId == request.auth.uid || isAdmin() || isFinance() || isSupport());
       allow create: if isSignedIn() && isValidWallet(incoming());
-      allow update: if isSignedIn() 
-        && existing().ownerId == request.auth.uid
+      allow update: if isAdmin() || isFinance() || (
+        isOwner(existing().ownerId) 
+        && incoming().balance == existing().balance // Users CANNOT directly update/modify balances
         && incoming().ownerId == existing().ownerId
-        && incoming().walletId == existing().walletId
         && incoming().currency == existing().currency
         && incoming().createdAt == existing().createdAt
-        && incoming().updatedAt == request.time
-        && (
-          incoming().diff(existing()).affectedKeys().hasOnly(['balance', 'address', 'updatedAt'])
-        );
+        && incoming().diff(existing()).affectedKeys().hasOnly(['address', 'updatedAt'])
+      );
       allow delete: if isAdmin();
     }
     
-    // Transaction History Rules
+    // WALLET TRANSACTIONS COLLECTION
+    match /walletTransactions/{txId} {
+      allow get, list: if isSignedIn() && (resource.data.userId == request.auth.uid || isAdmin() || isFinance() || isSupport());
+      allow create: if isSignedIn() && incoming().userId == request.auth.uid && incoming().createdAt == request.time;
+      allow update, delete: if false; // Immutable ledger
+    }
+
+    // TRANSACTIONS COLLECTION
     match /transactions/{transactionId} {
-      allow get: if isSignedIn() && (resource.data.userId == request.auth.uid || isAdmin());
-      allow list: if isSignedIn() && resource.data.userId == request.auth.uid;
+      allow get, list: if isSignedIn() && (resource.data.userId == request.auth.uid || isAdmin() || isFinance() || isSupport());
       allow create: if isSignedIn() && isValidTransaction(incoming());
-      allow update: if isSignedIn() 
-        && existing().userId == request.auth.uid
-        && incoming().userId == existing().userId
-        && incoming().txId == existing().txId
+      allow update, delete: if false; // Immutable audit transactions log
+    }
+
+    // COINS COLLECTION
+    match /coins/{coinId} {
+      allow read: if true; // Everyone (including guests) can read market coins
+      allow create, update: if isAdmin() || isModerator();
+      allow delete: if isAdmin();
+    }
+
+    // OFFERS COLLECTION (P2P Marketplace)
+    match /offers/{offerId} {
+      allow get, list: if isSignedIn(); // All signed-in traders can view listed P2P offers
+      allow create: if isSignedIn() && incoming().ownerId == request.auth.uid && incoming().status == 'active' && incoming().createdAt == request.time;
+      allow update: if isAdmin() || isModerator() || (
+        isOwner(existing().ownerId)
+        && existing().status == 'active' // CANNOT edit locked or completed offers!
+        && incoming().ownerId == existing().ownerId
         && incoming().createdAt == existing().createdAt
         && incoming().updatedAt == request.time
-        && (
-          // Action: Cancel (only allowed if status is currently pending)
-          existing().status == 'pending'
-          && incoming().diff(existing()).affectedKeys().hasOnly(['status', 'updatedAt'])
-          && incoming().status == 'cancelled'
-        );
+      );
+      allow delete: if isAdmin() || (isOwner(existing().ownerId) && existing().status == 'active');
+    }
+
+    // NEGOTIATIONS COLLECTION (Direct Trades Chats)
+    match /negotiations/{negotiationId} {
+      allow get, list: if isSignedIn() && (resource.data.buyerId == request.auth.uid || resource.data.sellerId == request.auth.uid || isAdmin() || isSupport());
+      allow create: if isSignedIn() && (incoming().buyerId == request.auth.uid || incoming().sellerId == request.auth.uid) && incoming().createdAt == request.time;
+      allow update: if isAdmin() || isSupport() || (
+        isSignedIn()
+        && (existing().buyerId == request.auth.uid || existing().sellerId == request.auth.uid)
+        && incoming().buyerId == existing().buyerId
+        && incoming().sellerId == existing().sellerId
+        && incoming().createdAt == existing().createdAt
+        && incoming().updatedAt == request.time
+      );
       allow delete: if isAdmin();
+    }
+
+    // LOCKED DEALS COLLECTION
+    match /lockedDeals/{dealId} {
+      allow get, list: if isSignedIn() && (resource.data.buyerId == request.auth.uid || resource.data.sellerId == request.auth.uid || isAdmin() || isSupport() || isFinance());
+      allow create: if isSignedIn() && (incoming().buyerId == request.auth.uid || incoming().sellerId == request.auth.uid) && incoming().createdAt == request.time;
+      allow update: if isAdmin() || isSupport() || isFinance() || (
+        isSignedIn()
+        && (existing().buyerId == request.auth.uid || existing().sellerId == request.auth.uid)
+        && incoming().buyerId == existing().buyerId
+        && incoming().sellerId == existing().sellerId
+        && incoming().createdAt == existing().createdAt
+        && incoming().updatedAt == request.time
+      );
+      allow delete: if isAdmin();
+    }
+
+    // TRADES COLLECTION (Core Exchange Trades)
+    match /trades/{tradeId} {
+      allow get, list: if isSignedIn() && (resource.data.buyerId == request.auth.uid || resource.data.sellerId == request.auth.uid || isAdmin() || isSupport() || isFinance());
+      allow create: if isSignedIn() && (incoming().buyerId == request.auth.uid || incoming().sellerId == request.auth.uid) && incoming().createdAt == request.time;
+      allow update: if isAdmin() || isSupport() || isFinance() || (
+        isSignedIn()
+        && (existing().buyerId == request.auth.uid || existing().sellerId == request.auth.uid)
+        && incoming().buyerId == existing().buyerId
+        && incoming().sellerId == existing().sellerId
+        && incoming().createdAt == existing().createdAt
+        && incoming().updatedAt == request.time
+      );
+      allow delete: if isAdmin();
+    }
+
+    // DEPOSITS COLLECTION
+    match /deposits/{depositId} {
+      allow get, list: if isSignedIn() && (resource.data.userId == request.auth.uid || isAdmin() || isFinance() || isSupport());
+      allow create: if isSignedIn() && incoming().userId == request.auth.uid && incoming().status == 'pending' && incoming().createdAt == request.time;
+      allow update: if isAdmin() || isFinance() || (
+        isOwner(existing().userId)
+        && existing().status == 'pending'
+        && incoming().userId == existing().userId
+        && incoming().status == 'cancelled'
+        && incoming().diff(existing()).affectedKeys().hasOnly(['status', 'updatedAt'])
+      );
+      allow delete: if isAdmin();
+    }
+
+    // WITHDRAWALS COLLECTION
+    match /withdrawals/{withdrawalId} {
+      allow get, list: if isSignedIn() && (resource.data.userId == request.auth.uid || resource.data.userUid == request.auth.uid || isAdmin() || isFinance() || isSupport());
+      allow create: if isSignedIn() && (incoming().userId == request.auth.uid || incoming().userUid == request.auth.uid) && (incoming().status == 'pending' || incoming().status == 'Pending') && incoming().createdAt == request.time;
+      allow update: if isAdmin() || isFinance() || (
+        isOwner(existing().userId || existing().userUid)
+        && (existing().status == 'pending' || existing().status == 'Pending')
+        && (incoming().status == 'cancelled' || incoming().status == 'Cancelled')
+        && incoming().diff(existing()).affectedKeys().hasOnly(['status', 'updatedAt'])
+      );
+      allow delete: if isAdmin();
+    }
+
+    // NOTIFICATIONS COLLECTION
+    match /notifications/{notificationId} {
+      allow get, list: if isSignedIn() && (resource.data.userId == request.auth.uid || resource.data.userUid == request.auth.uid || isAdmin());
+      allow create: if isAdmin() || isSupport() || isModerator();
+      allow update: if isAdmin() || (
+        isSignedIn()
+        && (existing().userId == request.auth.uid || existing().userUid == request.auth.uid)
+        && incoming().diff(existing()).affectedKeys().hasOnly(['isRead', 'read', 'updatedAt'])
+      );
+      allow delete: if isAdmin() || (isSignedIn() && (resource.data.userId == request.auth.uid || resource.data.userUid == request.auth.uid));
+    }
+
+    // SETTINGS COLLECTION
+    match /settings/{settingId} {
+      allow read: if true; // Everyone can read global exchange system settings (e.g. fees, rates, maintenance banner status)
+      allow write: if isAdmin();
+    }
+
+    // LOGS COLLECTION (System Security Auditing Trail)
+    match /logs/{logId} {
+      allow get, list: if isAdmin() || isSupport();
+      allow create: if isSignedIn() && incoming().createdAt == request.time;
+      allow update, delete: if false; // Immutable audit trails - tamper proof compliance logs
     }
   }
 }

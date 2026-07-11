@@ -1,0 +1,339 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ * 
+ * HFC Exchange - Admin Coin Management Custom Stylesheet
+ * Advanced glassmorphic layout, drag & drop uploads, asset detail badges.
+ */
+
+:root {
+  --hfc-admin-glow-color: rgba(14, 203, 129, 0.15); /* Tech green glow for assets */
+  --hfc-admin-border-hover: rgba(14, 203, 129, 0.35);
+  --hfc-admin-primary-glow: 0 0 15px rgba(14, 203, 129, 0.2);
+}
+
+/* Page content layout alignment */
+.admin-page-header {
+  border-bottom: 1px solid var(--hfc-border-color, rgba(255, 255, 255, 0.08));
+  padding-bottom: var(--hfc-space-md, 1rem);
+  margin-bottom: var(--hfc-space-lg, 1.5rem);
+}
+
+/* Coin Grid layout */
+.admin-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--hfc-space-md, 1rem);
+  margin-bottom: var(--hfc-space-xl, 2rem);
+}
+
+/* Glassmorphic Metric Cards */
+.admin-metric-card {
+  background: var(--hfc-card-bg, rgba(255, 255, 255, 0.03));
+  backdrop-filter: blur(var(--hfc-glass-blur, 16px));
+  -webkit-backdrop-filter: blur(var(--hfc-glass-blur, 16px));
+  border: 1px solid var(--hfc-border-color, rgba(255, 255, 255, 0.08));
+  border-radius: var(--hfc-radius-md, 8px);
+  padding: var(--hfc-space-md, 1rem) var(--hfc-space-lg, 1.5rem);
+  position: relative;
+  overflow: hidden;
+  transition: all var(--hfc-transition-normal, 0.25s ease);
+}
+
+.admin-metric-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--hfc-admin-border-hover);
+  background: var(--hfc-card-hover-bg, rgba(255, 255, 255, 0.05));
+  box-shadow: var(--hfc-admin-primary-glow);
+}
+
+.admin-metric-label {
+  font-family: var(--hfc-font-display, inherit);
+  font-size: var(--hfc-fs-xs, 0.75rem);
+  font-weight: var(--hfc-fw-semibold, 600);
+  color: var(--hfc-text-secondary, #b7bdc6);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--hfc-space-xs, 0.5rem);
+}
+
+.admin-metric-value {
+  font-family: var(--hfc-font-sans, inherit);
+  font-size: var(--hfc-fs-xl, 1.75rem);
+  font-weight: var(--hfc-fw-bold, 700);
+  color: var(--hfc-text-primary, #ffffff);
+  letter-spacing: -0.02em;
+}
+
+.admin-metric-footer {
+  font-size: 0.7rem;
+  color: var(--hfc-text-muted, #707a8a);
+  margin-top: var(--hfc-space-xs, 0.5rem);
+}
+
+/* Responsive Professional Table Container */
+.admin-table-card {
+  background: var(--hfc-card-bg, rgba(255, 255, 255, 0.03));
+  backdrop-filter: blur(var(--hfc-glass-blur, 16px));
+  -webkit-backdrop-filter: blur(var(--hfc-glass-blur, 16px));
+  border: 1px solid var(--hfc-border-color, rgba(255, 255, 255, 0.08));
+  border-radius: var(--hfc-radius-md, 8px);
+  overflow: hidden;
+  margin-bottom: var(--hfc-space-xl, 2rem);
+}
+
+/* Search and Filters bar styled like a single unit */
+.admin-filter-bar {
+  background: rgba(255, 255, 255, 0.01);
+  border-bottom: 1px solid var(--hfc-border-color, rgba(255, 255, 255, 0.08));
+  padding: 1.25rem;
+}
+
+/* Glass table design */
+.table-glass {
+  width: 100%;
+  margin-bottom: 0;
+  color: var(--hfc-text-primary, #ffffff);
+  vertical-align: middle;
+}
+
+.table-glass th {
+  background: rgba(255, 255, 255, 0.02) !important;
+  font-family: var(--hfc-font-display, inherit);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: var(--hfc-text-muted, #707a8a);
+  border-bottom: 1px solid var(--hfc-border-color, rgba(255, 255, 255, 0.08));
+  padding: 1rem 1.25rem;
+}
+
+.table-glass td {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  font-size: 0.875rem;
+  color: var(--hfc-text-secondary, #b7bdc6);
+  background: transparent !important;
+}
+
+.table-glass tbody tr {
+  transition: background var(--hfc-transition-fast, 0.15s ease);
+}
+
+.table-glass tbody tr:hover {
+  background: rgba(255, 255, 255, 0.02) !important;
+}
+
+.table-glass tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Coin Logo in table */
+.coin-logo-container {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.coin-logo-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.coin-logo-container .coin-fallback-icon {
+  font-size: 1.1rem;
+  color: var(--hfc-primary, #0ecb81);
+}
+
+/* Advanced Drag and Drop Zone Styles */
+.hfc-upload-zone {
+  border: 2px dashed rgba(255, 255, 255, 0.15);
+  border-radius: var(--hfc-radius-md, 8px);
+  background: rgba(255, 255, 255, 0.01);
+  padding: 2rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.hfc-upload-zone:hover, .hfc-upload-zone.dragover {
+  border-color: var(--hfc-primary, #0ecb81);
+  background: rgba(14, 203, 129, 0.03);
+}
+
+.hfc-upload-zone i {
+  font-size: 2rem;
+  color: var(--hfc-text-muted, #707a8a);
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.hfc-upload-preview {
+  max-width: 80px;
+  max-height: 80px;
+  object-fit: contain;
+  border-radius: 50%;
+  border: 2px solid var(--hfc-primary, #0ecb81);
+  padding: 4px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* Badges for trading status */
+.badge-status-active {
+  background: rgba(14, 203, 129, 0.1) !important;
+  color: var(--hfc-success, #0ecb81) !important;
+  border: 1px solid rgba(14, 203, 129, 0.2);
+}
+
+.badge-status-inactive {
+  background: rgba(246, 70, 93, 0.1) !important;
+  color: var(--hfc-danger, #f6465d) !important;
+  border: 1px solid rgba(246, 70, 93, 0.2);
+}
+
+.badge-status-hidden {
+  background: rgba(234, 156, 4, 0.1) !important;
+  color: var(--hfc-warning, #ea9c04) !important;
+  border: 1px solid rgba(234, 156, 4, 0.2);
+}
+
+.badge-status-archived {
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: var(--hfc-text-muted, #707a8a) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Skeleton Loading Animation */
+.skeleton-row {
+  height: 24px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.03) 75%);
+  background-size: 200% 100%;
+  animation: loadingSkeleton 1.5s infinite;
+  border-radius: 4px;
+}
+
+@keyframes loadingSkeleton {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Custom form components */
+.input-glass {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  color: var(--hfc-text-primary, #ffffff) !important;
+  border-radius: var(--hfc-radius-sm, 4px);
+  padding: 0.6rem 0.8rem;
+  transition: all 0.2s ease;
+}
+
+.input-glass:focus {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: var(--hfc-primary, #0ecb81) !important;
+  box-shadow: 0 0 10px rgba(14, 203, 129, 0.15) !important;
+  outline: none !important;
+}
+
+.input-glass::placeholder {
+  color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.input-glass:disabled {
+  background: rgba(255, 255, 255, 0.01) !important;
+  border-color: rgba(255, 255, 255, 0.03) !important;
+  color: var(--hfc-text-muted, #707a8a) !important;
+  cursor: not-allowed;
+}
+
+/* Form group alignment */
+.form-label-glass {
+  font-family: var(--hfc-font-display, inherit);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--hfc-text-secondary, #b7bdc6);
+  margin-bottom: 0.4rem;
+}
+
+/* Action button configurations */
+.btn-glass {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--hfc-text-primary, #ffffff);
+  border-radius: var(--hfc-radius-sm, 4px);
+  padding: 0.6rem 1.2rem;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.btn-glass:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn-glass-primary {
+  background: var(--hfc-primary, #0ecb81);
+  border: 1px solid var(--hfc-primary, #0ecb81);
+  color: #0b0e11;
+  border-radius: var(--hfc-radius-sm, 4px);
+  padding: 0.6rem 1.2rem;
+  transition: all 0.2s ease;
+  font-weight: 600;
+}
+
+.btn-glass-primary:hover {
+  background: #0b9a60;
+  border-color: #0b9a60;
+  box-shadow: 0 4px 15px rgba(14, 203, 129, 0.3);
+}
+
+.btn-glass-primary:disabled {
+  background: rgba(14, 203, 129, 0.3) !important;
+  border-color: transparent !important;
+  color: rgba(255, 255, 255, 0.5) !important;
+  cursor: not-allowed;
+}
+
+/* Action dropdown and icons */
+.btn-action-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: var(--hfc-text-secondary, #b7bdc6);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-action-icon:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: var(--hfc-text-primary, #ffffff);
+}
+
+.btn-action-icon-danger:hover {
+  background: rgba(246, 70, 93, 0.1);
+  border-color: rgba(246, 70, 93, 0.3);
+  color: var(--hfc-danger, #f6465d);
+}
+
+/* Tooltips & Helpers */
+.form-text-muted {
+  font-size: 0.72rem;
+  color: var(--hfc-text-muted, #707a8a);
+  margin-top: 0.25rem;
+}

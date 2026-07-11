@@ -1,0 +1,86 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    
+    // =========================================================================
+    // HELPER FUNCTIONS
+    // =========================================================================
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+    
+    function isImage() {
+      return request.resource.contentType.matches('image/.*');
+    }
+    
+    function isAllowedMimeType(types) {
+      return request.resource.contentType in types;
+    }
+    
+    function isValidSize(maxBytes) {
+      return request.resource.size <= maxBytes;
+    }
+
+    function getUserRole() {
+      return firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.role;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && getUserRole() == 'admin';
+    }
+
+    function isFinance() {
+      return isSignedIn() && (getUserRole() == 'finance' || getUserRole() == 'admin');
+    }
+
+    function isSupport() {
+      return isSignedIn() && (getUserRole() == 'support' || getUserRole() == 'admin');
+    }
+
+    function isModerator() {
+      return isSignedIn() && (getUserRole() == 'moderator' || getUserRole() == 'admin');
+    }
+
+    // Default global deny-all
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+
+    // =========================================================================
+    // PROFILE IMAGES
+    // =========================================================================
+    match /profile_images/{userId}/{fileName} {
+      allow read: if isSignedIn(); // Users can view other trade participants' profiles
+      allow write: if isOwner(userId)
+        && isImage()
+        && isAllowedMimeType(['image/png', 'image/jpeg', 'image/webp'])
+        && isValidSize(5 * 1024 * 1024); // Limit: 5MB
+    }
+
+    // =========================================================================
+    // DEPOSIT SCREENSHOTS (Payment Receipts)
+    // =========================================================================
+    match /deposits/{userId}/{fileName} {
+      allow read: if isSignedIn() && (request.auth.uid == userId || isAdmin() || isFinance() || isSupport());
+      allow write: if isOwner(userId)
+        && isImage()
+        && isAllowedMimeType(['image/png', 'image/jpeg', 'image/webp'])
+        && isValidSize(10 * 1024 * 1024); // Limit: 10MB (Screenshots can be large)
+    }
+
+    // =========================================================================
+    // COIN LOGOS (Market assets icons)
+    // =========================================================================
+    match /coins/{fileName} {
+      allow read: if true; // Guest and user readable
+      allow write: if (isAdmin() || isModerator())
+        && isImage()
+        && isAllowedMimeType(['image/png', 'image/jpeg', 'image/webp', 'image/svg+xml'])
+        && isValidSize(2 * 1024 * 1024); // Limit: 2MB
+    }
+  }
+}

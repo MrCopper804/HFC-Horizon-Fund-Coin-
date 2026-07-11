@@ -1,0 +1,310 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ * 
+ * HFC Exchange - User Notification Center Stylesheet
+ * Custom CSS for glassmorphic notification feeds, responsive priority layouts,
+ * real-time unread state animations, action buttons, and accessible keyboard focus states.
+ */
+
+/* Responsive Grid for Notification Summary Statistics */
+.notifications-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--hfc-space-md);
+  margin-bottom: var(--hfc-space-xl);
+}
+
+/* Glassmorphic Metrics Card */
+.metric-glass-card {
+  background: var(--hfc-card-bg);
+  backdrop-filter: blur(var(--hfc-glass-blur));
+  -webkit-backdrop-filter: blur(var(--hfc-glass-blur));
+  border: 1px solid var(--hfc-border-color);
+  border-radius: var(--hfc-radius-md);
+  padding: var(--hfc-space-lg);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.metric-glass-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.metric-glass-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+}
+
+.metric-glass-card.accent-total::before { background: linear-gradient(90deg, transparent, var(--hfc-primary), transparent); }
+.metric-glass-card.accent-unread::before { background: linear-gradient(90deg, transparent, #3b82f6, transparent); }
+.metric-glass-card.accent-trades::before { background: linear-gradient(90deg, transparent, #10b981, transparent); }
+.metric-glass-card.accent-funds::before { background: linear-gradient(90deg, transparent, #f59e0b, transparent); }
+.metric-glass-card.accent-system::before { background: linear-gradient(90deg, transparent, #ec4899, transparent); }
+
+.metric-icon-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Glassmorphic Container for Advanced Filters */
+.filters-glass-container {
+  background: var(--hfc-card-bg);
+  backdrop-filter: blur(var(--hfc-glass-blur));
+  -webkit-backdrop-filter: blur(var(--hfc-glass-blur));
+  border: 1px solid var(--hfc-border-color);
+  border-radius: var(--hfc-radius-md);
+  padding: var(--hfc-space-lg);
+  margin-bottom: var(--hfc-space-lg);
+}
+
+.form-control-glass {
+  background: rgba(10, 15, 30, 0.6) !important;
+  border: 1px solid var(--hfc-border-color) !important;
+  color: #ffffff !important;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control-glass:focus {
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Navigation & Action Header inside Center Panel */
+.feed-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--hfc-space-md);
+  padding: var(--hfc-space-md) var(--hfc-space-lg);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  background: rgba(10, 15, 30, 0.4);
+}
+
+/* Clean Column Notification Feed */
+.notification-feed-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--hfc-space-md);
+  margin-bottom: var(--hfc-space-xl);
+}
+
+/* Glassmorphic Notification Card */
+.notification-card {
+  background: rgba(20, 25, 45, 0.5);
+  backdrop-filter: blur(var(--hfc-glass-blur));
+  -webkit-backdrop-filter: blur(var(--hfc-glass-blur));
+  border: 1px solid var(--hfc-border-color);
+  border-radius: var(--hfc-radius-md);
+  padding: var(--hfc-space-lg);
+  display: flex;
+  gap: var(--hfc-space-lg);
+  align-items: flex-start;
+  position: relative;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+/* Highlight style for Unread Cards */
+.notification-card.state-unread {
+  background: rgba(25, 35, 65, 0.7);
+  border-color: rgba(59, 130, 246, 0.25);
+  box-shadow: inset 0 0 10px rgba(59, 130, 246, 0.05);
+}
+
+.notification-card.state-unread:hover {
+  border-color: rgba(59, 130, 246, 0.4);
+}
+
+/* Subtle Left Indicator Line based on Priority */
+.notification-card::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: transparent;
+  transition: background 0.2s ease;
+}
+
+.notification-card.priority-high::after {
+  background: #ef4444;
+}
+.notification-card.priority-medium::after {
+  background: #f59e0b;
+}
+.notification-card.priority-low::after {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Animated Pulse for High Priority */
+.notification-card.priority-high.state-unread {
+  animation: border-pulse-red 3s infinite alternate;
+}
+
+@keyframes border-pulse-red {
+  0% { border-color: rgba(239, 68, 68, 0.25); }
+  100% { border-color: rgba(239, 68, 68, 0.55); }
+}
+
+/* Card Body Positioning */
+.notification-card-body {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+/* Icon Wrap Container */
+.notification-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.notification-card:hover .notification-icon-wrapper {
+  transform: scale(1.04);
+}
+
+/* Theme color categories for Icons */
+.icon-trades { background: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.2); color: #10b981; }
+.icon-marketplace { background: rgba(6, 182, 212, 0.1); border-color: rgba(6, 182, 212, 0.2); color: #06b6d4; }
+.icon-deposits { background: rgba(245, 158, 11, 0.1); border-color: rgba(245, 158, 11, 0.2); color: #f59e0b; }
+.icon-withdrawals { background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.2); color: #ef4444; }
+.icon-announcements { background: rgba(236, 72, 153, 0.1); border-color: rgba(236, 72, 153, 0.2); color: #ec4899; }
+.icon-system { background: rgba(139, 92, 246, 0.1); border-color: rgba(139, 92, 246, 0.2); color: #8b5cf6; }
+
+/* Status Check dot for Unread items */
+.unread-glow-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #3b82f6;
+  box-shadow: 0 0 8px #3b82f6;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 6px;
+  animation: glow-pulse 1.5s infinite alternate;
+}
+
+@keyframes glow-pulse {
+  0% { opacity: 0.5; }
+  100% { opacity: 1; transform: scale(1.1); }
+}
+
+/* Category & Priority Badge Styling */
+.badge-category {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.badge-category.cat-trades { background: rgba(16, 185, 129, 0.08); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.15); }
+.badge-category.cat-marketplace { background: rgba(6, 182, 212, 0.08); color: #22d3ee; border: 1px solid rgba(6, 182, 212, 0.15); }
+.badge-category.cat-deposits { background: rgba(245, 158, 11, 0.08); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.15); }
+.badge-category.cat-withdrawals { background: rgba(239, 68, 68, 0.08); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.15); }
+.badge-category.cat-announcements { background: rgba(236, 72, 153, 0.08); color: #f472b6; border: 1px solid rgba(236, 72, 153, 0.15); }
+.badge-category.cat-system { background: rgba(139, 92, 246, 0.08); color: #a78bfa; border: 1px solid rgba(139, 92, 246, 0.15); }
+
+.badge-priority {
+  font-size: 8px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-family: var(--hfc-font-mono);
+}
+
+.badge-priority.pri-high { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.2); }
+.badge-priority.pri-medium { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.2); }
+.badge-priority.pri-low { background: rgba(255, 255, 255, 0.06); color: #9ca3af; border: 1px solid rgba(255, 255, 255, 0.08); }
+
+/* Card Interactive Hover Transforms */
+.notification-card:hover {
+  transform: translateX(4px);
+  background: rgba(25, 30, 55, 0.6);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Action button configurations inside Card context */
+.notification-actions {
+  display: flex;
+  gap: var(--hfc-space-xs);
+  align-self: center;
+  flex-shrink: 0;
+}
+
+@media (max-width: 576px) {
+  .notification-card {
+    flex-direction: column;
+    gap: var(--hfc-space-md);
+  }
+  .notification-actions {
+    align-self: flex-start;
+    width: 100%;
+    margin-top: var(--hfc-space-sm);
+    justify-content: flex-end;
+  }
+}
+
+/* Accessibility Highlight & Visual Focus Checks */
+button:focus-visible,
+select:focus-visible,
+input:focus-visible,
+.notification-card:focus-visible {
+  outline: 2px solid var(--hfc-primary) !important;
+  outline-offset: 3px !important;
+}
+
+/* Slide out keyframe for item Soft Delete */
+.notification-slide-out {
+  animation: slide-out 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slide-out {
+  0% { opacity: 1; transform: translateX(0); }
+  100% { opacity: 0; transform: translateX(50px); max-height: 0; padding: 0; margin: 0; border: none; }
+}
+
+/* Skeletons */
+.skeleton-box {
+  background: linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.03) 75%);
+  background-size: 200% 100%;
+  animation: shimer 1.5s infinite;
+  border-radius: 4px;
+}
+
+@keyframes shimer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.skeleton-icon { width: 44px; height: 44px; border-radius: 12px; }
+.skeleton-title { height: 16px; width: 40%; margin-bottom: 8px; }
+.skeleton-desc { height: 12px; width: 85%; margin-bottom: 6px; }
+.skeleton-desc-sub { height: 12px; width: 60%; }

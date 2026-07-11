@@ -1,0 +1,79 @@
+{
+  "name": "HFC Exchange",
+  "short_name": "HFC Ex",
+  "description": "Pakistan's premier decentralized escrow cryptocurrency marketplace. Multi-sig cold vaults, P2P nodes, secure PKR transactions.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#0d1117",
+  "theme_color": "#00f2fe",
+  "orientation": "portrait-primary",
+  "lang": "en",
+  "dir": "ltr",
+  "scope": "/",
+  "id": "/?source=pwa",
+  "categories": ["finance", "business"],
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Marketplace",
+      "short_name": "Market",
+      "description": "View active peer-to-peer cryptocurrency offers",
+      "url": "/marketplace.html?utm_source=shortcut",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Wallet Console",
+      "short_name": "Wallet",
+      "description": "Check multi-currency balances and secure holds",
+      "url": "/wallet.html?utm_source=shortcut",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Trading Dashboard",
+      "short_name": "Dashboard",
+      "description": "Monitor active negotiations and locked escrows",
+      "url": "/dashboard.html?utm_source=shortcut",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Trade History",
+      "short_name": "History",
+      "description": "Review completed cryptocurrency settlements",
+      "url": "/trade-history.html?utm_source=shortcut",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Notifications",
+      "short_name": "Alerts",
+      "description": "Check active trade negotiations and node security logs",
+      "url": "/notifications.html?utm_source=shortcut",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    }
+  ],
+  "prefer_related_applications": false
+}

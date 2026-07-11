@@ -1,0 +1,47 @@
+# https://www.robotstxt.org/robotstxt.html
+# HFC Exchange - Search Engine Robot Compliance File
+# Managed under Lead SEO Architecture Team
+
+User-agent: *
+
+# SITEMAP INDEX LOCATION
+Sitemap: https://hfc-exchange.github.io/sitemap.xml
+
+# =========================================================================
+# 1. PERMITTED PUBLIC GATEWAYS
+# =========================================================================
+Allow: /$
+Allow: /index.html
+Allow: /login.html
+Allow: /register.html
+Allow: /marketplace.html
+Allow: /offline.html
+Allow: /manifest.json
+Allow: /pwa-init.js
+Allow: /css/
+Allow: /assets/
+Allow: /js/
+
+# =========================================================================
+# 2. PRIVILEGED / SECURED CLIENT AREA EXCLUSIONS (Zero-Trust Disallow)
+# =========================================================================
+Disallow: /admin/
+Disallow: /dashboard.html
+Disallow: /wallet.html
+Disallow: /deposit.html
+Disallow: /withdraw.html
+Disallow: /deal-lock.html
+Disallow: /offer.html
+Disallow: /offer-details.html
+Disallow: /trade-history.html
+Disallow: /notifications.html
+Disallow: /design-system.html
+
+# =========================================================================
+# 3. SECURE INTERNAL SCRIPTS & DATABASE ASSETS
+# =========================================================================
+Disallow: /firebase/
+Disallow: /src/
+Disallow: /package.json
+Disallow: /tsconfig.json
+Disallow: /vite.config.ts

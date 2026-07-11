@@ -1,0 +1,66 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://hfc-exchange.github.io/#website",
+      "url": "https://hfc-exchange.github.io/",
+      "name": "HFC Exchange",
+      "description": "Pakistan's premier decentralized escrow cryptocurrency marketplace. Multi-sig cold vaults, P2P nodes, secure PKR transactions.",
+      "publisher": {
+        "@id": "https://hfc-exchange.github.io/#organization"
+      },
+      "inLanguage": "en-US",
+      "potentialAction": [
+        {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://hfc-exchange.github.io/marketplace.html?query={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://hfc-exchange.github.io/#organization",
+      "name": "HFC Exchange",
+      "url": "https://hfc-exchange.github.io/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://hfc-exchange.github.io/icons/icon-512.png",
+        "width": "512",
+        "height": "512"
+      },
+      "sameAs": [
+        "https://github.com/hfc-exchange",
+        "https://twitter.com/hfc_exchange"
+      ],
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "contactType": "customer service",
+          "email": "support@hfc-exchange.com",
+          "availableLanguage": ["English", "Urdu"]
+        }
+      ]
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://hfc-exchange.github.io/#webapplication",
+      "name": "HFC Exchange Portal",
+      "url": "https://hfc-exchange.github.io/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript and HTML5",
+      "installUrl": "https://hfc-exchange.github.io/",
+      "description": "Centralized peer-to-peer cryptocurrency escrow network where users negotiate offers, hold balances in secure wallet vaults, and settle PKR transactions.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0.00",
+        "priceCurrency": "PKR"
+      }
+    }
+  ]
+}

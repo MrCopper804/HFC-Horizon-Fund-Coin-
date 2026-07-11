@@ -1,0 +1,325 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ * 
+ * HFC Exchange - Trade History Ledger Stylesheet
+ * Contains layouts for professional analytical dashboards, historical trade tables,
+ * glassmorphic filter controls, sticky headers, loading skeletons, and interactive audit cards.
+ */
+
+/* Responsive Grid for Summary Cards */
+.history-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--hfc-space-md);
+  margin-bottom: var(--hfc-space-xl);
+}
+
+/* Glassmorphic Summary Metrics Card */
+.metric-glass-card {
+  background: var(--hfc-card-bg);
+  backdrop-filter: blur(var(--hfc-glass-blur));
+  -webkit-backdrop-filter: blur(var(--hfc-glass-blur));
+  border: 1px solid var(--hfc-border-color);
+  border-radius: var(--hfc-radius-md);
+  padding: var(--hfc-space-lg);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
+}
+
+.metric-glass-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.metric-glass-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+}
+
+.metric-glass-card.card-accent-completed::before {
+  background: linear-gradient(90deg, transparent, #28a745, transparent);
+}
+
+.metric-glass-card.card-accent-cancelled::before {
+  background: linear-gradient(90deg, transparent, #dc3545, transparent);
+}
+
+.metric-glass-card.card-accent-fees::before {
+  background: linear-gradient(90deg, transparent, #ffc107, transparent);
+}
+
+.metric-icon-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Search and Filters Glass Container */
+.filters-glass-container {
+  background: var(--hfc-card-bg);
+  backdrop-filter: blur(var(--hfc-glass-blur));
+  -webkit-backdrop-filter: blur(var(--hfc-glass-blur));
+  border: 1px solid var(--hfc-border-color);
+  border-radius: var(--hfc-radius-md);
+  padding: var(--hfc-space-lg);
+  margin-bottom: var(--hfc-space-lg);
+}
+
+/* Advanced responsive layout for search & filter rows */
+.filter-flex-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--hfc-space-sm);
+  align-items: center;
+}
+
+/* Scrollable Table Container with Sticky Headers */
+.table-responsive-container {
+  background: var(--hfc-card-bg);
+  backdrop-filter: blur(var(--hfc-glass-blur));
+  -webkit-backdrop-filter: blur(var(--hfc-glass-blur));
+  border: 1px solid var(--hfc-border-color);
+  border-radius: var(--hfc-radius-md);
+  overflow: hidden;
+  margin-bottom: var(--hfc-space-xl);
+}
+
+.ledger-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+}
+
+.ledger-table th {
+  background: rgba(10, 15, 30, 0.95) !important;
+  color: var(--hfc-text-muted);
+  font-family: var(--hfc-font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: var(--hfc-space-md) var(--hfc-space-lg);
+  border-bottom: 1px solid var(--hfc-border-color);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.ledger-table td {
+  padding: var(--hfc-space-md) var(--hfc-space-lg);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  font-size: var(--hfc-fs-sm);
+  color: var(--hfc-text-primary);
+  vertical-align: middle;
+}
+
+.ledger-table tbody tr {
+  transition: background-color 0.15s ease;
+}
+
+.ledger-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.015);
+}
+
+/* Table Column Sizes and Alignment */
+.col-trade-id { font-family: var(--hfc-font-mono); font-size: 11px; color: var(--hfc-text-muted); }
+.col-rate { font-family: var(--hfc-font-mono); text-align: right; }
+.col-qty { font-family: var(--hfc-font-mono); text-align: right; }
+.col-amount { font-family: var(--hfc-font-mono); font-weight: 600; text-align: right; }
+
+/* Badges and Badged Logotypes */
+.type-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.type-badge.type-buy {
+  background: rgba(40, 167, 69, 0.12);
+  color: #2e7d32;
+  border: 1px solid rgba(40, 167, 69, 0.15);
+}
+
+.type-badge.type-sell {
+  background: rgba(220, 53, 69, 0.12);
+  color: #c62828;
+  border: 1px solid rgba(220, 53, 69, 0.15);
+}
+
+.coin-mini-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.coin-mini-logo {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  font-weight: 700;
+  background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.coin-logo-btc { background: linear-gradient(135deg, #f7931a, #ffb300); border-color: rgba(247, 147, 26, 0.3); }
+.coin-logo-eth { background: linear-gradient(135deg, #627eea, #8c8c8c); border-color: rgba(98, 126, 234, 0.3); }
+.coin-logo-usdt { background: linear-gradient(135deg, #26a17b, #5cd4b4); border-color: rgba(38, 161, 123, 0.3); }
+.coin-logo-hfc { background: linear-gradient(135deg, #00f2fe, #4facfe); border-color: rgba(0, 242, 254, 0.3); }
+
+/* Double confirm indicator */
+.avatar-overlap {
+  display: flex;
+  align-items: center;
+}
+
+.avatar-overlap .avatar-node {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--hfc-card-bg);
+  border: 1px solid var(--hfc-border-color);
+  color: var(--hfc-text-secondary);
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--hfc-font-mono);
+}
+
+.avatar-overlap .avatar-node + .avatar-node {
+  margin-left: -4px;
+}
+
+/* Skeleton Loading Elements */
+.skeleton-box {
+  background: linear-gradient(90deg, rgba(255,255,255,0.02) 25%, rgba(255,255,255,0.08) 37%, rgba(255,255,255,0.02) 63%);
+  background-size: 400% 100%;
+  animation: skeleton-shimmer 1.4s ease infinite;
+  border-radius: 3px;
+  display: inline-block;
+  height: 14px;
+  width: 100%;
+}
+
+@keyframes skeleton-shimmer {
+  0% { background-position: 100% 50%; }
+  100% { background-position: 0 50%; }
+}
+
+/* Modal and Detail Receipt designs */
+.receipt-paper {
+  background: rgba(10, 15, 30, 0.6);
+  border: 1px solid var(--hfc-border-color);
+  border-radius: var(--hfc-radius-sm);
+  padding: var(--hfc-space-lg);
+  font-family: var(--hfc-font-sans);
+}
+
+.receipt-header-branding {
+  border-bottom: 1px dashed var(--hfc-border-color);
+  padding-bottom: var(--hfc-space-md);
+  margin-bottom: var(--hfc-space-md);
+}
+
+.receipt-dashed-divider {
+  border-top: 1px dashed var(--hfc-border-color);
+  margin: var(--hfc-space-md) 0;
+}
+
+.receipt-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--hfc-fs-xs);
+  margin-bottom: 6px;
+}
+
+.receipt-row .label {
+  color: var(--hfc-text-muted);
+}
+
+.receipt-row .value {
+  font-weight: 500;
+  color: var(--hfc-text-primary);
+  font-family: var(--hfc-font-mono);
+}
+
+.receipt-total-payout {
+  font-size: var(--hfc-fs-sm);
+  font-weight: 700;
+  color: var(--hfc-text-primary);
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Timeline flow in Trade Details */
+.trade-audit-timeline {
+  position: relative;
+  padding-left: 20px;
+}
+
+.trade-audit-timeline::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 6px;
+  width: 2px;
+  background: rgba(255,255,255,0.05);
+}
+
+.timeline-checkpoint {
+  position: relative;
+  margin-bottom: var(--hfc-space-md);
+}
+
+.timeline-checkpoint::before {
+  content: "";
+  position: absolute;
+  left: -20px;
+  top: 4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  border: 2px solid var(--hfc-bg);
+}
+
+.timeline-checkpoint.passed::before {
+  background: #28a745;
+}
+
+.timeline-checkpoint.failed::before {
+  background: #dc3545;
+}
+
+/* Focus visibility for keyboards */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--hfc-primary-color, #00f2fe) !important;
+  outline-offset: 2px;
+}

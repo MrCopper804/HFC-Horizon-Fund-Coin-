@@ -1,0 +1,210 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ * 
+ * HFC Exchange - Offer Creation & Edit Page Custom Stylesheet
+ * Interactive forms, live calculations panels, visual preview summaries, and dynamic status grids.
+ */
+
+/* Segmented Control / Type Selectors */
+.offer-type-selector {
+  display: flex;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--hfc-border-color);
+  border-radius: var(--hfc-radius-md);
+  padding: 4px;
+  margin-bottom: var(--hfc-space-lg);
+}
+
+.offer-type-btn {
+  flex: 1;
+  text-align: center;
+  border: none;
+  background: none;
+  padding: 0.75rem 1rem;
+  font-family: var(--hfc-font-display);
+  font-size: var(--hfc-fs-sm);
+  font-weight: var(--hfc-fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--hfc-text-secondary);
+  border-radius: var(--hfc-radius-sm);
+  transition: all var(--hfc-transition-fast);
+  cursor: pointer;
+}
+
+.offer-type-btn:hover {
+  color: var(--hfc-text-primary);
+}
+
+.offer-type-btn.active-buy {
+  background: rgba(14, 203, 129, 0.15);
+  color: var(--hfc-success);
+  border: 1px solid rgba(14, 203, 129, 0.3);
+  text-shadow: 0 0 8px rgba(14, 203, 129, 0.3);
+}
+
+.offer-type-btn.active-sell {
+  background: rgba(246, 70, 93, 0.15);
+  color: var(--hfc-danger);
+  border: 1px solid rgba(246, 70, 93, 0.3);
+  text-shadow: 0 0 8px rgba(246, 70, 93, 0.3);
+}
+
+/* Glassmorphic Form Elements */
+.offer-form-container {
+  background: var(--hfc-card-bg);
+  backdrop-filter: blur(var(--hfc-glass-blur));
+  -webkit-backdrop-filter: blur(var(--hfc-glass-blur));
+  border: 1px solid var(--hfc-border-color);
+  border-radius: var(--hfc-radius-md);
+  padding: var(--hfc-space-xl);
+  transition: border-color var(--hfc-transition-normal), box-shadow var(--hfc-transition-normal);
+}
+
+.offer-form-container:focus-within {
+  border-color: rgba(0, 242, 254, 0.15);
+  box-shadow: 0 0 20px rgba(0, 242, 254, 0.05);
+}
+
+.offer-form-label {
+  font-family: var(--hfc-font-display);
+  font-size: var(--hfc-fs-xs);
+  font-weight: var(--hfc-fw-bold);
+  color: var(--hfc-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.45rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.offer-form-control {
+  background: rgba(255, 255, 255, 0.02) !important;
+  border: 1px solid var(--hfc-border-color) !important;
+  color: var(--hfc-text-primary) !important;
+  border-radius: var(--hfc-radius-sm) !important;
+  padding: 0.7rem 1rem !important;
+  font-family: var(--hfc-font-sans) !important;
+  font-size: var(--hfc-fs-sm) !important;
+  transition: all var(--hfc-transition-fast) !important;
+}
+
+.offer-form-control:focus {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border-color: var(--hfc-border-focus) !important;
+  box-shadow: 0 0 0 3px rgba(0, 242, 254, 0.12) !important;
+  outline: none !important;
+}
+
+.offer-form-control:disabled {
+  background: var(--hfc-disabled-bg) !important;
+  color: var(--hfc-disabled-text) !important;
+  border-color: var(--hfc-disabled-border) !important;
+  cursor: not-allowed !important;
+}
+
+.offer-form-control option {
+  background-color: var(--hfc-surface-solid) !important;
+  color: var(--hfc-text-primary) !important;
+}
+
+/* Calculations Sidebar / Panel */
+.calculations-panel {
+  background: rgba(17, 21, 29, 0.4);
+  border: 1px solid var(--hfc-border-color);
+  border-radius: var(--hfc-radius-md);
+  padding: var(--hfc-space-xl);
+  height: 100%;
+}
+
+.calc-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--hfc-space-md) 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.calc-row:last-child {
+  border-bottom: none;
+}
+
+.calc-label {
+  font-size: var(--hfc-fs-sm);
+  color: var(--hfc-text-secondary);
+}
+
+.calc-value {
+  font-family: var(--hfc-font-mono);
+  font-size: var(--hfc-fs-sm);
+  font-weight: var(--hfc-fw-medium);
+  color: var(--hfc-text-primary);
+}
+
+.calc-total-row {
+  background: rgba(0, 242, 254, 0.03);
+  border: 1px solid rgba(0, 242, 254, 0.1);
+  border-radius: var(--hfc-radius-sm);
+  padding: var(--hfc-space-md);
+  margin-top: var(--hfc-space-lg);
+}
+
+/* Balance Indicators */
+.balance-container {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--hfc-fs-xs);
+  margin-top: 0.35rem;
+}
+
+.balance-available {
+  color: var(--hfc-text-muted);
+}
+
+.balance-remaining {
+  color: var(--hfc-text-muted);
+  font-family: var(--hfc-font-mono);
+}
+
+.balance-value-positive {
+  color: var(--hfc-success) !important;
+}
+
+.balance-value-negative {
+  color: var(--hfc-danger) !important;
+}
+
+/* Order Preview Box */
+.order-preview-card {
+  border: 1px dashed var(--hfc-border-color);
+  background: rgba(255, 255, 255, 0.01);
+  border-radius: var(--hfc-radius-md);
+  padding: var(--hfc-space-lg);
+  margin-top: var(--hfc-space-xl);
+}
+
+.preview-pill {
+  font-family: var(--hfc-font-display);
+  font-size: 0.7rem;
+  font-weight: var(--hfc-fw-bold);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+}
+
+/* Success Card details */
+.success-check-wrapper {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(14, 203, 129, 0.1);
+  border: 2px solid var(--hfc-success);
+  color: var(--hfc-success);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin: 0 auto var(--hfc-space-xl) auto;
+  box-shadow: 0 0 15px rgba(14, 203, 129, 0.2);
+}

@@ -1,0 +1,279 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ * 
+ * HFC Exchange - PKR Deposit Page Custom Stylesheet
+ * Responsive layout grids, glassmorphism method cards, transaction receipt drag-drop area, and sticky table headers.
+ */
+
+/* Step Number Badges */
+.step-num-badge {
+  background: var(--hfc-primary);
+  color: #121824;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--hfc-font-sans);
+  font-weight: bold;
+  font-size: var(--hfc-fs-xs);
+  box-shadow: var(--hfc-shadow-glow);
+  flex-shrink: 0;
+}
+
+/* Method Select Card Grid */
+.deposit-methods-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--hfc-space-md);
+  margin-bottom: var(--hfc-space-lg);
+}
+
+@media (max-width: 992px) {
+  .deposit-methods-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Glassmorphic Deposit Method Selection Cards */
+.method-card {
+  background: var(--hfc-card-bg);
+  backdrop-filter: blur(var(--hfc-glass-blur));
+  -webkit-backdrop-filter: blur(var(--hfc-glass-blur));
+  border: 2px solid var(--hfc-border-color);
+  border-radius: var(--hfc-radius-md);
+  padding: var(--hfc-space-md) var(--hfc-space-lg);
+  transition: all var(--hfc-transition-normal);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 150px;
+}
+
+.method-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--hfc-border-hover);
+  box-shadow: var(--hfc-shadow-lg), rgba(0, 242, 254, 0.08) 0px 0px 15px;
+}
+
+.method-card.active {
+  border-color: var(--hfc-primary);
+  box-shadow: var(--hfc-shadow-lg), var(--hfc-shadow-glow);
+  background: rgba(0, 242, 254, 0.03);
+}
+
+/* Method Card Active Tick Indicator */
+.method-card .active-indicator {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--hfc-primary);
+  color: #121824;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: bold;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all var(--hfc-transition-fast);
+}
+
+.method-card.active .active-indicator {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Method Logos and Badges */
+.method-logo-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--hfc-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--hfc-font-display);
+  font-size: var(--hfc-fs-sm);
+  font-weight: var(--hfc-fw-bold);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo-easypaisa {
+  background: linear-gradient(135deg, #1fa34c, #14d35e);
+  box-shadow: 0 0 10px rgba(31, 163, 76, 0.25);
+}
+
+.logo-jazzcash {
+  background: linear-gradient(135deg, #e30a17, #000000);
+  box-shadow: 0 0 10px rgba(227, 10, 23, 0.25);
+}
+
+.logo-bank {
+  background: linear-gradient(135deg, #0d6efd, #161c26);
+  box-shadow: 0 0 10px rgba(13, 110, 253, 0.25);
+}
+
+/* Instruction Block inside Form */
+.instruction-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--hfc-border-color);
+  border-radius: var(--hfc-radius-sm);
+  padding: var(--hfc-space-md);
+  margin-bottom: var(--hfc-space-md);
+}
+
+/* Drag-Drop File Upload Area styling */
+.upload-dropzone {
+  border: 2px dashed var(--hfc-border-color);
+  border-radius: var(--hfc-radius-md);
+  padding: var(--hfc-space-lg);
+  text-align: center;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.01);
+  transition: all var(--hfc-transition-normal);
+  position: relative;
+}
+
+.upload-dropzone:hover, .upload-dropzone.drag-over {
+  border-color: var(--hfc-primary);
+  background: rgba(0, 242, 254, 0.02);
+  box-shadow: 0 0 10px rgba(0, 242, 254, 0.1);
+}
+
+.upload-dropzone.has-file {
+  border-color: var(--hfc-success);
+  border-style: solid;
+  background: rgba(14, 203, 129, 0.01);
+}
+
+.upload-dropzone i {
+  color: var(--hfc-text-muted);
+  transition: color var(--hfc-transition-fast);
+}
+
+.upload-dropzone:hover i, .upload-dropzone.drag-over i {
+  color: var(--hfc-primary);
+}
+
+.upload-dropzone.has-file i {
+  color: var(--hfc-success);
+}
+
+/* Sticky Header Table for Deposit History */
+.table-responsive-deposit {
+  max-height: 480px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+}
+
+.table-responsive-deposit::-webkit-scrollbar {
+  width: 6px;
+}
+
+.table-responsive-deposit::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: var(--hfc-radius-pill);
+}
+
+.table-deposit thead th {
+  position: sticky;
+  top: 0;
+  background-color: rgba(22, 28, 38, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 5;
+  border-bottom: 2px solid var(--hfc-border-color);
+  box-shadow: 0 1px 0 var(--hfc-border-color);
+}
+
+.table-deposit tbody tr {
+  transition: background-color var(--hfc-transition-fast);
+}
+
+.table-deposit tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.02) !important;
+}
+
+/* Premium Filter Tabs on History card */
+.deposit-filter-tabs {
+  display: flex;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 4px;
+  border-radius: var(--hfc-radius-sm);
+  border: 1px solid var(--hfc-border-color);
+}
+
+.deposit-filter-tab-btn {
+  background: transparent;
+  border: none;
+  color: var(--hfc-text-muted);
+  font-family: var(--hfc-font-display);
+  font-size: var(--hfc-fs-xs);
+  font-weight: var(--hfc-fw-medium);
+  padding: 6px 12px;
+  border-radius: var(--hfc-radius-xs);
+  transition: color var(--hfc-transition-fast), background-color var(--hfc-transition-fast);
+}
+
+.deposit-filter-tab-btn:hover {
+  color: var(--hfc-text-primary);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.deposit-filter-tab-btn.active {
+  color: var(--hfc-text-primary);
+  background: var(--hfc-primary);
+  font-weight: var(--hfc-fw-bold);
+  box-shadow: var(--hfc-shadow-glow);
+}
+
+/* Premium Status Badges mapping the requested list: Pending, Under Review, Approved, Rejected, Cancelled */
+.deposit-badge-pending {
+  background-color: rgba(243, 186, 47, 0.1);
+  color: var(--hfc-warning);
+  border: 1px solid rgba(243, 186, 47, 0.2);
+}
+
+.deposit-badge-review {
+  background-color: rgba(0, 242, 254, 0.1);
+  color: var(--hfc-primary);
+  border: 1px solid rgba(0, 242, 254, 0.2);
+}
+
+.deposit-badge-approved {
+  background-color: rgba(14, 203, 129, 0.1);
+  color: var(--hfc-success);
+  border: 1px solid rgba(14, 203, 129, 0.2);
+}
+
+.deposit-badge-rejected {
+  background-color: rgba(246, 70, 93, 0.1);
+  color: var(--hfc-danger);
+  border: 1px solid rgba(246, 70, 93, 0.2);
+}
+
+.deposit-badge-cancelled {
+  background-color: rgba(108, 117, 125, 0.1);
+  color: var(--hfc-text-muted);
+  border: 1px solid rgba(108, 117, 125, 0.2);
+}
+
+/* Receipt Preview modal box adjustments */
+.receipt-preview-img {
+  max-width: 100%;
+  max-height: 500px;
+  object-fit: contain;
+  border-radius: var(--hfc-radius-sm);
+  border: 1px solid var(--hfc-border-color);
+}

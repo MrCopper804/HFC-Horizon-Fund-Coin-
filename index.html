@@ -26,6 +26,14 @@
     <!-- Bootstrap Icons CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
     
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="HFC Exchange" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+    <meta name="theme-color" content="#0d1117" />
+
     <!-- Core Design System Stylesheet -->
     <link rel="stylesheet" href="/css/style.css" />
     <!-- Home/Landing Page Custom Stylesheet -->
@@ -875,5 +883,7 @@
 
     <!-- Landing Controller script -->
     <script type="module" src="/assets/js/home.js"></script>
+    <!-- PWA Orchestrator Bootloader -->
+    <script type="module" src="/pwa-init.js"></script>
   </body>
 </html>
